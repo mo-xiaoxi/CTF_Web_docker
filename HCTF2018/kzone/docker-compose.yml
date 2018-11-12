@@ -1,0 +1,10 @@
+version: '2'
+services:
+  kzone:
+    build: .
+    ports:
+        - "9090:80"
+    volumes:
+        - ./www:/var/www/html/
+    command: 
+        - /var/www/html/run.sh

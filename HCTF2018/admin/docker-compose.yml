@@ -1,0 +1,19 @@
+version: '2'
+services:
+  hctf_flask:
+    build: .
+    ports:
+        - "9999:8080"
+    volumes:
+        - ./hctf_flask/:/webapps
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    build: db/.
+    volumes:
+      - /var/lib/mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: adsl1234

@@ -1,0 +1,52 @@
+_____________________________________
+OK, not much nonsense, the tutorial starts
+——————————
+
+
+First go and prepare a host yourself
+Upload the decompression source
+
+Configure config.php
+
+
+OK configuration is complete
+
+Import the database again
+Install.sql
+OK
+
+
+Now you can access the domain name to see the effect.
+
+
+This is the front desk (because I have built it before, I recorded the account password so I have this)
+
+Background address /admin
+
+Default account password admin/admin
+
+Teach you how to modify the background account password
+Open the website https://md5jiami.51240.com/
+Enter the password you want
+
+
+I set it to 2838778326ym
+Generate, copy 32-bit lowercase md5
+Enter the database
+
+
+Next, take a closer loOK at my operation.
+
+
+This is the background account
+This is the background default MD5 encrypted password (we copy our generated MD5 into it)
+
+OK, done
+
+
+I am modifying the login account.
+
+The account password was set to 2838778326/2838778326ym.
+
+If you want to modify the background login address, you can directly modify the admin directory name.
+OK

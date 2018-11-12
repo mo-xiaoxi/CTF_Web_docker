@@ -1,0 +1,19 @@
+<div class="nav-setting">
+  <div class="ui buttons">
+    <div class="ui floating dropdown button">
+      <i class="icon bars"></i>
+      <div class="menu">
+        {% if current_user.is_authenticated %}
+          <a class="item" href="/index">index</a>
+          <div class="divider"></div>
+          <a class="item" href="/edit">post</a>
+          <a href="/change" class="item">change password</a>
+          <a class="item" href="/logout">logout</a>
+        {%  else  %}
+          <a class="item" href="/login">login</a>
+          <a class="item" href="/register">register</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

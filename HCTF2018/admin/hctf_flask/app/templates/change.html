@@ -1,0 +1,17 @@
+{% include('header.html') %}
+
+<div class="ui grid">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+        <!-- https://github.com/woadsl1234/hctf_flask/ -->
+      <form class="ui form segment" method="post" enctype="multipart/form-data">
+        <div class="field required">
+          <label>NewPassword</label>
+          {{ form.newpassword }}
+        </div>
+        <input type="submit" class="ui button fluid" value="更换密码">
+      </form>
+    </div>
+  </div>  
+
+{% include('footer.html') %}

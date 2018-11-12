@@ -1,0 +1,27 @@
+{% include('header.html') %}
+
+<div class="ui grid">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+      <form class="ui form segment" method="post" enctype="multipart/form-data">
+        <div class="field required">
+          <label>Username</label>
+          {{ form.username }}
+          {% for error in form.username.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="field required">
+          <label>Password</label>
+          {{ form.password }}<br>
+          {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <input type="submit" class="ui button fluid" value="login">
+      </form>
+    </div>
+  </div>  
+
+{% include('footer.html') %}

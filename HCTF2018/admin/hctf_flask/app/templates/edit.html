@@ -1,0 +1,18 @@
+{% include('header.html') %}
+
+  <div class="eight wide column">
+    <form class="ui form segment" method="post" action="/edit">
+      <div class="field required">
+        <label>title</label>
+        <input type="text" name="title" value="">
+      </div>
+      <div class="field required">
+        <label>content</label>
+        <textarea name="content" rows="15"></textarea>
+      </div>
+      <input type="submit" class="ui button" value="submit">
+    </form>
+  </div>
+</div>
+
+{% include('footer.html') %}

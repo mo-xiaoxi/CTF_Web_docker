@@ -1,0 +1,26 @@
+{% include('header.html') %}
+
+<div class="ui grid">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+      <form class="ui form segment" method="post" enctype="multipart/form-data">
+        <div class="field required">
+          <label>Username</label>
+          {{ form.username }}
+        </div>
+        <div class="field required">
+          <label>Password</label>
+          {{ form.password }}
+        </div>
+        <div class="field required">
+          <label>verify_code</label>
+          {{ form.verify_code }}
+          <img class="verify_code" src="/code" onclick="this.src='/code?'+ Math.random()">
+        </div>
+        {{ form.submit(class='ui button fluid') }}
+        <!-- <input type="submit" class="ui button fluid" value="注册"> -->
+      </form>
+    </div>
+  </div>  
+
+{% include('footer.html') %}

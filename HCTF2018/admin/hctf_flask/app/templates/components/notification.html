@@ -1,0 +1,20 @@
+<div class="ui grid">
+  <div class="four wide column"></div>
+  <div class="eight wide column">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="ui success message">
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+
+    {% elif error %}
+    <div class="ui error message">
+      <p>{{ error }}</p>
+    </div>
+  {% endif %}
+  {% endwith %}
+
+  </div>
+</div>
