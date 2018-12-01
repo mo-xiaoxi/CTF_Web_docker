@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /admin/handle_message.php

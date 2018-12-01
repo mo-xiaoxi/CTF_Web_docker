@@ -1,0 +1,36 @@
+version: "3"
+services:
+  web:
+    image: moxiaoxi/bctf_seafaring
+    container_name: seafaring
+    ports: 
+      - 9999:9999
+    volumes:
+      - ./moxiaoxi:/home/moxiaoxi
+      - ./www:/var/www/html/
+    links:
+      - bctf-selenium-firefox
+    depends_on:
+      - bctf-selenium-firefox
+    networks:
+      static-network:
+        ipv4_address: 172.20.0.3
+    command: /home/moxiaoxi/start.sh
+  
+  bctf-selenium-firefox:
+    image: moxiaoxi/bctf-standalone-firefox
+    container_name: selenium-firefox
+    networks:
+      static-network:
+        ipv4_address: 172.20.0.2
+    # fix bug for aliyun
+    # volumes: 
+      # - selenium:/home/seluser/
+    # ports: 
+    #   - 4444:4444
+
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
