@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <div class="content" style=" padding:0 0 60px 0; background:#FFF;">
+            [.*表单开始*.]
+            <form id="form1" name="form1" method="post" action="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=shopadd&lang=cn&type=wap" class="registerform">
+            <table width="100%" border="0" class="table table-border table-hover table-bg">
+            	<thead>
+            	  <tr>
+                    <th colspan="2">创建新的物流信息</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td width="70" ><div align="right">收件人姓名</div></td>
+                    <td><input type="text" name="COL_Addname" class="userinput" datatype="*" placeholder="输入姓名..." /></td>
+                  </tr>
+                  <tr>
+                    <td><div align="right">收件人电话</div></td>
+                    <td><input type="text" name="COL_Addtel" class="userinput" datatype="m" placeholder="输入电话..." /></td>
+                  </tr>
+                  <tr>
+                    <td><div align="right">收件地址</div></td>
+                    <td>
+                    <div id="city_2">
+							<select class="prov" name="COL_Add[]"></select> 
+							<select class="city" disabled="disabled" name="COL_Add[]"></select>
+							<select class="dist" disabled="disabled" name="COL_Add[]"></select>
+					</div>
+					<input type="text" name="COL_Add[]" class="userinput" placeholder="详细到门牌号..." datatype="*" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                    <input type="submit" name="Submit" value="提交" class="btn btn-danger radius-5 pt-5 pb-5 pl-15 pr-15 f-r" />
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+            </form>
+            <link rel="stylesheet" href="../../function/plugs/Validform/style.css" type="text/css" />
+            <script type="text/javascript" src="../../function/plugs/Validform/Validform_v5.3.2.js"></script>
+            <script type="text/javascript" src="../../function/plugs/city/jquery.cityselect.js"></script>
+            <script type="text/javascript">
+            $(function(){
+                $(".registerform").Validform();  //就这一行代码！;
+				$("#city_2").citySelect({
+					prov: "黑龙江省",
+					city: "哈尔滨",
+					nodata: ""
+				});
+            })
+            </script>
+            <form id="form1" name="form1" method="post" action="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=shopadd_index&lang=cn&type=wap" class="registerform">
+                <table width="100%" border="0" class="table table-border table-hover table-bg">
+                    <thead>
+                      <tr>
+                        <th width="150">已创建的列表</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        [.foreach $shopadd as $op.]
+                          <tr>
+                            <td>
+                                <input type="radio" class="radio" name="opcms" value="[.$op.id.]" [.if $op.index == 1.]checked[./if.] />
+                                [.$op.name.] - [.$op.tel.] - [.$op.add.]
+                                <a href="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=shopadd_del&lang=cn&id=[.$op.id.]&type=wap">[删除]</a>
+                            </td>
+                          </tr>
+                        [./foreach.]
+                      <tr>
+                        <td><input type="submit" name="Submit" value="设置为收货地址" class="btn btn-danger radius-5 pd-5 f-r" /></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </form>
+            [.*表单结束*.]
+        </div>
+    </div>
+	[.include file="cn/cn_shopfoot.html".]
+</div>
+</body>
+</html>

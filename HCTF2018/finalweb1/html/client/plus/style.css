@@ -1,0 +1,48 @@
+﻿*{ margin:0 auto; font-size:12px; font-family: "微软雅黑" ;}
+div,ul,li,dl,dt,dd,form{list-style:none;}
+body{}
+a{color:#333333;text-decoration:none}
+a:hover{color:#000000;text-decoration:none;}
+a img{border:none}
+.clear{clear:both;}
+
+.win{width:350px; height:25px; line-height:25px; border:1px #D7EBFF solid;}
+.win2{width:50px; height:25px; line-height:25px; border:1px #D7EBFF solid;}
+.win3{width:150px; height:25px; line-height:25px; border:1px #D7EBFF solid;}
+.wtextarea { width:350px; height:100px; border:1px #D7EBFF solid;}
+.emmm-ok {  width:250px; padding-top:50px; text-align:center;}
+.emmm-anniu { background:URL(../manage/templates/images/emmm-anniu.png) no-repeat; width:100px; height:25px; font-size:12px; line-height:25px; border:0px;}
+.emmm-anniu:hover { background:URL(../manage/templates/images/emmm-anniu2.png) no-repeat; width:100px; height:25px; font-size:12px; line-height:25px; border:0px;}
+
+
+/*选项卡第一种形式*/
+#tabs0 {
+	height: auto;
+	width: 90%;
+	margin:0 auto;
+}
+.menu0{
+	width: 960px;
+}
+.menu0 li{
+	display:block;
+	float: left;
+	width:150px;
+	height:30px;
+	line-height:30px;
+	text-align: center;
+	cursor:pointer;
+	background: #f4f4f4;
+}
+.menu0 li.hover{
+	color:#FFFFFF;
+	background: #488fcd;
+}
+#main0 ul{
+	display: none;
+	padding:0px;
+	background: #F5F5F5;
+}
+#main0 ul.block{
+	display: block;
+}

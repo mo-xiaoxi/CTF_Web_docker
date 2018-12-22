@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <div class="content" style="padding:0 0 160px 0; background:#FFF;">
+            [.*移动端在线支付表单开始*.]
+          <form name="alipayment" action="[.$webpath.]function/api/alipay_wappay/alipayapi.php" method="post" >
+                <div class="mt-20">
+               	  <h3 class="text-c">支付宝在线充值</h3>
+            		<div class="clear"></div>
+               	  <table width="100%" class="userlogin">
+               	    <tr>
+               	      <td width="100"><div align="right">充值金额：</div></td>
+               	      <td><input id="WIDtotal_fee" name="WIDtotal_fee" class="userinput" placeholder="0.00" /></td>
+              	    </tr>
+               	    <tr>
+               	      <td valign="top"><div align="right">备注：</div></td>
+               	      <td><textarea id="WIDbody" name="WIDbody" class="textarea"></textarea></td>
+              	    </tr>
+               	    <tr>
+               	      <td colspan="2"><input class="btn btn-primary pd-5 f-18" type="submit" style="width:100%; height:40px;" value="充 值"></td>
+              	    </tr>
+           	    </table>
+                <input type="hidden" value="cz" name="alipay" />
+            </form>
+        </div>
+        [.*充值列表开始*.]
+          <table class="table table-border">
+         		<tr style="background:url([.$webpath.]skin/clubgb.png) repeat-x;">
+                  <td>
+                  		记录
+                  </td>
+                </tr>
+                [.foreach $paylist as $op.]
+                <tr>
+                  <td class="userbuylist">
+                  	<p>ID：[.$op.id.]&nbsp;([.$op.time.])</p>
+                    <p>充值账号：[.$op.email.]</p>
+                    <p>充值金额：[.$op.money.]&nbsp;&nbsp;充值积分：[.$op.integral.]</p>
+                    <p>备注信息：[.$op.content.]</p>
+                  </td>
+                </tr>
+                [./foreach.]
+          </table>
+          [.*充值列表结束*.]
+    </div>
+	[.include file="cn/cn_shopfoot.html".]
+</div>
+</body>
+</html>

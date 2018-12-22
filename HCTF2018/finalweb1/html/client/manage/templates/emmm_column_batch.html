@@ -1,0 +1,88 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+
+
+[.#jq172#.]
+<link rel="stylesheet" href="templates/images/menu/jquery.treeview.css?t=[.$smarty.now.]" />
+<script src="templates/images/menu/jquery.cookie.js" type="text/javascript"></script>
+<script src="templates/images/menu/jquery.treeview.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	// fourth example
+	$("#black, #gray").treeview({
+		control: "#treecontrol",
+		persist: "cookie",
+		cookieId: "treeview-red"
+	});
+
+});
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li class="hover">栏目批量操作</li>
+  <li><a href="emmm_columnadd.php"><font color="#000000">创建栏目</font></a></li>
+  <li><a href="emmm_columnback.php"><font color="#000000">找回栏目</font></a></li>
+ </ul>
+ <div class="main" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block" style="padding:0px;">
+	  <li>
+		<div class="emmm_newslist">
+			<div style="height:40px; line-height:40px; color:#FFFFFF; background:#a5d1f7; border-bottom:2px #488fcd solid; padding-left:30px;">
+				<p style="float:left; color:#FF0000; font-weight:bold;">注意！目前是栏目批量管理页面</p>
+			</div>
+	<div style="clear:both;"></div>
+	<form id="form1" name="form1" method="post" action="?emmm_cms=batch">
+	<ul id="black" class="treeview-red">
+		[.function name=menu.]
+				[.foreach $data as $op.]
+					<li class="closed"><span class="font">
+					<font style="background:#009933; color:#FFFFFF; padding:2px;">ID:[.$op.id.]<input name="op_b[]" value="[.$op.id.]" type="hidden" /></font>
+					<font style="background:#FF6600; color:#FFFFFF; padding:2px;">[.$op.lang.]</font>
+					[.if $op.model == 'weburl'.]<font style="background:#0099FF; color:#FFFFFF; padding:2px;">外</font>[./if.]
+					[.if $op.model == 'about'.]<font style="background: #FF66FF; color:#FFFFFF; padding:2px;">单</font>[./if.]
+					<input name="title[]" value="[.$op.title.]" size="20" />
+					
+					<div class="font2">
+					副标题:<input name="titleto[]" value="[.$op.titleto.]" size="20" />&nbsp;&nbsp;-&nbsp;&nbsp;
+					权重:<input name="weight[]" value="[.$op.weight.]" size="5" />&nbsp;&nbsp;-&nbsp;&nbsp;
+					<select name="hide[]">
+					  <option value="0" [.if $op.hide == 0.]selected="selected"[./if.]>显示</option>
+					  <option value="1" [.if $op.hide == 1.]selected="selected"[./if.]>隐藏</option>
+					</select>
+					&nbsp;&nbsp;-&nbsp;&nbsp;
+					排序:<input name="sorting[]" value="[.$op.sorting.]" size="5" />
+					  
+					</div>
+					</span> 
+					[.if isset($op.child).]
+					<ul id="gray">
+						[.call name=menu data=$op.child.]
+					</ul>
+					[./if.]
+					
+					</li>
+				[./foreach.]
+		[./function.]
+		[.call name=menu data=$arr.]
+	</ul>
+	<input type="submit" name="submit" value="批量提交" class="emmm-anniu" style="margin-bottom:50px;"/>
+	</form>
+		</div>
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

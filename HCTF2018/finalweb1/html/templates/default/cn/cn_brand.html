@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>品牌中心 - [.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="Author" content="vidar.club" />
+<LINK href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" rel=stylesheet>
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+<LINK href="[.$templatepath.]shop/css/emmm.css" rel=stylesheet>
+<script type="text/javascript" src="[.$webpath.]function/plugs/jquery/1.7.2/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/emmm.js"></script>
+<script type="text/javascript" src="[.$webpath.]function/plugs/lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/banner1.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/rightnav.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/lefttree.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("img").lazyload({ 
+		 effect: "fadeIn"
+	});    
+	tcjs('wx');
+	tcjs('sj');
+	tcjs('wxkf');
+	navjs('navleft');
+});
+</script>
+</head>
+<body>
+[.include file="cn/cn_shoptop.html".]
+<div class="clear"></div>
+	<div class="center">
+    	<div class="topnavlist">
+       		<a href="/?cn-shop.html" title="商城首页">商城首页</a> 
+            [.foreach $crumbs as $op.]
+            >> <a href="[.$op.url.]" title="[.$op.title.]">[.$op.title.]</a>
+            [./foreach.]
+        </div>
+        <div class="clear"></div>
+        <div class="shoplistleft">
+        	<h1>品牌分类</h1>
+            <ul>
+            
+			[.foreach $brandclass as $op.]
+			<li class="aaa"><a href="[.$op.url.]" title="[.$op.title.]">[.$op.title.]</a></li>
+			[./foreach.]
+            
+            </ul>
+        </div>
+        <div class="shoplistright">
+       	  <h1>品牌中心</h1>
+            <ul>
+
+                    [.brandlist id="$listid" name="brandlist".]
+                    <li><a href="[.$brandlist.url.]" title="[.$brandlist.title.]"><img src="/skin/noimage.png" data-original="[.$brandlist.minimg.]" />
+                        <p class="title">[.$brandlist.title|truncate:30:"...".]</p>
+                        <p class="scj">市场价：<s>￥[.$brandlist.market.]</s></p>
+                        <p class="bzj">本站价：<span>￥[.$brandlist.webmarket.]</span></p>
+                    </a>
+                    </li>
+                    [./brandlist.]
+                
+            </ul>
+            <div class="clear"></div>
+            <div class="page">
+            	[.$emmmpage.]
+            </div>
+        </div>
+    </div>
+<div class="clear"></div>
+[.include file="cn/cn_shopfoot.html".]
+</body>
+</html>

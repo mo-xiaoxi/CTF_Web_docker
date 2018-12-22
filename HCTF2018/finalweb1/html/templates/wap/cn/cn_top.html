@@ -1,0 +1,33 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	var url = window.location.search;
+	if(url == ''){
+		$("#emmmback").hide();
+	}else{
+		$("#emmmback").show();
+	}
+});
+function msg(){
+	$(".searchmsg").toggle(500);
+}
+</script>
+<div class="index_top">
+    <div class="back" id="emmmback">
+        <a href="javascript:history.go(-1);"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-arrow2-left"></span>后退</a>
+    </div>
+    <img src="[.$emmm_web.weblogo.]" height="50" width="200">
+    <div class="search">
+    	<a onclick="msg()" id="se"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-search1"></span></a>
+    </div>
+    <div class="searchmsg">
+        <div class="shopsearch">
+          <form name="form1" method="post" action="[.$webpath.]client/wap/search.php?temp=search">
+            <input type="text" placeholder="输入搜索关键词" value="" class="pd-5 btn-lr-5 f-l kuang" name="content" />
+            <input type="hidden" name="lang" value="cn" />
+            <input type="hidden" name="sid" value="product" />
+            <input type="hidden" name="type" value="wap" />
+            <input class="btn pd-10 f-l btn-rr-5 niu" type="submit" value="">
+          </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,201 @@
+﻿body { background:#F3F3F3;}
+#YIQI-UI a { color:#666;}
+#YIQI-UI .center { max-width:560px; height:auto; overflow:hidden; margin:0 auto;}
+
+/*企业网站*/
+#YIQI-UI .index_top { width:100%; height:60px; line-height:60px; background:#fff; box-shadow: 0px 3px 2px #DADADA; position:fixed; z-index:9999; text-align:center;}
+#YIQI-UI .index_top .back { position:absolute; left:5px; top:0; z-index:99999;}
+#YIQI-UI .index_top .back a { color:#FFF; display:block;}
+.search { right:10px; top:0; position:absolute;}
+.search a span{ color:#0078C1; font-size:22px;}
+.searchmsg { display:none; position:absolute; right:0;top:60px; width:77%; height:50px; background:#ccc; z-index:9999; text-align:center; padding-left:23%; padding-top:5px;}
+#YIQI-UI .index_banner { margin-top:60px; width:100%; height:auto; overflow:hidden; float:left;}
+#YIQI-UI .toptel { height:50px; text-align:center; background:#FFF;}
+#YIQI-UI .index_nav { width:100%; height:75px; background:#0078C1; color:#FFF;}
+#YIQI-UI .index_nav li { width:25%; float:left; height:37px; line-height:35px; text-align:center; border-bottom:1px #018CE1 solid}
+#YIQI-UI .index_nav li a { color:#FFF;}
+#YIQI-UI .index_product { width:94%; height:auto; overflow:hidden; float:left; background:#FFF; padding:3%;}
+#YIQI-UI .index_product h1 { height:40px; line-height:40px; border-bottom:1px #0078C1 solid; font-size:16px; width:100%; margin:0 0 0 0;}
+#YIQI-UI .index_product ul {}
+#YIQI-UI .index_product ul li { width:50%; float:left; text-align:center; margin:10px 0 10px 0;}
+#YIQI-UI .index_product ul li img { width:92%; border:1px #CCC solid;}
+.more { width:40px; height:25px; line-height:25px; }
+.more a {color:#FFF; font-size:12px; display:block;}
+#YIQI-UI .index_news { width:94%; height:auto; overflow:hidden; background:#FFF; padding:3%; float:left;}
+#YIQI-UI .index_news h1 { height:40px; line-height:40px; border-bottom:1px #0078C1 solid; font-size:16px; width:100%; margin:0 0 0 0;}
+#YIQI-UI .index_news ul {}
+#YIQI-UI .index_news ul li { width:98%; height:30px; float:left; line-height:30px; padding-left:2%;}
+#YIQI-UI .index_about { width:94%; height:auto; overflow:hidden; background:#FFF; padding:3%; float:left;}
+#YIQI-UI .index_about h1 { height:40px; line-height:40px; border-bottom:1px #0078C1 solid; font-size:16px; width:100%; margin:0 0 0 0;}
+#YIQI-UI .index_about ul {}
+#YIQI-UI .index_lx { width:96%; height:60px; background:#f4f4f4; color:#FF2A00; float:left; padding:5% 2%; box-shadow: 1px 3px 2px #DADADA;}
+#YIQI-UI .index_lx .left { float:left; width:65%;}
+#YIQI-UI .index_lx .right { float:right; background:#FFF; border-radius:5px; width:25%; height:35px; text-align:center; line-height:35px;}
+#YIQI-UI .index_lx .right a { display:block; color:#FF2A00; font-size:14px; background:url(../images/phone.jpg) left no-repeat;}
+#YIQI-UI .bq { height:120px; margin-top:20px; width:100%; text-align:center; font-size:12px;}
+#YIQI-UI .bq p { line-height:15px; color:#BBBBBB}
+#YIQI-UI .bq a { color:#BBBBBB;}
+#YIQI-UI .index_foot { width:100%; height:50px; background:#0078C1; z-index:99999; position:fixed; bottom:0;}
+#YIQI-UI .index_foot li { width:25%; float:left; text-align:center;}
+#YIQI-UI .index_foot li a{ color:#FFF;font-size:24px;}
+#YIQI-UI .index_foot li a span { font-size:24px; color:#FFF;}
+#YIQI-UI .index_view { width:94%; height:auto; overflow:hidden; background:#FFF; padding:3%; float:left;}
+#YIQI-UI .index_view h1 { font-size:18px; text-align:center; height:40px; line-height:40px;}
+#YIQI-UI .index_view .newstime { color:#666; margin-bottom:15px; text-align:center;}
+#YIQI-UI .listnews { width:94%; min-height:500px; overflow:hidden; background:#FFF; padding:3%; float:left;}
+#YIQI-UI .listnews h1 { height:40px; line-height:40px; border-bottom:1px #0078C1 solid; font-size:16px; width:100%; margin:0 0 0 0;}
+#YIQI-UI .listnews ul li{ height:50px; line-height:50px; border-bottom:1px #f4f4f4 solid;}
+#YIQI-UI .listnews ul li a { font-size:14px; color: #333;}
+#YIQI-UI .listproduct { width:94%; min-height:500px; overflow:hidden; background:#FFF; padding:3%; float:left;}
+#YIQI-UI .listproduct h1 { height:40px; line-height:40px; border-bottom:1px #0078C1 solid; font-size:16px; width:100%; margin:0 0 0 0;}
+#YIQI-UI .listproduct ul li { width:50%; float:left; text-align:center; margin:10px 0 0 0;}
+#YIQI-UI .listproduct ul li img { width:92%; border:1px #CCC solid;}
+#YIQI-UI .page { margin-top:20px; margin-bottom:20px;}
+#YIQI-UI .table td,#YIQI-UI .table th{padding:5px;line-height:20px;word-break:break-all}
+
+/*商城页面*/
+.pages { position: relative; width:100%; height:100%; left:0; top:0;}
+.shophead { width:100%; height:40px; background:#DD3939; position:fixed; z-index:9999;}
+.gobank { width:13%; margin-left:2%; margin-top:7px;}
+.gobank a { font-size:22px; color:#FFF; display:block;}
+#YIQI-UI .YIQI-UI-iconfont-arrow2-left{ color:#FFF;}
+.shopsearch { width:72%;}
+.shopsearch .kuang { margin-top:4px; width:70%; height:22px; margin-left:2%; border-right:0;}
+.shopsearch .niu { background:url(../images/Search_24px_1191708_easyicon.net.png) center top #fff no-repeat; width:20%; height:32px; margin-top:4px; color:#000; border-left:0; background-position:70% 4px;}
+.shopnav { text-align:center; margin-right:5px; width:10%; height:60px;}
+.shopnav a span{ color:#FFF; font-size:14px;}
+.shopnav a p{ font-size:12px; color:#FFF; margin-top:0; }
+#YIQI-UI .YIQI-UI-iconfont-menu { color:#FFF;}
+.content { position: absolute; width:100%; left:0; top:40px;}
+.shopnew { height:240px; background:#FFF; border-top:1px #D9D9D9 solid;}
+.shopnew li { float:left; width:49.5%; height:119px; border-right:1px #D9D9D9 solid; border-bottom:1px #D9D9D9 solid; text-align:center;}
+.shopnew li.one { height:239px;}
+.shopnew li.two { border-right:0;}
+.shopnew li.one img { max-width:160px; max-height:190px;}
+.shopnew li.two img { height:90px;}
+#YIQI-UI .shopnew li a{ font-size:12px;}
+.p150 { left:-150px;}
+.rightnav { width:150px; height:100%; background:#3E3E3E; text-align:center; z-index:999; position: absolute; right:0; top:0; display:none;}
+.rightnav ul { position:fixed; top:50px;}
+.rightnav ul li { width:150px; height:30px; line-height:30px; text-align:center;}
+#YIQI-UI .rightnav ul li a { color:#999; display:block;}
+#YIQI-UI .rightnav ul li a:hover { color:#FFF; background:#999;}
+.shopico { width:100%; padding:10px 0; height:50px; background:#FFF;}
+.shopico ul {}
+.shopico ul li { width:24.5%; text-align:center; float:left; border-right:1px #D9D9D9 solid;}
+.shopico ul li a { font-size:12px;}
+.shopico ul li span { font-size:24px}
+.shopico ul li.br { border-right:0;}
+#YIQI-UI .YIQI-UI-iconfont-liwu { color:#C03;}
+#YIQI-UI .YIQI-UI-iconfont-money { color:#F39;}
+#YIQI-UI .YIQI-UI-iconfont-jifen { color:#636;}
+#YIQI-UI .YIQI-UI-iconfont-moban-2 { color:#C60;}
+.shoptui { width:100%; height:auto; overflow:hidden; background:#FFF;}
+#YIQI-UI .shoptui h1 { background:url(../images/floor-tit.png) center top repeat-x; width:100%; min-height:30px; background-size:contain; text-align:center; font-size:18px; color:#666; margin-top:0; padding-top:2.5%; margin-bottom:0;}
+.shopfloor { width:100%; height:auto; overflow:hidden; background: #DFDFDF;}
+#YIQI-UI .shopfloor h1 { background:url(../images/floor-tit.png) center top repeat-x; width:100%; min-height:30px; background-size:contain; text-align:center; font-size:18px; color:#666; margin-top:0; padding-top:2.5%; margin-bottom:0;}
+.shopfloor ul {}
+.shopfloor ul li { width:49%; float:left; text-align:center; height:270px; padding-top:5px; margin-right:2%; background:#FFF; margin-bottom:6px; margin-top:0;}
+.shopfloor ul li img { max-width:150px; max-height:170px;}
+.shopfloor ul li.mr0 { margin-right:0;}
+#YIQI-UI .shopfloor ul li a { font-size:12px; color:#333; }
+#YIQI-UI .shopfloor ul li a p { text-align:left; text-indent:0em; margin-top:5px; padding:0 5px;}
+#YIQI-UI .shopfloor ul li a p.jg { color: #F00; font-size:18px;}
+.scrollBox{ margin:10px auto; text-align:center;  }
+.scrollBox .bd li{ width:50%; float:left; font-size:14px; }
+.scrollBox .bd li a{ -webkit-tap-highlight-color:rgba(0,0,0,0); }  /* 去掉链接触摸高亮 */
+.scrollBox .bd li img{ width:140px; background:url(../images/loading.gif) #fff center center no-repeat;  }
+.scrollBox .hd{ height:20px; overflow:hidden; font-size:0; }
+.scrollBox .hd ul{ display:inline-block; padding-top:5px; }	
+.scrollBox .hd li{ display:inline-block; width:8px; height:8px; background:#D0D0D0; margin:0 5px; vertical-align:top; overflow:hidden; 
+-webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; 
+}
+.scrollBox .hd .on{ background:#BA2636;  }
+.scrollBox .prev,.scrollBox .next{ display:inline-block; width:25px; height:20px; background:url(../images/wyIcons.png) no-repeat; overflow:hidden; margin:0 5px;  vertical-align:top; }
+.scrollBox .next{ background-position:-105px 0; }
+.listnav { width:100%; height:50px; background:#FFF; border-bottom:1px #D9D9D9 solid;}
+.listnav li { width:33.1%; text-align:center; line-height:50px; border-right:1px #D9D9D9 solid; float:left;}
+.listnav li.xz { background: #EEE;}
+.prlist { width:100%; height:auto; overflow:hidden; background: #DFDFDF;}
+.prlist ul li { width:49%; float:left; text-align:center; height:270px; padding-top:5px; margin-right:2%; background:#FFF; margin-bottom:6px; margin-top:0;}
+.prlist ul li img { max-width:150px; max-height:170px;}
+.prlist ul li.mr0 { margin-right:0;}
+#YIQI-UI .prlist ul li a{ font-size:12px; text-align:left;}
+#YIQI-UI .prlist ul li a p {text-indent:0em; padding:0 5px;}
+#YIQI-UI .prlist ul li a p span { font-size:16px; color:#F00;}
+#YIQI-UI .prlist ul li a p del { font-size:14px; color:#999;}
+.page {}
+.slideBox2{ position:relative; overflow:hidden; max-width:560px;/* 设置焦点图最大宽度 */ }
+.slideBox2 .hd{ position:absolute; height:28px; line-height:28px; bottom:0; right:0; z-index:1; }
+.slideBox2 .hd li{ display:inline-block; width:5px; height:5px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; background:#333; text-indent:-9999px; overflow:hidden; margin:0 6px;   }
+.slideBox2 .hd li.on{ background:#fff;  }
+.slideBox2 .bd{ position:relative; z-index:0; }
+.slideBox2 .bd li{ position:relative; text-align:center;  }
+.slideBox2 .bd li img{ background:url(images/loading.gif) center center no-repeat;  vertical-align:top; width:100%; height:300px;/* 图片宽度100%，达到自适应效果 */}
+.slideBox2 .bd li a{ -webkit-tap-highlight-color:rgba(0,0,0,0);  }  /* 去掉链接触摸高亮 */
+.slideBox2 .bd li .tit{ display:block; width:100%;  position:absolute; bottom:0; text-indent:10px; height:28px; line-height:28px; background:url(images/focusBg.png) repeat-x; color:#fff;  text-align:left;  }
+.title { height: auto; overflow:hidden; padding:10px; background:#FFF; font-size:16px;}
+#YIQI-UI .title p {text-indent:0em; font-size:18px; color:#F00; margin:0;}
+#YIQI-UI .title p del { color: #999; font-size:14px;}
+.class { height:25px; line-height:25px; padding:10px; background:#FFF; width:100%;}
+.classhidden { display:none; position: fixed; z-index:99999; height:330px; background:#FFF; border-top:2px #DD514C solid; border-bottom:2px #DD514C solid; left:0; bottom:50px; overflow:auto; width:90%; padding:0 5%;}
+
+.content_2 { width:100%; min-height:600px; background:#FFF;}
+#tabbox{ width:100%; overflow:hidden; margin:0 auto;}
+.tab_conbox{}
+.tab_con{ display:none; color:#333333}
+.tabs{height: 32px;border-bottom:1px solid #D9D9D9;width: 100%;}
+.tabs li{height:31px;line-height:31px;float:left;border:1px solid #D9D9D9;border-left:none;margin-bottom: -1px;background: #f4f4f4;overflow: hidden;position: relative;}
+.tabs li a {display: block;padding: 0 20px;border: 1px solid #fff;outline: none;}
+.tabs .thistab,.tabs .thistab a:hover{background: #fff;border-bottom: 1px solid #fff;}
+.tab_con {padding:12px 5px;font-size: 14px; line-height:175%;}
+#YIQI-UI .tab_con p { text-indent:0em;}
+.brandlist { display:none; width:100%; height:300px; overflow:auto; border-bottom:2px #DD514C solid; background:#FFF;}
+.brandlist li { width:100%; padding:10px 0; border-bottom:1px #f4f4f4 solid; text-align:center;}
+.brandlist li img { max-width:100%; height:100px;}
+.copy { text-align:center; font-size:12px; color: #999; width:100%; margin-bottom:70px; padding-top:20px;}
+.copy p { line-height:10px;}
+.shopfoot { position:fixed; z-index:9999; bottom:0; width:100%; height:50px; background:#FFF; -moz-box-shadow: 0px -2px 2px #CCCCCC; /* 老的 Firefox */
+box-shadow: 0px -2px 2px #cccccc;}
+.shopfoot ul{}
+.shopfoot ul li { float:left; width:25%; text-align:center; margin-top:4px;}
+.shopfoot ul li a{ display:block;}
+.shopfoot ul li span { font-size:24px;}
+.shopfoot2 { position:fixed; z-index:9999; bottom:0; width:100%; height:50px; background:#FFF; border-top:1px #CCCCCC solid; }
+.shopfoot2 ul{}
+.shopfoot2 ul li { float:left; width:25%; text-align:center; margin-top:4px;  border-right:1px #D9D9D9 solid;}
+.shopfoot2 ul li a{ display:block;}
+.shopfoot2 ul li span { font-size:24px;}
+.shopfoot2 ul li.br0 { border-right:0; height:50px; width:49%; margin-top:0px; }
+#YIQI-UI .content p {
+    text-indent: 0em;
+    margin-top: -5px;
+}
+
+/*会员中心*/
+.userlogin { float:left;}
+.userlogin td { border-top:1px #E1E1E1 solid; height:50px;}
+.userinput,.input { width:80%; height:30px; line-height:35px; padding:1%; color:#999;}
+.input3 {width:40%; height:30px; line-height:35px; padding:1%;}
+.userinput2 { width:82%; height:30px; padding:1%; color:#999;}
+.textarea { width:80%; height:60px; line-height:35px; padding:1%; color:#999;}
+.prov,.city,.dist { width:30%; height:30px;}
+.usertop { background:#DD3939; height:130px; padding-top:40px;}
+.usertop .je { width:33.33%; text-align:center; color:#FFF; }
+.usertop .jf { width:33.33%; text-align:center; color:#FFF; }
+.usertop .yhq { width:33.33%; text-align:center; color:#FFF; }
+#YIQI-UI .usertop .je p ,#YIQI-UI .usertop .jf p ,#YIQI-UI .usertop .yhq p { text-indent:0em; font-size:20px;}
+.usernav {}
+.usernav ul {}
+.usernav ul li { height:50px; line-height:50px; border-bottom:1px #E1E1E1 solid; position:relative;}
+.usernav ul li a{ display:block;}
+.shoppingcart { position:absolute; right:10px; top:7px;}
+.usernav ul li span { margin-left:15px; margin-right:10px;}
+
+.shopadd { width:94%; height:auto; overflow:hidden; float:left; padding:10px 3%; background:url(/skin/addgb.png) #FDFAF3 bottom repeat-x;}
+.shopadd li { width:90%; float:left;}
+#YIQI-UI .shopadd li p { margin-bottom:0px; margin-top:0; }
+select {-webkit-appearance: menulist; border:1px #ccc solid; }
+.radio {-webkit-appearance: radio;}
+#YIQI-UI .userbuylist { width:100%;}
+#YIQI-UI .userbuylist p { text-indent:0em; width:100%; margin-top:0; margin-bottom:0; color:#999;} 

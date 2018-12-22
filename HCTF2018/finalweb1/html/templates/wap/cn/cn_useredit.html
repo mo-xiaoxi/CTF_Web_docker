@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <div class="content" style="padding:0 0 160px 0; background:#FFF;">
+            [.*修改资料表单开始*.]
+			<style type="text/css">
+			td {height:40px;}
+			.input {width:80%; height:30px; border:1px #ccc solid;}
+			.input3 {width:30%; height:30px; border:1px #ccc solid;}
+			</style>
+            <form id="form1" name="form1" method="post" action="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=edit&type=wap&lang=cn" class="registerform">
+            <table width="100%" border="0" class="table">
+                  <tr>
+                    <td>账号：[.$user.email.]</td>
+				  </tr>
+				  <tr>
+                    <td><input type="text" name="COL_Username" class="input" datatype="*" value="[.$user.name.]" placeholder="姓名" />
+                      <font color="#FF0000">*</font></td>
+                  </tr>
+                  <tr>
+                    <td><input type="password" name="COL_Userpass" class="input" placeholder="密码(不修改保持为空！)"  /> 
+                    <font color="#FF0000">*</font></td>
+				  </tr>
+				  <tr>
+					<td><input type="password" name="COL_Userpass2" class="input" placeholder="确认密码(不修改保持为空！)" /> 
+                    <font color="#FF0000">*</font></td>
+				  </tr>
+				  <tr>
+                    <td><input type="text" name="COL_Usertel" class="input" datatype="n" value="[.$user.tel.]" placeholder="电话" />
+                      <font color="#FF0000">*</font></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="COL_Useradd" class="input" value="[.$user.add.]"  placeholder="地址" /></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="COL_Userqq" class="input" value="[.$user.qq.]"  placeholder="QQ" /></td>
+				  </tr>
+				  <tr>
+                    <td><input type="text" name="COL_Userskype" class="input" value="[.$user.skype.]"  placeholder="SKYPE" /></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="COL_Useraliww" class="input" value="[.$user.aliww.]"  placeholder="旺旺" /></td>
+                  </tr>
+                  <tr>
+                    <td>
+					<select name="COL_Userproblem" class="userinput2">
+					[.foreach $problem as $op.]
+						<option value="[.$op.title.]" [.if $op.title == $user.problem.]selected[./if.]>[.$op.title.]</option>
+					[./foreach.]
+					</select><font color="#FF0000">*</font>
+					</td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="COL_Useranswer" class="input" datatype="*" value="[.$user.answer.]"  placeholder="问题答案" /><font color="#FF0000">*</font></td>
+                  </tr>
+                  <tr>
+                    <td><textarea name="COL_Usertext" style=" width:82%; height:80px; border:1px #ccc solid;" placeholder="个人签名">[.$user.text.]</textarea></td>
+                  </tr>
+                  <tr>
+                    <td>
+						<input type="text" name="code" class="input3" datatype="*" placeholder="验证码" /> <font color="#FF0000">*</font>&nbsp;
+						<img title="点击刷新" src="[.$webpath.]function/emmm_code.php" align="absbottom" onclick="this.src='[.$webpath.]function/emmm_code.php?'+Math.random();" width="80" height="25"></img>
+					</td>
+                  </tr>
+                  <tr>
+                    <td>
+                    <input type="hidden" name="usercode" value="[.$user.code.]" />
+                    <input type="hidden" name="lang" value="[.$ip.lang.]" />
+                    <input type="hidden" name="password" value="[.$user.password.]" />
+                    <input type="submit" name="Submit" value="提交" class="btn radius-10 btn-warning pd-15" />
+                   &nbsp;<input type="reset" name="Submit2" value="重置" class="btn btn-danger radius-10 pd-15" />
+				   </td>
+                  </tr>
+            </table>
+            </form>
+            <link rel="stylesheet" href="../../function/plugs/Validform/style.css" type="text/css" />
+            <script type="text/javascript" src="../../function/plugs/Validform/Validform_v5.3.2.js"></script>
+            <script type="text/javascript">
+            $(function(){
+                $(".registerform").Validform();  //就这一行代码！;
+            })
+            </script>
+            [.*修改资料表单结束*.]
+    </div>
+	[.include file="cn/cn_shopfoot.html".]
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+
+
+[.include file="cn/cn_top.html".]
+[.include file="cn/cn_banner.html".]
+
+<div class="row">
+
+<div class="main">
+  <div class="about">
+<div class="title"><span>关于我们</span><a title="查看更多关于我们" href="?cn-about-9.html" class="more">查看更多</a>
+  </div> 
+    <img src="[.$templatepath.]images/indexabout.jpg" width="469" height="100" alt="关于我们" />
+       <div class="abouttxt">
+	   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	   </div>
+</div>
+
+  <div class="news">
+<div class="title"><span>公司新闻</span><a title="公司新闻" href="?cn-article-3.html" class="more">查看更多</a>
+  </div> 
+    <ul class="pointer">
+	
+[.emmm form="article" row="3" lang="cn" id="0" type="op" name="emmm".]
+            <li><font>0[.$emmm.i.]</font><div class="news_r"><p><a href="[.$emmm.url.]" title="[.$emmm.title.]">[.$emmm.title.]</a><span class="fr">[[.$emmm.time|date_format:"%Y,%m,%d".]]</span></p>
+      <em>[.$emmm.description|truncate:33:"...".]</em></div>
+      </li>
+[./emmm.]	
+
+          </ul>
+  </div>
+</div>
+</div>
+<div class="product">
+  <div class="main">
+  <div class="product_l">
+    <dl>
+      <dt>商品展示</dt>
+	  
+[.callcolumn id="3" row="8" lang="cn" type="td" name="callcolumn".]
+            <dd><a href="[.$callcolumn.url.]" title="[.$callcolumn.title.]">[.$callcolumn.title.]</a></dd>
+[./callcolumn.]
+           
+    </dl><a title="查看更多产品展示" href="/?cn-product-4.html" class="more">查看更多</a>
+    </div>
+    <ul class="productli">
+	
+	
+
+	
+[.emmm form="product" row="8" lang="cn" id="0" name="emmm".]
+    <li>
+                    <a href="[.$emmm.url.]" title="[.$emmm.title.]" class="productliimg"><img src="[.$emmm.minimg.]" width="172" height="172" alt="[.$emmm.title.]" title="[.$emmm.title.]" /></a>
+                    <a href="[.$emmm.url.]" title="[.$emmm.title.]" class="producttxt">[.$emmm.title.]</a> <font class="time">时间：[.$emmm.time|date_format:"%Y-%m-%d".]</font>
+    </li> 
+[./emmm.] 
+
+            
+    </ul>
+  </div>
+</div>
+<div class="case">
+  <div class="title">
+    <div class="main"><span>案例展示</span><a title="查看更多案例展示" href="/?cn-photo-5.html" class="more">查看更多</a></div>
+  </div>
+  <div class="partFourM">
+    <div class="left ctrl"></div>
+    <div class="partFourCon"  id="ScrollBox">
+      <ul class="pro">
+
+					 
+[.emmm form="photo" row="5" lang="cn" id="0" name="emmm".]
+      	             <li> <a href="[.$emmm.url.]" title="[.$emmm.title.]" class="proimg"><img src="[.$emmm.minimg.]" width="206" height="206" alt="[.$emmm.title.]" title="[.$emmm.title.]" /></a> <a href="[.$emmm.url.]" title="[.$emmm.title.]" class="proname">[.$emmm.title.]</a> <font class="time">时间：[.$emmm.time|date_format:"%Y-%m-%d".]</font> </li>
+[./emmm.] 
+
+        	      </ul>
+    </div>
+    <div class="right ctrl"></div>
+  </div>
+</div>
+
+[.include file="cn/cn_foot.html".]
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<LINK media=all href="jsqfiles/base.css" type=text/css rel=stylesheet>
+<SCRIPT src="jsqfiles/common.js" type=text/javascript></SCRIPT>
+<SCRIPT src="jsqfiles/base.js" type=text/javascript></SCRIPT>
+<script type="text/javascript">
+var linkArgs = location.search;
+var styleObj = baidu.page.createStyleSheet();
+if(linkArgs.indexOf("canvas_pos=search") == -1){
+	styleObj.addRule(".baseCalculatorPanelCss","width:800px !important;background:#dba869 url() repeat-y 0 0 !important;",0);
+}else{
+	try{
+		styleObj.removeRule(0);
+	}catch(e){}
+}
+</script>
+<script type="text/javascript">
+<!--
+    document.onselectstart=mylock1;
+    document.oncontextmenu=mylock1;
+    function mylock1(){
+      event.returnValue=false;
+    }
+//-->
+</script>
+</HEAD>
+<BODY>
+<div id="baseDiv" class="baseCalculatorPanelCss">
+    <div class="baseCupPanelCss">
+    	<div id="basePanel">
+        	<div id="baseMainPanel">
+            	<table cellpadding="0" cellspacing="0" border="0">
+                	<tr>
+                    	<td colspan="2" class="resultCellCss"><input type="text" id="resultIpt" value="0" maxlength="16" size="16" readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                    	<td class="calculatorExpressTitleCellCss"><span>计算式：</span></td>
+                        	
+                        <td class="calculatorExpressCellCss"><div id="expressBox"></div></td>
+                    </tr>
+                </table>
+                <table cellpadding="0" cellspacing="0" border="0" id="btnTable">
+                	<tr>
+                    	<td><input type="button" class="btnCss" maxlength="5" value="存储" /></td>
+                        <td><input type="button" class="btnCss" maxlength="1" value="取存" /></td>
+                        <td><input type="button" id="removeBtn" class="btnCss btnOfBlackCss" maxlength="8" value="退格" /></td>
+                        <td><input type="button" class="btnCss btnOfBlackCss" maxlength="9" value="清屏" /></td>
+                    </tr>
+                	<tr>
+                    	<td><input type="button" class="btnCss" maxlength="2" value="累存" /></td>
+                        <td><input type="button" class="btnCss" maxlength="3" value="积存" /></td>
+                        <td><input type="button" class="btnCss" maxlength="4" value="清存" /></td>
+                        <td><input type="button" id="divBtn" class="btnCss btnOfOperatorCss" value="÷" /></td>
+                    </tr>
+                	<tr>
+                    	<td><input type="button" id="num7Btn" class="btnCss btnOfBlueCss" value="7" /></td>
+                        <td><input type="button" id="num8Btn" class="btnCss btnOfBlueCss" value="8" /></td>
+                        <td><input type="button" id="num9Btn" class="btnCss btnOfBlueCss" value="9" /></td>
+                        <td><input type="button" id="mulBtn" class="btnCss btnOfOperatorCss" value="×" /></td>
+                    </tr>
+                	<tr>
+                    	<td><input type="button" id="num4Btn" class="btnCss btnOfBlueCss" value="4" /></td>
+                        <td><input type="button" id="num5Btn" class="btnCss btnOfBlueCss" value="5" /></td>
+                        <td><input type="button" id="num6Btn" class="btnCss btnOfBlueCss" value="6" /></td>
+                        <td><input type="button" id="subBtn" class="btnCss btnOfOperatorCss" value="-" /></td>
+                    </tr>
+                	<tr>
+                    	<td><input type="button" id="num1Btn" class="btnCss btnOfBlueCss" value="1" /></td>
+                        <td><input type="button" id="num2Btn" class="btnCss btnOfBlueCss" value="2" /></td>
+                        <td><input type="button" id="num3Btn" class="btnCss btnOfBlueCss" value="3" /></td>
+                        <td><input type="button" id="addBtn" class="btnCss btnOfOperatorCss" value="+" /></td>
+                    </tr>
+                	<tr>
+                    	<td><input type="button" id="num0Btn" class="btnCss btnOfBlueCss" value="0" /></td>
+                        <td><input type="button" id="dotBtn" class="btnCss btnOfBlueCss" value="." /></td>
+                        <td><input type="button" class="btnCss btnOfBlueCss" value="+/-" /></td>
+                        <td><input type="button" id="equBtn" class="btnCss btnOfYellowCss" value="=" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+<script type="text/javascript">
+bdjs.clearAutoHeight();
+bdjs.setHeight(468);
+</script>
+</BODY></HTML>

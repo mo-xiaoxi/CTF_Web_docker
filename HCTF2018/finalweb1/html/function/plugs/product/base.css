@@ -1,0 +1,39 @@
+/*商品详细页*/
+/*iteminfo*/
+.iteminfo{float:left; margin-left:20px; width:700px;}
+.iteminfo_tit{ color:#333; font-size:22px; border-bottom:1px solid #e3e3e3; font-weight:normal;}
+.iteminfo_mktprice{ font-size:12px; text-decoration:line-through;}
+.iteminfo_price{ color:#c00; font-size:14px; font-family:Arial, Helvetica, sans-serif; vertical-align:middle;}
+.sys_item_price{ color:#c00; font-size:28px; vertical-align:middle; font-weight:500;}
+.iteminfo_buying{ background:#f7f7f7; padding:12px 0;}
+
+/*规格*/
+.sys_item_spec { background:url(../../../skin/shopsxgb.png) top center no-repeat;}
+.sys_item_spec dl.iteminfo_parameter{ margin:10px 0;}
+.sys_item_spec dl.iteminfo_parameter dt{ float:left; display:inline; width:75px; white-space:nowrap; text-align:right; color: #4C4C4C; font-size:14px; }
+.sys_item_spec dl.iteminfo_parameter dd{ float:left; height: auto; font-size:14px; width:440px;}
+.sys_item_mktprice { font-size:14px; font-weight:500;}
+.iteminfo_parameter_default{ color: #4C4C4C; padding-top:30px;}
+.bob { border-bottom:1px #ccc dashed;}
+
+/*一下正对图片*/
+.sys_spec_img{}
+.sys_spec_img li{ float:left; height:54px; position:relative; margin:2px 6px 2px 0;}
+.sys_spec_img li a{height:50px; width:50px; padding:1px; border:1px solid #ccc; float:left; background:#fff; display:inline-block; outline:none;}
+.sys_spec_img li a img{ width:50px; height:50px; display:block;}
+.sys_spec_img li a:hover{ border:2px solid #e4393c; padding:0; text-decoration:none;}
+.sys_spec_img li i{ position:absolute; width:10px; height:10px; font-size:0; line-height:0; right:2px; bottom:14px; background:url(sys_item_selected.gif) no-repeat right bottom; z-index:99; display:none;}
+.sys_spec_img li.selected a{ border:2px solid #e4393c; padding:0;}
+.sys_spec_img li.selected i{ display:block;}
+
+.sys_spec_text{}
+.sys_spec_text li{ float:left; height:auto; position:relative; margin:0px 6px 0px 0; outline:none;}
+.sys_spec_text li a{ height:24px; padding:1px 6px; border:1px solid #ccc; background:#fff; display:inline-block; line-height:24px; font-size:14px;}
+.sys_spec_text li a:hover{ border:2px solid #e4393c; padding:0 5px; text-decoration:none;}
+.sys_spec_text li i{ position:absolute; width:10px; height:10px; font-size:0; line-height:0; right:2px; bottom:2px; background:url(sys_item_selected.gif) no-repeat right bottom; z-index:99; display:none;}
+.sys_spec_text li.selected a{ border:2px solid #e4393c; padding:0 5px;}
+.sys_spec_text li.selected i{ display:block;}
+
+#num{ width:60px; height:24px; line-height:24px; border:1px solid #CCC; text-align:center;  float:left; margin:0 5px;}
+#add,#jian{ width:26px; height:26px; line-height:20px; float:left; border:1px solid #ccc; background:#eee; cursor:pointer; font-size:20px;}
+.shoph {clear:both; margin-top:60px;}

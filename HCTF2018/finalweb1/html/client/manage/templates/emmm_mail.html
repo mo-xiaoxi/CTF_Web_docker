@@ -1,0 +1,177 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li class="hover">系统邮件设置</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+	  [.if !isset($smarty.get.our).]
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="5%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="30%" bgcolor="#EBEBEB">邮件主题</td>
+                    <td width="20%" bgcolor="#EBEBEB">用户</td>
+					<td width="20%" bgcolor="#EBEBEB">状态</td>
+                    <td width="25%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$Maillist name=op.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$Maillist[op].id.]</font></div></td>
+                    <td>[.$Maillist[op].title.]</td>
+                    <td>[.$Maillist[op].user.]</td>
+					<td>[.if $Maillist[op].class == 1.]开启[.else.]关闭[./if.]</td>
+                    <td><a href="emmm_mail.php?id=[.$Maillist[op].id.]&our=edit">编辑</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="5">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                </table>
+		[.else.]
+		
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$emmm_mail.id.]" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		<tr>
+		  	<td width="10%"><div align="right">邮件主题</div></td>
+			<td width="90%">[.$emmm_mail.COL_Mailtitle.]</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">SMTP服务器</div></td>
+			<td><input name="COL_Mailsmtp" type="text" class="win" value="[.$emmm_mail.COL_Mailsmtp.]" [.$emmm_bgcolor.] datatype="*" nullmsg="SMTP服务器是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">SMTP端口</div></td>
+			<td><input name="COL_Mailport" type="text" class="win" value="[.$emmm_mail.COL_Mailport.]" [.$emmm_bgcolor.] datatype="*" nullmsg="SMTP端口是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">发送邮箱</div></td>
+			<td><input name="COL_Mailusermail" type="text" class="win" value="[.$emmm_mail.COL_Mailusermail.]" [.$emmm_bgcolor.] datatype="*" nullmsg="发送邮箱是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">登录账号</div></td>
+			<td><input name="COL_Mailuser" type="text" class="win" value="[.$emmm_mail.COL_Mailuser.]" [.$emmm_bgcolor.] datatype="*" nullmsg="登录账号是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">登录密码</div></td>
+			<td><input name="COL_Mailpass" type="text" class="win" value="[.$emmm_mail.COL_Mailpass.]" [.$emmm_bgcolor.] datatype="*" nullmsg="登录密码是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">邮件标题</div></td>
+			<td><input name="COL_Mailsubject" type="text" class="win" value="[.$emmm_mail.COL_Mailsubject.]" [.$emmm_bgcolor.] datatype="*" nullmsg=">邮件标题是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">邮件正文</div></td>
+			<td><textarea name="COL_Mailcontent" class="wtextarea" id="container" style="width:80%; height:150px; padding:10px;">[.$emmm_mail.COL_Mailcontent.]</textarea><font color=red> (*)</font>
+			
+			<div style="clear:both; height:20px;"></div>
+			
+			
+			<table width="80%" border="0" align="left" cellpadding="10" bgcolor="#FFFFFF">
+              <tr>
+                <td colspan="4">可用标签</td>
+                </tr>
+				[.if $emmm_mail.id == 1.]
+              <tr>
+                <td width="15%"><div align="right">注册账号：</div></td>
+                <td width="19%">#opcms#useremail#</td>
+                <td width="15%"><div align="right">注册密码：</div></td>
+                <td width="51%">#opcms#userpass#</td>
+              </tr>
+			  <tr>
+                <td width="15%"><div align="right">会员姓名：</div></td>
+                <td width="19%">#opcms#userename#</td>
+                <td width="15%"></td>
+                <td width="51%"></td>
+              </tr>
+			  [.elseif $emmm_mail.id == 2.]
+			  <tr>
+                <td width="15%"><div align="right"></div></td>
+                <td width="19%"></td>
+                <td width="15%"><div align="right"></div></td>
+                <td width="51%"></td>
+              </tr>
+			  [.elseif $emmm_mail.id == 3.]
+			   <tr>
+                <td width="15%"><div align="right">订单号：</div></td>
+                <td width="19%">#opcms#buynumber#</td>
+                <td width="15%"><div align="right">快递名称：</div></td>
+                <td width="51%">#opcms#express#</td>
+              </tr>
+			  <tr>
+                <td width="15%"><div align="right">快递运单号：</div></td>
+                <td width="19%">#opcms#expressnum#</td>
+                <td width="15%"><div align="right"></div></td>
+                <td width="51%"></td>
+              </tr>
+			  [.elseif $emmm_mail.id == 4.]
+			   <tr>
+                <td width="15%"><div align="right">验证码：</div></td>
+                <td width="19%">#opcms#code#</td>
+                <td width="15%"><div align="right"></div></td>
+                <td width="51%"></td>
+              </tr>
+			  [./if.]
+            </table>
+			
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">开启/关闭</div></td>
+			<td><input name="COL_Mailclass" type="radio" value="1" [.if $emmm_mail.COL_Mailclass == 1.]checked="checked"[./if.] />
+			  开启&nbsp;&nbsp;
+			  <input type="radio" name="COL_Mailclass" value="2" [.if $emmm_mail.COL_Mailclass == 2.]checked="checked"[./if.] />关闭</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">发送模式</div></td>
+			<td>
+			
+			<select name="COL_Mailtype">
+			  <option value="HTML"  [.if $emmm_mail.COL_Mailtype == 'HTML'.]selected="selected"[./if.]>HTML(支持代码)</option>
+			  <option value="TXT"  [.if $emmm_mail.COL_Mailtype == 'TXT'.]selected="selected"[./if.]>TXT(仅文本)</option>
+			</select>
+			
+			</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+		
+		[./if.]
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

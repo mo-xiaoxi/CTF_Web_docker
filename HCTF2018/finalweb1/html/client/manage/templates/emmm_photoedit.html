@@ -1,0 +1,237 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">修改信息</li>
+  <li onclick="setTab(0,1)">组图上传</li>
+  <li><a href="javascript:history.go(-1)"><font color="#000000">返 回</font></a></li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+ <form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$emmm_photo.id.]&page=[.$page.]" class="registerform">
+  <ul class="block">
+	  <li>
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		<tr>
+		  	<td><div align="right">栏目</div></td>
+			<td>
+			
+
+<select name="COL_Photoclass"  datatype="zoo">
+	<option value="0" >请选择</option>
+	[.function name=menu.]
+			[.foreach $data as $op.]
+				<option value="[.$op.id.]|[.$op.lang.]" [.if $op.model != 'photo'.]disabled="true" style="color:#FF0000;"[.else.] style="color:#009900"[./if.] [.if $op.id == $emmm_photo.COL_Class.]selected="selected"[./if.]>
+				[.if $op.uid != 0.]
+					[.for $foo=1 to $level.]
+					&nbsp;&nbsp;
+					[./for.]
+					└
+				[./if.]
+				[.$op.title.]
+				</option>
+				
+				[.if isset($op.child).]
+					[.call name=menu data=$op.child level=$level+1.]
+				[./if.]
+			[./foreach.]
+	[./function.]
+	[.call name=menu data=$photolist.]
+</select>
+			<font color="#009900">绿色</font>表示可录入项，<font color="#FF0000">红色</font>禁止录入项.			
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">标题</div></td>
+			<td><input name="COL_Phototitle" type="text" class="win" value="[.$emmm_photo.COL_Phototitle.]"  [.$emmm_bgcolor.] datatype="*" nullmsg="标题是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">缩略图</div></td>
+			<td><input name="COL_Photocminimg" type="text" class="win" value="[.$emmm_photo.COL_Photocminimg.]"  [.$emmm_bgcolor.]  id="upload"/>
+			&nbsp;<input type="button" id="image3" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+			</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">正文</div></td>
+			<td><textarea name="COL_Photocontent" class="wtextarea" id="container" style="width:80%; height:200px;">[.$emmm_photo.COL_Photocontent.]</textarea><font color=red> (*)</font>
+			[.include file="emmm_editor.html".]
+			<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image3').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#upload').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">排序</div></td>
+			<td><input name="COL_Photosorting" type="text" class="win2" value="[.$emmm_photo.COL_Sorting.]" [.$emmm_bgcolor.] datatype="*" nullmsg="排序是必填项!"/> 数字越小越靠前！</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">属性</div></td>
+			<td>
+				[.html_checkboxes name="COL_Photoattribute" options=$emmmh_qx selected=$selected separator="&nbsp;&nbsp;".]
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">跳转</div></td>
+			<td><input name="COL_Photourl" type="text" class="win" value="[.$emmm_photo.COL_Url.]" [.$emmm_bgcolor.] /> 如果为空，则不跳转！</td>
+		  </tr>
+		  <tr>
+			<td></td>
+		  	<td><strong>--------------- SEO设置 ---------------</strong></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">关键词</div></td>
+			<td><input name="COL_Phototag" type="text" class="win" value="[.$emmm_photo.COL_Tag.]" [.$emmm_bgcolor.] />&nbsp;请用英文中的 , 格开</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">描述</div></td>
+			<td><textarea name="COL_Photodescription" class="wtextarea" >[.$emmm_photo.COL_Description.]</textarea> 如果为空，自动截取正文前200个字</td>
+		  </tr>
+		</table>
+	  </li>
+  </ul>
+  
+  <ul>
+	  <li>
+		<style type="text/css">
+			.img { width:1060px; height:auto; padding:10px; float:left;}
+			.img h1 { height:30px; line-height:30px; font-size:14px; font-weight:500;}
+		</style>
+		<div class="img">
+				<table width="1100" border="0" style="border-bottom:1px #CCCCCC dashed; margin-bottom:30px;">
+                    <tr>
+                      <td width="20%"><h1>[在这里上传图集组图图片]</h1></td>
+                      <td width="80%">
+					  
+		<input type="button" id="J_selectImage" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+		<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#J_selectImage').click(function() {
+					editor.loadPlugin('multiimage', function() {
+						editor.plugin.multiImageDialog({
+							clickFn : function(urlList) {
+								var div = K('#J_imageView');
+								div.html('');
+								var DataImage = [];
+								K.each(urlList, function(i, data) {
+									div.append('<p style=" width:200px; float:left; margin-right:15px; margin-bottom:15px; text-align:center;"><img src="' + data.url + '" style="max-width:200px; border:0px;"><br /><br />标题：<input type="text" name="COL_Photoname[]"><!--<br><a href="javascript:delItem(' + data.url + ')">[删除]</a>--></p>');
+									DataImage.push(data.url);
+								});
+								DataImage = DataImage.join('|');
+								// 未加载 jQuery 使用下面
+								//document.getElementById('uploadimg').value = DataImage;
+								// 加载 jQuery 使用下面
+								$('#uploadimg').val(DataImage);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script> 
+					  
+					  </td>
+                    </tr>
+            </table>
+				<div style="clear:both;"></div>
+				<div id="J_imageView"></div>
+
+<script>
+    function delete_order(order_id,i){    
+        confirm_ = confirm('删除后图片将无法恢复！确定删除?');
+        if(confirm_){
+            $.ajax({
+                type:"POST",
+                url:'emmm_imgdel.php?url='+order_id,
+                success:function(msg){
+                    //alert("test order");
+                    //all delete is success,this can be execute
+                    $("#tr_"+i).remove();
+                }
+            });
+        }
+    };
+</script>	
+		
+<script type="text/javascript" src="../../function/plugs/dragsort/jquery.dragsort-0.5.1.min.js"></script>
+<dd id="list1">
+[.section loop=$photoimglist name=op.]
+<div id="tr_[.$photoimglist[op].i.]" style=" width:200px; float:left; margin-right:15px; margin-bottom:15px; text-align:center;"><img src="[.$webpath.][.$photoimglist[op].img.]" style="max-width:200px; border:0px;"/><br /><br />标题：<input type="text" name="COL_Photoname[]" value="[.$photoimglist[op].imgname.]"><br /><a href="javascript:;" onclick="delete_order('../../[.$photoimglist[op].img.]',[.$photoimglist[op].i.])">[删除]</a><input type="hidden" name="COL_Photoimg2[]" value="[.$photoimglist[op].img.]"/></div>
+ [.sectionelse.]
+[./section.]
+</dd>
+<input type="hidden" name="COL_Photoimg" value="" id="uploadimg"/>
+<!-- save sort order here which can be retrieved on server on postback -->
+<input name="list1SortOrder" type="hidden" />
+<script type="text/javascript">
+	$("#list1").dragsort({ dragSelector: "div", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<div class='placeHolder'></div>" });
+	function saveOrder() {
+		var data = $("#list1 div").map(function() { return $(this).children().html(); }).get();
+		$("input[name=list1SortOrder]").val(data.join("|"));
+	};
+</script>
+				
+		</div>
+	  </li>
+  </ul>
+  <ul><li></li></ul>
+  <div style="clear:both"></div>
+<table width="100%" border="0">
+  		   <tr>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		   <tr>
+		   	<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		  </tr>
+</table>
+		  
+</form>
+ </div>
+</div><!--
+[.include file="emmm_foot.html".]
+</body>
+</html>

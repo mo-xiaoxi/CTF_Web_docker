@@ -1,0 +1,112 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">信息列表</li>
+  <li onclick="setTab(0,1)">添加信息</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="10%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="40%" bgcolor="#EBEBEB">分类属性名称</td>
+					<td width="10%" bgcolor="#EBEBEB">排序</td>
+					<td width="20%" bgcolor="#EBEBEB">创建参数</td>
+                    <td width="20%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$Attribute name=op.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$Attribute[op].id.]</font></div></td>
+					<td>[.$Attribute[op].name.]</td>
+					<td>[.$Attribute[op].sorting.]</td>
+					<td>=><a href="javascript:dialogif([.$Attribute[op].id.])" style="color:#990000;">管理属性参数</a><=</td>
+                    <td><a href="javascript:dialog([.$Attribute[op].id.],'[.$Attribute[op].name.]','[.$Attribute[op].sorting.]')">编辑</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="?emmm_cms=del&id=[.$Attribute[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="5">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                </table>
+		</div>
+	  </li>
+  </ul>
+  
+  <ul>
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td><div align="right">分类属性名称</div></td>
+			<td><input name="COL_Title" type="text" class="win" [.$emmm_bgcolor.] datatype="*" nullmsg="名称是必填项!"/>&nbsp;例如：电脑系列<font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">排序</div></td>
+			<td><input name="COL_Sorting" type="text" class="win2" [.$emmm_bgcolor.] value="99" datatype="*" nullmsg="排序是必填项!"/>&nbsp;数字越小越靠前</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+<script>
+//弹出一个页面层
+function dialog(id,name,sorting){
+    $.layer({
+        type: 1,
+        title: '编辑:'+name,
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['300px', '300px'],
+        page: {html: '<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id='+id+'" class="registerform"><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;名称&nbsp;&nbsp;<input name="COL_Title" type="text" value="'+name+'"/><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;排序&nbsp;&nbsp;<input name="COL_Sorting" type="text"  value="'+sorting+'"/><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="提交" class="emmm-anniu"/></form>'}
+    });
+};
+
+function dialogif(id){
+    $.layer({
+        type: 2,
+        title: '管理属性参数：',
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['700px', '500px'],
+		iframe:{src: 'emmm_productattribute_o.php?id=emmm&oid='+id,scrolling: 'yes'}
+    });
+};
+</script>
+[.include file="emmm_foot.html".]
+</body>
+</html>

@@ -1,0 +1,89 @@
+[.$ad.head.]
+<script src="[.$webpath.]function/plugs/layer/layer.min.js"></script>
+<div class="header">
+  <div class="header_top">
+	<div class="main pdx">
+		[.if isset($smarty.session.username).]
+		您好！<a href="[.$webpath.]client/user/">[.$smarty.session.username.]</a>
+		[.else.]
+		<a href="javascript:dialog()">会员登录</a> - <a href="[.$webpath.]client/user/?cn-reg.html">免费注册</a>
+		[./if.]
+		<script> 
+		function dialog(){
+			$.layer({
+				type: 1,
+				title: '会员登录',
+				shade: [0],
+				border: [5, 0.3, '#000'],
+				area: ['410px', '220px'],
+				page: {html: '<form id="form1" name="form1" method="POST" action="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=login" class="registerform"><table width="100%" border="0" cellpadding="5" style="font-size:12px;"><tr><td><div align="right">登录账号：</div></td><td><input type="text" name="COL_Useremail" style="width:300px; height:30px; border:1px #CCCCCC solid; line-height:30px; color:#999999" /><font color="#FF0000">*</font></td></tr><tr><td><div align="right">登录密码：</div></td><td><input type="password" name="COL_Userpass" style="width:300px; height:30px; border:1px #CCCCCC solid; line-height:30px; color:#999999" /><font color="#FF0000">*</font></td></tr><tr><td><div align="right">验证码：</div></td><td><input type="text" name="code" style="width:100px; height:30px; border:1px #CCCCCC solid; line-height:30px; color:#999999" onfocus="document.getElementById(\'checkcode\').src+=\'?\'" /><font color="#FF0000">*</font>&nbsp;<img title="点击刷新" id="checkcode" src="[.$webpath.]function/emmm_code.php" align="absbottom" onclick="this.src=\'[.$webpath.]function/emmm_code.php?\'+Math.random();" width="80" height="25"></img></td></tr><tr><td><div align="right"></div></td><td><input type="submit" name="Submit" value="登录" style="width:100px; height:30px; border:0px; background:#0099FF; color:#FFFFFF;"/></td></tr></table></form>'}
+
+			});
+		}
+		function tcjs(type){
+		  $("."+type).hover(function(){
+			$("#"+type).show();
+			},function(){
+			$("#"+type).hide();
+		  });
+		}
+		
+		$(document).ready(function(){  
+			tcjs('wx');
+			tcjs('sj');
+		});
+
+		</script>
+	</div>
+  </div>
+  <div class="main">
+		<a href="/index.php" title="[.$emmm_web.website.]限公司" class="logo">
+			<img src="[.$emmm_web.weblogo.]" alt="[.$emmm_web.website.]" />
+		</a>
+		<div class="tel">
+			<p>服务热线</p>
+			<p>10086</p>
+		</div>
+		<div class="topsearch">
+			<form name="search" method="post" action="[.$webpath.]search.php?temp=search">
+				<input type="text" class="text" name="content" id="content" value="请输入搜索关键词" onfocus="this.value=''" onblur="if(!value){value=defaultValue}"/>
+				<div class="select">
+					<select id="sid" style="display: none" name="sid">
+					<option value="article" selected="selected">文章</option>
+					<option value="product" >商品</option>
+					<option value="photo" >案例</option>
+					<option value="video" >视频</option>
+					<option value="down" >文档</option>
+					<option value="job" >招聘</option>
+					</select>
+				</div>
+				<input type="hidden" name="lang" value="cn" />
+				<input type="hidden" name="type" value="pc" />
+				<input type="submit" title="搜索" class="button" value="搜索"/>
+			</form>
+			<script type=text/javascript>
+			jQuery(document).ready(function() {
+				jQuery("#sid").selectbox();
+			});
+			</script> 
+		</div>
+  </div>
+</div>
+<div class="menu">
+    <div class="nav_emmm">
+        <ul class="nav">
+            [.function name=menu.]
+                    [.foreach $data as $op.]
+                        <li class="item [.if $ip.type == 'shop.html'.][.assign var="navid" value="3".][.if $op.id == $navid.]navgb[./if.][./if.] [.if !empty($op.child).]child[./if.]"><a href="[.$op.url.]">[.$op.title.]</a>
+                        [.if !empty($op.child).]
+                        <ul class="nav">
+                            [.call name=menu data=$op.child.]
+                        </ul>
+                        [./if.]
+                        </li>
+                    [./foreach.]
+            [./function.]
+            [.call name=menu data=$column.]
+        </ul>
+    </div>
+</div>

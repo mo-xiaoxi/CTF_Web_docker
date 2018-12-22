@@ -1,0 +1,92 @@
+[.$mobile.]
+<div class="emmm_top">
+    	<div class="top">
+        	<div class="center">
+            	<div class="left">
+                	<a href="[.$webpath.]" class="gw">企业官网</a>&nbsp;&nbsp;
+                	<a class="wx">微信</a>&nbsp;&nbsp;
+                    <a class="sj">手机商城</a>
+                    <div id="wx">
+                    	<img src="[.$templatepath.]shop/img/erweima.png" />
+                        <p>微信扫一扫关注我们!</p>
+                    </div>
+                    <div id="sj">
+                    	<img src="[.$templatepath.]shop/img/erweima.png" />
+                        <p>扫一扫手机访问!</p>
+                    </div>
+                </div>
+                <div class="right">
+                 [.if isset($smarty.session.username).]
+                	嗨! 欢迎回家,<a href="client/user/">[.$smarty.session.username.]</a>
+                    [.else.]
+                    嗨，欢迎来到本网站 <a href="[.$webpath.]client/user/?cn-login.html" class="dl">请登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="[.$webpath.]client/user/?cn-reg.html">免费注册</a>
+                    [./if.]
+                    &nbsp;&nbsp;|&nbsp;&nbsp;<a href="[.$webpath.]client/user/?[.$ip.lang.]-usershopping-op.html">我的订单</a>
+                </div>
+            </div>
+        </div>
+        <div class="top_content">
+        	<div class="center">
+                <div class="left"><img src="[.$emmm_web.weblogo.]" class="logo" /><img src="[.$templatepath.]shop/img/sclogo.jpg" class="logo2" /></div>
+                <div class="center2">
+                    <form name="search" method="post" action="[.$webpath.]search.php?temp=search" class="search">
+                        <input type="text" class="text" name="content" id="content" value="请输入搜索关键词" onfocus="this.value=''" onblur="if(!value){value=defaultValue}"/>
+                        <input type="hidden" name="lang" value="cn" />
+                        <input type="hidden" name="sid" value="product" />
+                        <input type="hidden" name="type" value="pc" />
+                        <input type="submit" title="商品搜索" class="button" value=""/>
+                    </form>
+                    <div class="clear"></div>
+                    <p style=" padding-top:3px;">
+                    [.sql mysql="SELECT * FROM `emmm_search` where `COL_Searchclick` > 20 order by COL_Searchclick desc limit 0,5" name="sql".]
+                    <a href="search.php?cn-&content=[.$sql.COL_Searchtext.]&lang=cn&sid=product">[.$sql.COL_Searchtext.]</a> 
+                    [./sql.]
+                    </p>
+                </div>
+                <div class="right">
+					<div class="shopbuy">
+						<a href="[.$webpath.]?[.$ip.lang.]-shoppingcart.html">我的购物车</a>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="nav">
+    <ul class="center dh">
+    	<div class="shopfl"><a class="navleft">商品分类</a></div>
+			<li><a href="/?cn-shop.html">商城首页</a></li>
+			<li><a href="#">最新商品</a></li>
+			<li><a href="#">特价商品</a></li>
+			<li><a href="/?cn-product-11.html">积分兑换</a></li>
+            <li><a href="/?cn-about-9.html">关于我们</a></li>
+            <li><a href="/?cn-club.html">联系我们</a></li>
+        <div class="clear"></div>
+        <!--导航条-->
+        <div id="navleft">
+        	[.foreach from=$column item=op.]
+            [.if $op.id == 2.]
+                [.if isset($op.child).]
+                [.foreach from=$op.child item=opop.]
+                <dl>
+                <dt><a href="[.$opop.url.]" title="[.$opop.title.]">[.$opop.title.]</a></dt>
+					[.if isset($opop.child).]
+						[.foreach from=$opop.child item=opopop.]
+						<dd><a href="[.$opopop.url.]">[.$opopop.title.]</a>&nbsp;&nbsp;|&nbsp;&nbsp;</dd>
+						[./foreach.]
+					[./if.]
+                 </dl>
+                [./foreach.]
+                [./if.]
+            [./if.]
+            [./foreach.]
+            <div class="clear"></div>
+            <div class="navkfa">
+            	<div class="zxkfnav"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=[.$emmm_web.webqq.]&amp;site=qq&amp;menu=yes" target="_blank" class="zxkf">在线客服</a></div>
+            </div>
+        </div>
+        <!--导航条END-->
+        
+    </ul>
+</div>

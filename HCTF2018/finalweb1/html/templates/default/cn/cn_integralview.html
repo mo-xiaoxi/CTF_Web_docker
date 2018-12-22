@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$opcms.title.] - 企业商城 - [.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="Author" content="vidar.club" />
+<LINK href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" rel=stylesheet>
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+<LINK href="[.$templatepath.]shop/css/emmm.css" rel=stylesheet>
+<script type="text/javascript" src="[.$webpath.]function/plugs/jquery/1.7.2/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/emmm.js"></script>
+<script type="text/javascript" src="[.$webpath.]function/plugs/lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/banner1.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/rightnav.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/lefttree.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("img").lazyload({ 
+		 effect: "fadeIn"
+	});    
+	tcjs('wx');
+	tcjs('sj');
+	tcjs('wxkf');
+	navjs('navleft');
+});
+</script>
+</head>
+<body>
+[.include file="cn/cn_shoptop.html".]
+<div class="clear"></div>
+	<div class="center">
+    	<div class="topnavlist">
+       		<a href="/?cn-shop.html" title="商城首页">商城首页</a> 
+            [.foreach $crumbs as $op.]
+            >> <a href="[.$op.url.]" title="[.$op.title.]">[.$op.title.]</a>
+            [./foreach.]
+        </div>
+        <div class="clear"></div>
+          <div class="shopleft">
+            <div class="shoplistleft">
+                <h1>客服中心</h1>
+                <ul>
+                    [.service type="0" temp="index".]
+                    [.foreach $service as $op.]
+                    [.if $op.class == 'qq'.]
+                    <p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=[.$op.number.]&amp;site=qq&amp;menu=yes"><img src="[.$plugsurl.]css/button_121.gif" />[.$op.name.]</a></p>
+                    [.elseif $op.class == 'aliww'.]
+                    <li><a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=[.$op.number.]&siteid=cntaobao&status=1&charset=utf-8"><img src="[.$plugsurl.]css/button_122.gif" />[.$op.name.]</a></li>
+                    [.elseif $op.class == 'skype'.]
+                    <li><a target="_blank" href="skype:[.$op.number.]?add"><img src="[.$plugsurl.]css/button_123.gif)" />[.$op.name.]</a></li>
+                    [./if.]
+                    [./foreach.]
+                </ul>
+            </div>
+            <div class="shoplistleft">
+                <h1>商品快捷分类</h1>
+                <ul>
+                [.foreach from=$column item=op.]
+                [.if $op.id == 2.]
+                      [.if isset($op.child).]
+                      [.foreach from=$op.child item=opop.]
+                      <li class="aaa"><img src="[.$templatepath.]shop/images/btn_fold.gif" /><a href="[.$opop.url.]">[.$opop.title.]</a>
+                
+                            [.if isset($opop.child).]
+                            <ul class="d">
+                            [.foreach from=$opop.child item=opopop.]
+                            <li><a href="[.$opopop.url.]">[.$opopop.title.]</a></li>
+                            [./foreach.]
+                            </ul>
+                            [./if.]
+                      </li>
+                      [./foreach.]
+                      [./if.]
+                [./if.]
+                [./foreach.]
+                </ul>
+            </div>
+        </div>
+        <div class="shopviewright">
+            <ul>
+              <h1>[.$opcms.title.]</h1>
+
+                    [.*以下代码是我们Emmm官方默认代码，如果你要修改模板，可以把以下代码全部复制走。*.]
+                    <script src="[.$webpath.]function/plugs/layer/layer.min.js"></script>
+                    <LINK href="[.$webpath.]function/plugs/product/style.css" rel=stylesheet>
+                    <div class="prleft">
+                    <img src="[.$opcms.maximg.]" style="width:400px; border:0px;" />
+                    </div>
+                    <div class="prright">
+                        <ul>
+                            <li>商品编号：[.$opcms.number.]</li>
+                            <li>商品品牌：[.$opcms.brand.title.]</li>
+                            <li>市场价格：<del>[.$opcms.market.]</del></li>
+                            <li>本站价格：[.$opcms.webmarket.]</li>
+                            [.foreach from=$opcms.attribute item=aop.]
+                            <li>[.$aop.name.]：[.$aop.key.]</li>
+                            [./foreach.]
+                            <li>兑换积分：<span style="color:#FF0000; font-size:16px;">[.$opcms.integralexchange.]</span></li>
+                            <li><a href="javascript:dialog([.$opcms.id.],'pc')"><img src="/skin/dhan.png" /></a>
+                                <script>
+                                function dialog(id,type){
+                                    $.layer({
+                                        type: 2,
+                                        title: '积分兑换',
+                                        shade: [0],
+                                        border: [5, 0.3, '#000'],
+                                        area: ['400px', '400px'],
+                                        iframe:{src: '[.$webpath.]function/emmm_integral.php?id='+id+'&type='+type,scrolling: 'yes'}
+                                    });
+                                };
+                                </script>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="clear:both; height:50px;"></div>
+                    <script> 
+                    function setTab(m,n){
+                     var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+                     var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+                     for(i=0;i<tli.length;i++){
+                      tli[i].className=i==n?"hover":"";
+                      mli[i].style.display=i==n?"block":"none";
+                     }
+                    }
+                    </script>
+                    <div id="tabs0">
+                     <ul class="menu0" id="menu0">
+                      <li onclick="setTab(0,0)" class="hover">商品正文</li>
+                      <li onclick="setTab(0,1)">发货方式</li>
+                      <li onclick="setTab(0,2)">评论</li>
+                     </ul>
+                     <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+                      <ul class="block">
+                          <li>
+                          [.$opcms.content.]
+                          </li>
+                      </ul>
+                      <ul>
+                          <li>
+                           [.$shopset.sendout.]
+                          </li>
+                      </ul>
+                      <ul>
+                          <li class="td">
+                                [.comment id=$opcms.id type=$ip.type row="10".]
+                          </li>
+                      </ul>
+                    </div>
+                    </div>
+					<style type="text/css">
+                        .gmjl { margin-top:30px; font-size:13px;}
+                        .gmjl tr,td{ padding:10px; border-bottom:1px #f4f4f4 solid;}
+                        .gmjl span { font-size:12px; color: #999;}
+						.prright ul li {margin-bottom:10px;}
+                    </style>
+                    [.*积分兑换模板结束，如果你要修改模板，把以上代码全部复制走*.]
+
+            </ul>
+        </div>
+    </div>
+<div class="clear"></div>
+[.include file="cn/cn_shopfoot.html".]
+</body>
+</html>

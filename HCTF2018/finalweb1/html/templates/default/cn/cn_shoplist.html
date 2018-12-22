@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业商城 - [.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="Author" content="vidar.club" />
+<LINK href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" rel=stylesheet>
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+<LINK href="[.$templatepath.]shop/css/emmm.css?2" rel=stylesheet>
+<script type="text/javascript" src="[.$webpath.]function/plugs/jquery/1.7.2/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/emmm.js"></script>
+<script type="text/javascript" src="[.$webpath.]function/plugs/lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/banner1.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/rightnav.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/lefttree.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("img").lazyload({ 
+		 effect: "fadeIn"
+	});    
+	tcjs('wx');
+	tcjs('sj');
+	tcjs('wxkf');
+	navjs('navleft');
+});
+</script>
+</head>
+<body>
+[.include file="cn/cn_shoptop.html".]
+<div class="clear"></div>
+	<div class="center">
+    	<div class="topnavlist">
+       		<a href="/?cn-shop.html" title="商城首页">商城首页</a> 
+            [.foreach $crumbs as $op.]
+            >> <a href="[.$op.url.]" title="[.$op.title.]">[.$op.title.]</a>
+            [./foreach.]
+        </div>
+        <div class="clear"></div>
+        <div class="shoplistleft">
+        	<h1>商品快捷分类</h1>
+            <ul>
+
+            [.foreach from=$column item=op.]
+            [.if $op.id == 2.]
+             
+                  [.if isset($op.child).]
+                  [.foreach from=$op.child item=opop.]
+                  <li class="aaa"><img src="[.$templatepath.]shop/images/btn_fold.gif" /><a href="[.$opop.url.]">[.$opop.title.]</a>
+            
+                        [.if isset($opop.child).]
+                        <ul class="d">
+                        [.foreach from=$opop.child item=opopop.]
+                       	<li><a href="[.$opopop.url.]">[.$opopop.title.]</a></li>
+                        [./foreach.]
+                        </ul>
+                        [./if.]
+            	  </li>
+                  [./foreach.]
+                  [./if.]
+                  
+            [./if.]
+            [./foreach.]
+
+            </ul>
+        </div>
+        <div class="shoplistright">
+       	  <h1>[.$listname.title.]
+            	<span>
+                	<a href="?[.$ip.lang.]-[.$ip.type.]-[.$ip.listid.].html" [.if isset($smarty.get.type)=="".]class="xz"[./if.]>全部</a>
+                    <a href="?[.$ip.lang.]-[.$ip.type.]-[.$ip.listid.].html=&type=COL_Webmarket" [.if isset($smarty.get.type) == "".][.elseif $smarty.get.type == "COL_Webmarket".]class="xz"[./if.]>价格</a>
+                    <a href="?[.$ip.lang.]-[.$ip.type.]-[.$ip.listid.].html=&type=COL_Click" [.if isset($smarty.get.type) == "".][.elseif $smarty.get.type == "COL_Click".]class="xz"[./if.]>人气</a>
+                </span>
+            </h1>
+            <ul>
+                    [.if isset($smarty.get.type).]
+                        [.if $smarty.get.type == "COL_Webmarket".]
+                        [.assign var="listtype" value="COL_Webmarket".]
+                        [.else.]
+                        [.assign var="listtype" value="COL_Click".]
+                        [./if.]
+                    [.else.]
+                    [.assign var="listtype" value="id".]
+                    [./if.]
+                    
+                    [.list id="$listid" form="product" type=$listtype name="list".] 
+                    <li><a href="[.$list.url.]" title="[.$list.title.]"><img src="[.$webpath.]skin/noimage.png" data-original="[.$list.minimg.]" />
+                        <p class="title">[.$list.title|truncate:30:"...".]</p>
+                        <p class="scj">市场价：<s>￥[.$list.market.]</s></p>
+                        <p class="bzj">本站价：<span>￥[.$list.webmarket.]</span></p>
+                    </a>
+                    </li>
+                    [./list.]
+            </ul>
+            <div class="clear"></div>
+            <div class="page">
+            	[.$emmmpage.]
+            </div>
+        </div>
+    </div>
+<div class="clear"></div>
+[.include file="cn/cn_shopfoot.html".]
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心 - [.$emmm_web.website.] </title>
+<link rel="stylesheet" href="[.$templatepath.]css/style.css" type="text/css" />
+<script type="text/javascript" src="[.$webpath.]function/plugs/jquery/1.7.2/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" type="text/css" />
+</head>
+<body>
+<div id="YIQI-UI">
+    [.include file="cn_top.html".]
+    <div class="clear"></div>
+    <div class="emmm_center">
+        <div class="clear"></div>
+        <div class="emmm_login">
+              <div class="logo_font mb-40">免费注册</div>
+              <div class="clear"></div>
+              
+              <div class="f-l emmm_left">
+                [.*会员注册表单开始*.]
+				<script type="text/javascript">
+					function regselect(){
+						var reg = $('#zh').val();
+						$.ajax({  
+								type:'get',
+								url : '[.$webpath.]client/user/?cn-reg.html-&reg&zh='+reg,
+								dataType : 'jsonp',  
+								jsonp:"jsoncallback",
+								async:true,
+								beforeSend:function(){},
+								success:function(data){
+									if(reg == '格式:13888888888' || reg == '格式:77701950@qq.com'){
+										$("#regselect").html('*');
+									}else{
+										$("#regselect").html(data);
+									}
+								},
+								complete:function(){},
+								error:function(){}
+						});
+					}
+					var wait=120; 
+					function anniu(){
+						if (wait == 0) { 
+							$('#btn').attr("disabled", false);
+							$('#btn').val('获取验证码');
+							$("#btn").removeClass("disabled").addClass("btn-success");
+							wait = 120; 
+						} else { 
+							$('#btn').attr("disabled", true); 
+							$('#btn').val('重新发送(' + wait + ')');
+							$("#btn").removeClass("btn-success").addClass("disabled");
+							wait--; 
+							setTimeout(function() { 
+								anniu();
+							}, 1000) 
+						};
+					}
+					function reg_code(){
+						var reg = $('#zh').val();
+						if(reg == '格式:13888888888' || reg == '格式:77701950@qq.com'){
+							alert('* 号不能为空!');
+							return false;
+						}
+						$.ajax({  
+								type:'get',
+								url : '[.$webpath.]client/user/?cn-reg.html-&code&zh='+reg,
+								dataType : 'jsonp',  
+								jsonp:"jsoncallback",
+								async:true,
+								beforeSend:function(){},
+								success:function(data){},
+								complete:function(){anniu();},
+								error:function(){}
+						});
+					}
+                </script>
+                [.if $usercontrol.regoff == 1.]
+                <form id="form1" name="form1" method="post" action="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=reg" class="registerform">
+                <table width="100%" border="0" cellpadding="0" class="table table-hover">
+                	[.$regtable.]
+                      <tr>
+                        <td><div align="right">输入密码：</div></td>
+                        <td><input type="password" name="COL_Userpass" class="input" datatype="*6-16" nullmsg="请设置密码！" errormsg="密码范围在6~16位之间！" /><font class="ml-10 f-f00">*</font></td>
+                      </tr>
+                      <tr>
+                        <td><div align="right">确认密码：</div></td>
+                        <td><input type="password" name="COL_Userpass2" class="input" datatype="*" recheck="COL_Userpass" nullmsg="请再输入一次密码！" errormsg="您两次输入的密码不一致！" /><font class="ml-10 f-f00">*</font></td>
+                      </tr>
+                      <tr>
+                        <td><div align="right">安全问题：</div></td>
+                        <td>
+                        <select name="COL_Userproblem" class="input4">
+                        [.foreach $problem as $op.]
+                            <option value="[.$op.title.]">[.$op.title.]</option>
+                        [./foreach.]
+                        </select><font class="ml-10 f-f00">*</font></td>
+                      </tr>
+                      <tr>
+                        <td><div align="right">问题答案：</div></td>
+                        <td><input type="text" name="COL_Useranswer" class="input" datatype="*" /><font class="ml-10 f-f00">*</font></td>
+                      </tr>
+                      <tr>
+                        <td><div align="right">验证码：</div></td>
+                        <td><input type="text" name="code" class="input3" datatype="*" onfocus="document.getElementById('checkcode').src+='?'" /><font class="ml-10 mr-10 f-f00">*</font><img title="点击刷新" id="checkcode" src="[.$webpath.]function/emmm_code.php" align="absbottom" onclick="this.src='[.$webpath.]function/emmm_code.php?'+Math.random();" width="80" height="25"></img></td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                        <input type="hidden" name="ip" value="[.$ip.ip.]" />
+                        <input type="hidden" name="source" value="[.$ip.listid.]" />
+                        <input type="hidden" name="lang" value="[.$ip.lang.]" />
+                        <input type="hidden" name="introducer" value="[.$regconfig['introducer'].]" />
+                        <input type="submit" name="Submit" value="提交注册" class="btn btn-danger radius-10 pd-15" />
+                       &nbsp;&nbsp; <input type="reset" name="Submit2" value="重新填写" class="btn btn-danger-o radius-10 pd-15" /></td>
+                      </tr>
+                </table>
+                </form>
+                <link rel="stylesheet" href="../../function/plugs/Validform/style.css" type="text/css" />
+                <script type="text/javascript" src="../../function/plugs/Validform/Validform_v5.3.2.js"></script>
+                <script type="text/javascript" src="[.$templatepath.]js/fromsend.js"></script>
+                [.else.]
+                    <h3>暂时无法提供注册，请联系管理员！</h3>
+                [./if.]
+                [.*会员注册表单结束*.]
+                
+                </div>
+                <div class="f-r emmm_right2">
+                      <table width="100%" border="0">
+                        <tr>
+                          <td style="text-align:center"><textarea class="textarea border">[.$usercontrol.protocol.]</textarea></td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center"><p class="f-f00">点击注册按钮后，意味着您同意以上协议</p></td>
+                        </tr>
+                        <tr>
+                          <td><div class="regtologin"><a href="[.$webpath.]client/user/?cn-login.html">登 录</a></div></td>
+                        </tr>
+                      </table>
+                </div>
+    	</div>
+    </div>
+    [.include file="cn_foot.html".]
+</div>
+</body>
+</html>

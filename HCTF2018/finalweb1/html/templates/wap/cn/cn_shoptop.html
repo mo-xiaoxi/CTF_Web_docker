@@ -1,0 +1,51 @@
+<script type="text/javascript">
+$(document).ready(function(){  
+	$(".content").click(function(){
+		$(".shopnav").show();
+		$(".rightnav").hide();
+		$(".content").removeClass("p150");
+	});
+	var url = window.location.search;
+	if(url == '?cn-shop.html'){
+		$("#goback").html('');
+		$(".shopnav").html('<a onClick="rightnav();"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-menu"></span><p>分类</p></a>');
+	}else if(url == '?cn-userlogin.html' || url == '?cn-userpassword.html'){
+		$("#goback").html('<a href="javascript:history.go(-1);" class="icon YIQI-UI-iconfont YIQI-UI-iconfont-arrow2-left"></a>');
+		$(".shopnav").html('<a href="?cn-userreg.html"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-user"></span><p>注册</p></a>');
+	}else if(url == '?cn-userreg.html'){
+		$("#goback").html('<a href="javascript:history.go(-1);" class="icon YIQI-UI-iconfont YIQI-UI-iconfont-arrow2-left"></a>');
+		$(".shopnav").html('<a href="?cn-userlogin.html"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-jiesuo"></span><p>登录</p></a>');
+	}else if(url == '?cn-usercenter.html' || url == '?cn-shoppingcart.html' || url == '?cn-usershopadd.html' || url == '?cn-usershopping-op.html' || url == '?cn-userpay-op.html' || url == '?cn-userintegral-op.html'){
+		$("#goback").html('<a href="javascript:history.go(-1);" class="icon YIQI-UI-iconfont YIQI-UI-iconfont-arrow2-left"></a>');
+		$(".shopnav").html('<a href="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=out&lang=cn&type=wap"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-system"></span><p>退出</p></a>');
+	}else if(url == '?cn-usermail-op.html'){
+		$("#goback").html('<a href="javascript:history.go(-1);" class="icon YIQI-UI-iconfont YIQI-UI-iconfont-arrow2-left"></a>');
+		$(".shopnav").html('<a onclick="sms();"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-fabu"></span><p>发送</p></a>');
+	}else{
+		$("#goback").html('<a href="javascript:history.go(-1);" class="icon YIQI-UI-iconfont YIQI-UI-iconfont-arrow2-left"></a>');
+		$(".shopnav").html('');
+	}
+});
+function rightnav(){
+	$(".content").addClass("p150");
+	$(".rightnav").show();
+	$(".shopnav").hide();
+}
+</script>
+<div class="shophead">
+    <div class="f-l gobank">
+        <span id="goback">
+            
+        </span>
+    </div>
+    <div class="f-l shopsearch">
+      <form name="form1" method="post" action="[.$webpath.]client/wap/search.php?temp=search">
+        <input type="text" placeholder="输入搜索关键词" value="" class="pd-5 btn-lr-5 f-l kuang" name="content" />
+        <input type="hidden" name="lang" value="cn" />
+		<input type="hidden" name="sid" value="product" />
+        <input type="hidden" name="type" value="wap" />
+        <input class="btn pd-10 f-l btn-rr-5 niu" type="submit" value="">
+      </form>
+    </div>
+    <div class="f-r shopnav"></div>
+</div>

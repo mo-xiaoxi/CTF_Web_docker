@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业商城 - [.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="Author" content="vidar.club" />
+<LINK href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" rel=stylesheet>
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+<LINK href="[.$templatepath.]shop/css/emmm.css?2" rel=stylesheet>
+<script type="text/javascript" src="[.$webpath.]function/plugs/jquery/1.7.2/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/emmm.js"></script>
+<script type="text/javascript" src="[.$webpath.]function/plugs/lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/banner1.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/rightnav.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("img").lazyload({ 
+		 effect: "fadeIn"
+	});    
+	tcjs('wx');
+	tcjs('sj');
+	tcjs('wxkf');
+	navjs('navleft');
+});
+</script>
+</head>
+<body>
+[.include file="cn/cn_shoptop.html".]
+<div class="clear"></div>
+<div class="banner">
+  <div class="b-img">
+        [.banner lang="cn" row="5" name="banner" id="0" type="0".]
+        <a href="[.$banner.url.]" style="background:url([.$banner.img.]) center no-repeat;"></a> 
+        [./banner.]
+  </div>
+  <div class="b-list"></div>
+  <a class="bar-left" href="#"><em></em></a>
+  <a class="bar-right" href="#"><em></em></a>
+</div>
+<div class="clear"></div>
+<div class="center">
+
+	<div class="emmm_content">
+    	<div class="left">
+        	<h1>促销/资讯</h1>
+            <ul>
+                [.emmm form="article" row="8" lang="cn" id="0" type="op" name="emmm".]
+                <li><a href="[.$emmm.url.]" title="[.$emmm.title.]">[.$emmm.title|truncate:15:"...".]</a></li>
+                [./emmm.]
+            </ul>
+        </div>
+        <div class="right">
+        	<h1>特价秒杀</h1>
+            <ul>
+                [.emmm form="product" row="4" lang="cn" id="0" type="3" name="emmm".]
+                <li><a href="[.$emmm.url.]" title="[.$emmm.title.]"><img src="[.$emmm.minimg.]" />
+                <p class="title">[.$emmm.title|truncate:30:"...".]</p>
+                <p class="jg">促销价：<span>￥[.$emmm.webmarket.]</span></p>
+                </a></li>
+                [./emmm.]
+            </ul>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <div class="f">
+        	<h1 class="h1">数码产品<span><a href="">手机配件</a>&nbsp;<a href="">手机卡套餐</a>&nbsp;<a href="">更多</a></span></h1>
+            <ul>
+                [.emmm form="product" row="5" lang="cn" id="0" type="op" name="emmm".]
+                <li><a href="[.$emmm.url.]" title="[.$emmm.title.]"><img src="/skin/noimage.png" data-original="[.$emmm.minimg.]" />
+                <p class="title">[.$emmm.title|truncate:30:"...".]</p>
+                <p class="scj">市场价：<s>￥[.$emmm.market.]</s></p>
+                <p class="bzj">本站价：<span>￥[.$emmm.webmarket.]</span></p>
+                </a></li>
+                [./emmm.]
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="f">
+        	<h1 class="h2">母婴用品<span><a href="">奶瓶</a>&nbsp;<a href="">瓶刷</a>&nbsp;<a href="">电动车</a>&nbsp;<a href="">更多</a></span></h1>
+            <ul>
+                [.emmm form="product" row="5" lang="cn" id="0" type="op" name="emmm".]
+                <li><a href="[.$emmm.url.]" title="[.$emmm.title.]"><img src="/skin/noimage.png" data-original="[.$emmm.minimg.]" />
+                <p class="title">[.$emmm.title|truncate:30:"...".]</p>
+                <p class="scj">市场价：<s>￥[.$emmm.market.]</s></p>
+                <p class="bzj">本站价：<span>￥[.$emmm.webmarket.]</span></p>
+                </a></li>
+                [./emmm.]
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="f">
+        	<h1 class="h3">男装女装	<span><a href="">休闲装</a>&nbsp;<a href="">耐克</a>&nbsp;<a href="">正装</a>&nbsp;<a href="">更多</a></span></h1>
+            <ul>
+                [.emmm form="product" row="5" lang="cn" id="0" type="op" name="emmm".]
+                <li><a href="[.$emmm.url.]" title="[.$emmm.title.]"><img src="/skin/noimage.png" data-original="[.$emmm.minimg.]" />
+                <p class="title">[.$emmm.title|truncate:30:"...".]</p>
+                <p class="scj">市场价：<s>￥[.$emmm.market.]</s></p>
+                <p class="bzj">本站价：<span>￥[.$emmm.webmarket.]</span></p>
+                </a></li>
+                [./emmm.]
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="f">
+        	<h1 class="h4">珠宝饰品	<span><a href="">玉器</a>&nbsp;<a href="">古玩</a>&nbsp;<a href="">9999黄金</a>&nbsp;<a href="">更多</a></span></h1>
+            <ul>
+                [.emmm form="product" row="5" lang="cn" id="0" type="op" name="emmm".]
+                <li><a href="[.$emmm.url.]" title="[.$emmm.title.]"><img src="/skin/noimage.png" data-original="[.$emmm.minimg.]" />
+                <p class="title">[.$emmm.title|truncate:30:"...".]</p>
+                <p class="scj">市场价：<s>￥[.$emmm.market.]</s></p>
+                <p class="bzj">本站价：<span>￥[.$emmm.webmarket.]</span></p>
+                </a></li>
+                [./emmm.]
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="f">
+        	<h1 class="h5">化妆品	<span><a href="">美宝莲</a>&nbsp;<a href="">口红</a>&nbsp;<a href="">更多</a></span></h1>
+            <ul>
+                [.emmm form="product" row="5" lang="cn" id="0" type="op" name="emmm".]
+                <li><a href="[.$emmm.url.]" title="[.$emmm.title.]"><img src="/skin/noimage.png" data-original="[.$emmm.minimg.]" />
+                <p class="title">[.$emmm.title|truncate:30:"...".]</p>
+                <p class="scj">市场价：<s>￥[.$emmm.market.]</s></p>
+                <p class="bzj">本站价：<span>￥[.$emmm.webmarket.]</span></p>
+                </a></li>
+                [./emmm.]
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</div>
+<div class="clear"></div>
+[.include file="cn/cn_shopfoot.html".]
+</body>
+</html>

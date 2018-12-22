@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <div class="content">
+        	<div class="listnav">
+            	<li [.if isset($smarty.get.type)=="".]class="xz"[./if.]><a href="?[.$ip.lang.]-[.$ip.type.]-[.$ip.listid.].html">全部</a></li>
+                <li [.if isset($smarty.get.type) == "".][.elseif $smarty.get.type == "COL_Webmarket".]class="xz"[./if.]><a href="?[.$ip.lang.]-[.$ip.type.]-[.$ip.listid.].html=&type=COL_Webmarket">按价格</a></li>
+                <li style="border-right:0;" [.if isset($smarty.get.type) == "".][.elseif $smarty.get.type == "COL_Click".]class="xz"[./if.]><a href="?[.$ip.lang.]-[.$ip.type.]-[.$ip.listid.].html=&type=COL_Click" >按人气</a></li> 
+            </div>
+        	<div class="clear"></div>
+        	<div class="prlist pt-10">
+                    [.if isset($smarty.get.type).]
+                        [.if $smarty.get.type == "COL_Webmarket".]
+                        [.assign var="listtype" value="COL_Webmarket".]
+                        [.else.]
+                        [.assign var="listtype" value="COL_Click".]
+                        [./if.]
+                    [.else.]
+                    [.assign var="listtype" value="id".]
+                    [./if.]
+					<script type="text/javascript">
+						$(function(){
+							$(".noacc").hide();
+						});
+						var op_page = 2; //从第2页开始加载
+						var op_limit = 0; //0=按后台设置否侧按这里设置
+						var op_model = 'listshop'; //获取栏目类型
+						var op_classid = [.$ip.listid.]; //获取栏目ID
+						var op_lang = 'cn'; //设置语言
+						var op_typeclass = '[.$listtype.]'; //产品附加属性
+						$(window).scroll(function() {
+								var scrollTop = $(this).scrollTop();
+								var scrollHeight = $(document).height();
+								var windowHeight = $(this).height();
+								if (scrollTop + windowHeight == scrollHeight) {
+									
+									$.post("[.$webpath.]function/emmm_ajax.class.php",{page:op_page,model:op_model,id:op_classid,limit:op_limit,lang:op_lang},function(result){
+										if(result == 0){
+											$(".noacc").show();
+										}else{
+											$("#op_ajax_page").append(result);
+											$(".noacc").hide();
+											op_page += 1;
+										}
+									},'json');
+									
+								}
+						});
+					</script>
+            	<ul id="op_ajax_page">
+                    [.list id="$listid" form="product" type=$listtype name="list".] 
+                    <li [.if $list.i % 2 == 0.]class="mr0"[./if.]><a href="[.$list.wapurl.]" title="[.$list.title.]"><img src="[.$webpath.]skin/noimage.png" data-original="[.$list.minimg.]" />
+                        <p>[.$list.title|truncate:30:"...".]</p>
+                        <p><span>￥[.$list.webmarket.]</span><del class="f-r">￥[.$list.market.]</del></p>
+                    </a>
+                    </li>
+                    [./list.]
+                </ul>
+                <div class="clear"></div>
+				<ul class="text-c f-999 noacc">
+					数据已全部加载完!
+				</ul>
+            </div>
+            <div class="clear"></div>
+            <div class="copy">
+                <p>(C) [.$emmm_web.webname.]</p>
+                <p>[.$emmm_web.by.]</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="rightnav">
+        	<ul>
+                [.callcolumn id="2" row="8" lang="cn" type="td" name="callcolumn".]
+                <li><a href="[.$callcolumn.wapurl.]" title="[.$callcolumn.title.]">[.$callcolumn.title.]</a></li>
+                [./callcolumn.]
+			</ul>
+        </div>
+    </div>
+	[.include file="cn/cn_shopfoot.html".]
+</div>
+</body>
+</html>

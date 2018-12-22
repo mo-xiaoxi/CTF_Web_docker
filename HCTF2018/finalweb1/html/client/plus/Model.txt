@@ -1,0 +1,29 @@
+<?php
+header("Content-Type:text/html; charset=UTF-8"); 
+header("Cache-Control:no-cache");
+session_start();
+date_default_timezone_set('Asia/Shanghai');
+
+#
+#插件配置开始(官方默认配置，必须！)
+#
+
+$plugname = '';					//插件名称(插件的中文名称)
+$plugversion = '';				//插件版本
+$plugversiondate = '';			//插件更新日期
+$plugauthor = '';				//插件作者
+$plugabout = '';				//插件简介
+$plugid = '';					//插件ID(与你的插件文件同名，不能是中文和数字和符号)
+$plugclass = 'function';		//插件类型  共三种类型  'function'  'block'  'modifier'
+$plugmysql = '';				//插件所需要的数据库名称(不能是中文和数字和符号)
+$plugadminurl = '';				//后台管理地址(不需要可以为空)
+$plugfield = array(
+	'name|varchar(255)',
+);								//插件所需要的字段，字段名称|字段类型 例如：name|varchar(255) "varchar(255)文本类型  text备注类型  int(10)数字类型" 一行一个
+
+
+#
+#引入插件安装文件
+#
+include '../emmm_plus.php';
+?>

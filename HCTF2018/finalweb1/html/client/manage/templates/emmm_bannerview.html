@@ -1,0 +1,119 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li><a  href="emmm_banner.php?id=emmm"><font color="#000000">返回</font></a></li>
+  <li class="hover">编辑Banner</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$emmm_banner.id.]" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		<tr>
+		  	<td><div align="right">语言</div></td>
+			<td>
+			
+			[.section loop=$langlist name=op.]
+			<input name="COL_Bannerlang" type="radio" value="[.$langlist[op].lang.]" [.if $langlist[op].lang == $emmm_banner.COL_Bannerlang.] checked="checked" [./if.] />[.$langlist[op].font.]&nbsp;&nbsp;
+			[./section.]	
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">标题</div></td>
+			<td><input name="COL_Bannertitle" type="text" class="win" value="[.$emmm_banner.COL_Bannertitle.]" [.$emmm_bgcolor.] datatype="*" nullmsg="标题是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">备注标题1</div></td>
+			<td><input name="COL_Bannertext[]" type="text" class="win" value="[.$emmm_text[0].]" /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">备注标题2</div></td>
+			<td><input name="COL_Bannertext[]" type="text" class="win" value="[.$emmm_text[1].]" /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">备注标题3</div></td>
+			<td><input name="COL_Bannertext[]" type="text" class="win" value="[.$emmm_text[2].]" /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">图片</div></td>
+			<td><input name="COL_Bannerimg" type="text" class="win" value="[.$emmm_banner.COL_Bannerimg.]" [.$emmm_bgcolor.]  datatype="*" nullmsg="图片是必填项!" id="upload"/>&nbsp;
+			<input type="button" id="image3" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+			[.include file="emmm_editor.html".]
+			<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image3').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload').val(),
+							clickFn : function(url, title, width, height, border, align) {
+							
+								var div = K('#J_imageView');
+								div.html('');
+								
+								K('#upload').val(url);
+								div.append('<img src="' + url + '" style="max-width:600px;border:0px;">');
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>										
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">链接地址</div></td>
+			<td><input name="COL_Bannerurl" type="text" class="win" value="[.$emmm_banner.COL_Bannerurl.]" [.$emmm_bgcolor.]  datatype="*" nullmsg="链接地址是必填项!"/></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">显示位置</div></td>
+			<td><input name="COL_Bannerclass" type="radio" value="0" [.if $emmm_banner.COL_Bannerclass == 0.]checked="checked"[./if.] />
+			  &nbsp;电脑端<input type="radio" name="COL_Bannerclass" value="1" [.if $emmm_banner.COL_Bannerclass == 1.]checked="checked"[./if.] />&nbsp;移动端</td>
+		  </tr>
+		  <tr><td></td><td>
+		  <div id="J_imageView"></div>
+		  </td></tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <div class="content">
+        	<div class="shopbanner">
+                <div id="slideBox" class="slideBox">
+                    <div class="bd">
+                        <ul>
+                            [.banner lang="cn" row="5" name="banner" id="0" type="1".]
+                            <li><a class="pic"><img src="[.$banner.img.]"></a></li>
+                            [./banner.]
+                        </ul>
+                    </div>
+                    <div class="hd">
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="shopico">
+            	<ul>
+                	<li class="a"><a href="#"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-liwu"></span><br />最新商品</a></li>
+                    <li class="b"><a href="#"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-money"></span><br />特价秒杀</a></li>
+                    <li class="c"><a href="/client/wap/?cn-product-11.html"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-jifen"></span><br />积分兑换</a></li>
+                    <li class="d br"><a href="/client/wap/?cn-usershopping.html"><span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-moban-2"></span><br />我的订单</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <!--调用热门商品-->
+            <div class="shopnew">
+                <li class="one">
+                    <a href="?cn-brand-1.html" ><img src="[.$templatepath.]images/p1.jpg" />
+                    <br />品牌1
+                    </a>
+                </li>
+                <li class="two">
+                    <a href="?cn-brand-1.html" ><img src="[.$templatepath.]images/p2.jpg" />
+                    <br />品牌2
+                    </a>
+                </li>
+                <li class="two">
+                    <a href="?cn-product-11.html" ><img src="[.$templatepath.]images/p3.jpg" />
+                    <br />积分商城
+                    </a>
+                </li>
+            </div>
+            <div class="clear"></div>
+            <!--调用推荐商品-->
+            <div class="shoptui">
+            	<h1>推 · 荐</h1>
+                <ul>
+                    <div id="scrollBox" class="scrollBox">
+                        <div class="bd">
+                        
+                                <ul>                        
+                                    [.emmm form="product" row="6" lang="cn" id="0" type="3" name="emmm".]
+                                    <li>
+                                        <a class="pic" href="[.$emmm.wapurl.]" title="[.$emmm.title.]"><img src="[.$webpath.]skin/noimage.png" data-original="[.$emmm.minimg.]" /></a>
+                                        <p>[.$emmm.title.]</p>
+                                    </li>
+                                    [.if $emmm.i % 2 == 0.]
+                                    </ul><ul>
+                                    [./if.]
+                                    [./emmm.]                      
+                                </ul>
+                                
+                        </div>
+                        <div class="hd">
+                                <span class="prev"></span>
+                                <ul></ul>
+                                <span class="next"></span>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="shopfloor">
+            	<h1>百 · 货 · 用 · 品</h1>
+                <ul>
+                    [.emmm form="product" row="6" lang="cn" id="0" type="op" name="emmm".]
+                    <li [.if $emmm.i % 2 == 0.]class="mr0"[./if.]><a href="[.$emmm.wapurl.]" title="[.$emmm.title.]"><img src="[.$webpath.]skin/noimage.png" data-original="[.$emmm.minimg.]" /><p>[.$emmm.title.]</p><p class="jg">￥[.$emmm.webmarket.]</p></a></li>
+                    [./emmm.]
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="shopfloor">
+            	<h1>科 · 技 · 数 · 码</h1>
+                <ul>
+                    [.emmm form="product" row="6" lang="cn" id="0" type="op" name="emmm".]
+                    <li [.if $emmm.i % 2 == 0.]class="mr0"[./if.]><a href="[.$emmm.wapurl.]" title="[.$emmm.title.]"><img src="[.$webpath.]skin/noimage.png" data-original="[.$emmm.minimg.]" /><p>[.$emmm.title.]</p><p class="jg">￥[.$emmm.webmarket.]</p></a></li>
+                    [./emmm.]
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="shopfloor">
+            	<h1>母 · 婴 · 用 · 品</h1>
+                <ul>
+                    [.emmm form="product" row="6" lang="cn" id="0" type="op" name="emmm".]
+                    <li [.if $emmm.i % 2 == 0.]class="mr0"[./if.]><a href="[.$emmm.wapurl.]" title="[.$emmm.title.]"><img src="[.$webpath.]skin/noimage.png" data-original="[.$emmm.minimg.]" /><p>[.$emmm.title.]</p><p class="jg">￥[.$emmm.webmarket.]</p></a></li>
+                    [./emmm.]
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="shopfloor">
+            	<h1>丽 · 人 · 美 · 妆</h1>
+                <ul>
+                    [.emmm form="product" row="6" lang="cn" id="0" type="op" name="emmm".]
+                    <li [.if $emmm.i % 2 == 0.]class="mr0"[./if.]><a href="[.$emmm.wapurl.]" title="[.$emmm.title.]"><img src="[.$webpath.]skin/noimage.png" data-original="[.$emmm.minimg.]" /><p>[.$emmm.title.]</p><p class="jg">￥[.$emmm.webmarket.]</p></a></li>
+                    [./emmm.]
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="shopfloor">
+            	<h1>潮 · 男 · 潮 · 女</h1>
+                <ul>
+                    [.emmm form="product" row="6" lang="cn" id="0" type="op" name="emmm".]
+                    <li [.if $emmm.i % 2 == 0.]class="mr0"[./if.]><a href="[.$emmm.wapurl.]" title="[.$emmm.title.]"><img src="[.$webpath.]skin/noimage.png" data-original="[.$emmm.minimg.]" /><p>[.$emmm.title.]</p><p class="jg">￥[.$emmm.webmarket.]</p></a></li>
+                    [./emmm.]
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="copy">
+                <p>(C) [.$emmm_web.webname.]</p>
+                <p>[.$emmm_web.by.]</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="rightnav">
+        	<ul>
+                [.callcolumn id="2" row="8" lang="cn" type="td" name="callcolumn".]
+                <li><a href="[.$callcolumn.wapurl.]" title="[.$callcolumn.title.]">[.$callcolumn.title.]</a></li>
+                [./callcolumn.]
+			</ul>
+        </div>
+    </div>
+	[.include file="cn/cn_shopfoot.html".]
+</div>
+<script type="text/javascript">
+TouchSlide({ 
+	slideCell:"#slideBox",
+	titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+	mainCell:".bd ul", 
+	effect:"leftLoop", 
+	autoPage:true,//自动分页
+	autoPlay:true //自动播放
+});
+TouchSlide({ 
+	slideCell:"#scrollBox",
+	titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+	effect:"leftLoop", 
+	autoPage:true, //自动分页
+});
+</script>
+</body>
+</html>

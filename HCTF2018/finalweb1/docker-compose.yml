@@ -1,0 +1,21 @@
+version: '2'
+services:
+  hctf2018web1:
+    build: .
+    depends_on:
+      - db
+    restart: always
+    # volumes:
+    #   - ./html:/home/team/workdir
+    ports:
+      - "127.0.0.1:23333:80"
+    links:
+      - db:db
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=22D4E280-A2E9-4C24-8248-6FB26171B536
+      - MYSQL_DATABASE=emmm
+    command: --max-connections=1024 --query-cache-size=128MB --general_log=1 --general_log_file=/var/log/mysql/MySQL_g4n4rAl.log
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro

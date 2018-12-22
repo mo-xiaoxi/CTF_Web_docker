@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$opcms.title.] - [.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$opcms.tag.]" />
+<meta name="description" content="[.$opcms.description.]"/>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+
+[.include file="cn/cn_top.html".]
+[.include file="cn/cn_banner.html".]
+
+
+<div class="wrap">
+  <div class="main">
+    <div class="fyLeft">
+      <dl class="l_pro">
+  <dt><a href="#" title="公司视频">公司视频</a></dt>
+ 
+[.callcolumn id="5" row="10" lang="cn" type="ty" name="callcolumn".]
+<dd><a href="[.$callcolumn.url.]" title="[.$callcolumn.title.]">[.$callcolumn.title.]</a></dd>
+[./callcolumn.]
+
+  </dl>
+<div class="leftpro">
+  <div class="leftpro_t"> <span><a href="/product.php" title="产品推荐">产品推荐</a></span>
+    <ul class="ul02">
+            <li class="li02"></li>
+            <li></li>
+            <li></li>
+          </ul>
+  </div>
+  <ul class="ul01">
+  
+[.emmm form="product" row="3" lang="cn" id="0" type="op" name="emmm".]
+  	    <li [.if $emmm.i == 1.]class="li01"[./if.]> <a href="[.$emmm.url.]" title="[.$emmm.title.]" class="productliimg"><img src="[.$emmm.minimg.]" width="172" height="172" alt="[.$emmm.title.]" /></a> <a href="[.$emmm.url.]" title="[.$emmm.title.]" class="producttxt">[.$emmm.title.]</a> </li>
+[./emmm.] 
+		
+      </ul>
+</div>
+<div class="contact"> 
+<a></a><a></a><a></a></div>    </div>
+    <div class="fyRight">
+      <div class="title"> <span class="fl">[.$listname.title.]</span>
+        <div class="fr">您当前的位置：<a href="/" title="首页">首页</a>
+
+[.foreach $crumbs as $op.]
+ >> <a href="[.$op.url.]" title="[.$op.title.]">[.$op.title.]</a>
+[./foreach.]
+
+		</div>
+      </div>
+<div class="mainRightMain ">
+[.$ad.view.]
+        <div class="padding25">
+          <h2 class="center">[.$opcms.title.]</h2>
+          <div class="title_s"><span class="fl">发布日期：[.$opcms.time|date_format:"%Y,%m,%d".]&nbsp;已浏览：[.$opcms.click.]</span>
+            <div class="sharewrap">
+              <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare"> <span class="bds_more" style="line-height:16px;">分享到：</span> <a class="bds_qzone"></a> <a class="bds_tsina"></a> <a class="bds_tqq"></a> <a class="bds_renren"></a> <a class="shareCount"></a> </div>
+              <script type="text/javascript" id="bdshare_js" data="type=tools" ></script> 
+              <script type="text/javascript" id="bdshell_js"></script> 
+              <script type="text/javascript">
+            document.getElementById("bdshell_js").src = "http://share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+        </script></div>
+          </div>
+          <div class="newsview">
+          	            <div class='pb'><div class='pagebox'><div class="nei gun">
+<div class="about-1">
+
+
+[.*视频播放器调用开始*.]
+[.$opcms.player.]
+<div style="clear:both; height:50px;"></div>
+[.$opcms.content.]
+[.*视频播放器调用结束*.]
+
+
+</div>
+</div>
+
+<p> </p>
+<div align='center'></div></div></div></div>
+          <div class="main_r_nav">
+            <div>[.uptext form="video" type="up" font="上一条：" noacc="暂无数据".]</div>
+            <div>[.uptext form="video" type="down" font="下一条：" noacc="暂无数据".]</div>
+          </div>
+          </div>
+      </div>
+	  [.comment id=$opcms.id type=$ip.type row="10".]
+    </div>
+  </div>
+</div>
+
+[.include file="cn/cn_foot.html".]
+</body>
+</html>

@@ -1,0 +1,123 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script charset="utf-8" src="templates/images/emmm.js"></script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">综合订单列表</li>
+  <li onclick="setTab(0,1)" ><a href="emmm_ordersalone.php">单项处理订单</a></li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+			<form id="form2" name="form2" method="post" action="?emmm_cms=Batch">
+			
+			<table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+			
+			[.section loop=$orders name=op.]
+			  <tr style="background:[.cycle values='#FCF6E9,#E8E7E5'.]">
+				<td width="85%" valign="top">
+				
+					<table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+					  <tr>
+						<td width="2%"><div align="center">ID</div></td>
+						<td width="33%">商品</td>
+						<td width="18%">商品订单号</td>
+						<td width="10%">订单时间</td>
+						<td width="6%">付款？</td>
+						<td width="6%">发货？</td>
+						<td width="10%">发货时间</td>
+						<td width="7%">签收？</td>
+						<td width="8%">操作</td>
+					  </tr>
+					  [.assign var="money" value=0.]
+					  [.assign var="freight" value=0.]
+					  [.foreach $orders[op].oid as $opop.]
+					  [.sql mysql="select `id`,`COL_Ordersname`,`time`,`COL_Ordersnumber`,`COL_Orderspay`,`COL_Orderssend`,`COL_Ordersgotime`,`COL_Integralok`,`COL_Sign`, `COL_Ordersusermarket`,`COL_Ordersfreight`,`COL_Ordersnum` from emmm_orders where id = $opop" font="未找到数据!" name="sql".]
+					  <tr>
+						<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$sql.0.]</font></div></td>
+						<td>[.$sql.1.]</td>
+						<td>[.$sql.3.]</td>
+						<td>[.$sql.2.]</td>
+						<td>
+						[.if $sql.7 == 0.]
+						[.if $sql.4 == 1.]<img src="[.$webpath.]skin/weifukuan.gif" border="0" />[.elseif $sql.4 == 2.]<img src="[.$webpath.]skin/yifukuan.gif" border="0" />[.elseif $sql.4 == 3.]<img src="[.$webpath.]skin/hdfukuan.gif" border="0" />[./if.]
+						[.else.]
+						<img src="[.$webpath.]skin/jfdh.gif" border="0" />
+						[./if.]
+						</td>
+						<td>[.if $sql.5 == 1.]<img src="[.$webpath.]skin/weifahuo.gif" border="0" />[.elseif $sql.5 == 2.]<img src="[.$webpath.]skin/yifahuo.gif" border="0" />[./if.]</td>
+						<td>[.$sql.6.]</td>
+						<td>[.if $sql.8 == 0.]未签收[.elseif $sql.8 == 1.]已签收[./if.]</td>
+						<td><a href="emmm_ordersview.php?id=[.$sql.0.]"><img src="[.$webpath.]skin/chulidingdan.gif" border="0" /></a></td>
+					  </tr>
+					  [.assign var="money" value=$money + $sql.9 * $sql.11.]
+					  [.assign var="freight" value=$freight + $sql.10.]
+					  [./sql.]
+					  [./foreach.]
+					</table>
+					
+				</td>
+				<td width="15%" valign="top">
+				<p><input type="checkbox" name="op_b[]" value="[.$orders[op].id.]" /></p>
+				<p>总订单号：[.$orders[op].num.]</p>
+				<p>创建时间：[.$orders[op].time.]</p>
+				<p>收货人姓名：[.$orders[op].fname.]</p>
+				<p>收货人电话：[.$orders[op].ftel.]</p>
+				<p>收货人地址：[.$orders[op].fadd.]</p>
+				<p>付款：[.$money.] 元</p>
+				<p>优惠券：[.$orders[op].couponmoney.] 元</p>
+				<p>运费：[.$freight.] 元</p>
+				<p>合计：[.$money - $orders[op].couponmoney + $freight.] 元</p>
+				</td>
+			  </tr>
+				[.sectionelse.]
+			  <tr>
+				<td colspan="9">[.$emmm_access.]</td>
+			  </tr>
+			[./section.]
+			  <tr>
+				<td></td>
+				<td>
+				
+					<input onclick="selectAll()" type="checkbox" name="controlAll" style="controlAll" id="controlAll"/> 全选
+					<p>
+						<input type="radio" name="buy_del_print" value="del" /> 删除
+						&nbsp;&nbsp;
+						<input type="radio" name="buy_del_print" value="print" checked /> 打印
+						&nbsp;&nbsp;
+						<input type="radio" name="buy_del_print" value="go" /> 发货
+					</p>
+				</td>
+			  </tr>
+			  <tr>
+				<td></td>
+				<td>
+				<input type="submit" name="Submit" value="批量操作" style="width:80px; height:25px; background: #0099FF; color:#FFFFFF; border:0px;" onclick="javascript:return confirm('确定操作吗？成功后无法恢复哦。')" />
+				</td>
+			  </tr>
+			  <tr>
+				<td colspan="10">[.$emmmpage.]</td>
+			  </tr>
+			</table>
+			</form>
+        </div>
+	  </li>
+  </ul>
+  
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

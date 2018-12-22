@@ -1,0 +1,84 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">仓库列表</li>
+  <li style="width:300px;"><font color="#000000">仓库中都是被下架的商品,可以编辑后在上架！</font></li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		  <form id="form1" name="form1" method="post" action="?emmm_cms=xj">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="5%" bgcolor="#EBEBEB">上架</td>
+				  	<td width="10%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+					<td width="10%" bgcolor="#EBEBEB"><div align="center">缩略图</div></td>
+                    <td width="25%" bgcolor="#EBEBEB">标题</td>
+					<td width="10%" bgcolor="#EBEBEB">本站价格</td>
+					<td width="10%" bgcolor="#EBEBEB">库存</td>
+                    <td width="15%" bgcolor="#EBEBEB">发布时间</td>
+                    <td width="15%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$product name=op.]
+                  <tr>
+				  	<td><div align="center"><input name="op_xj[]" type="checkbox" value="[.$product[op].id.]" /></div></td>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$product[op].id.]</font></div></td>
+					<td><div align="center"><img src="[.if !$product[op].minimg.]../../skin/noimage.png[.else.][.if strstr($product[op].minimg,'http://').][.$product[op].minimg.][.else.][.$webpath.][.$product[op].minimg.][./if.][./if.]" border="0" width="80" height="80" /></div></td>
+                    <td>
+					<font style="background: #FF9900; color:#FFFFFF; padding:2px; text-align:center;">[.$product[op].lang.]</font>
+					<font style="background: #0099CC; color:#FFFFFF; padding:2px; text-align:center;">[.$product[op].class.]</font>
+					&nbsp;&nbsp;[.$product[op].title.]
+					</td>
+					<td>[.$product[op].webmarket.]</td>
+					<td>[.$product[op].stock.]</td>
+                    <td>[.$product[op].time.]</td>
+                    <td><a href="emmm_productedit.php?id=[.$product[op].id.]">编辑</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="?emmm_cms=del&id=[.$product[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="8">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+				  <tr>
+                    <td colspan="8"><input type="submit" name="Submit" value="批量上架" style="width:80px; height:25px; background: #0099FF; color:#FFFFFF; border:0px;" /></td>
+                  </tr>
+                  <tr>
+                    <td colspan="8">[.$emmmpage.]</td>
+                  </tr>
+                </table>
+				</form>
+		</div>
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

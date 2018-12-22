@@ -1,0 +1,33 @@
+<link href="[.$plugsurl.]css/common.css" rel="stylesheet" type="text/css" />
+<div id="ukasky_livecontact" class="ukasky_livecontact">
+<div class="floatL">
+<a id="aFloatTools_Show" class="btnOpen" href="javascript:void(0);" style="display: block"> </a>
+<a id="aFloatTools_Hide" class="btnCtn" href="javascript:void(0);" style="display: none"> </a>
+</div>
+<div class="floatR">
+<div class="tp"></div>
+<div class="cn">
+<ul>
+<li class="yidacms_qqtop">
+<h3 class="titZx">客服中心</h3>
+</li>
+
+[.foreach $service as $op.]
+[.if $op.class == 'qq'.]
+<li><a class="icoTc" style="BACKGROUND:url([.$plugsurl.]css/button_121.gif) no-repeat center left;" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=[.$op.number.]&amp;site=qq&amp;menu=yes">[.$op.name.]</a></li>
+[.elseif $op.class == 'aliww'.]
+<li><a class="icoTc" style="BACKGROUND:url([.$plugsurl.]css/button_122.gif) no-repeat center left;" target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=[.$op.number.]&siteid=cntaobao&status=1&charset=utf-8">[.$op.name.]</a></li>
+[.elseif $op.class == 'skype'.]
+<li><a class="icoTc" style="BACKGROUND:url([.$plugsurl.]css/button_123.gif) no-repeat center left;" target="_blank" href="skype:[.$op.number.]?add">[.$op.name.]</a></li>
+[./if.]
+[./foreach.]
+
+<li>
+<h3 class="titDh">电话咨询</h3>
+</li>
+<li><span class="icoTl">[.$emmm_web.webtel.]</span> </li>
+<li class="bot">
+<h3 class="titDc"><a href="#TOP">返回顶部</a></h3>
+</li>
+</ul>
+</div></div></div>

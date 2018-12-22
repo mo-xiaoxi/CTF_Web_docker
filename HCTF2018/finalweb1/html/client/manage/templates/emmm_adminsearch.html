@@ -1,0 +1,82 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+<style type="text/css">img{ width:150px;} tr,td {padding:10px;}</style>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<form id="form1" name="form1" method="POST" action="?emmm_cms=search" class="registerform">
+<!--第一种形式-->
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">后台内容检索</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block"><li>
+		<table width="100%" border="0">
+          <tr>
+            <td width="60">
+				<select id="sid" name="sid">
+				<option value="article" selected="selected">文章</option>
+				<option value="product" >商品</option>
+				<option value="photo" >案例</option>
+				<option value="video" >视频</option>
+				<option value="down" >文档</option>
+				<option value="job" >招聘</option>
+				<option value="user" >会员</option>
+				<option value="orders" >订单</option>
+				</select>
+			</td>
+            <td width="370">
+			<input type="text" class="win" name="content" id="content" value="请输入搜索关键词" onfocus="this.value=''" onblur="if(!value){value=defaultValue}"/>
+			<input type="hidden" name="lang" value="cn" /></td>
+            <td><input type="submit" title="后台检索" class="emmm-anniu" value="后台检索"/></td>
+          </tr>
+        </table>
+  </li></ul>
+ </div>
+</div>
+</form>
+
+  <table width="90%" border="0" align="center">
+  [.foreach $search as $op.]
+    <tr bgcolor="[.cycle values="#f4f4f4,#ffffff".]">
+      <td width="50" style="border-bottom:1px #CCCCCC dashed;">[.$op.i.]</td>
+      <td style="border-bottom:1px #CCCCCC dashed;"><a href="[.$op.url.]">[.$op.title.]
+	  <p style="font-size:12px; color:#999999; padding-left:30px;">[.$op.content|truncate:200:"...".]</p>
+	  </a></td>
+	  <td><a href="[.$op.url.]">编辑</a></td>
+    </tr>
+  [.foreachelse.]
+    <tr>
+      <td>未搜索到记录！</td>
+    </tr>
+  [./foreach.]
+  <tr>
+	<td colspan="3">[.$emmmpage.]</td>
+  </tr>
+</table>
+  
+[.include file="emmm_foot.html".]
+</body>
+</html>

@@ -1,0 +1,182 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">管理员列表</li>
+  <li onclick="setTab(0,1)">添加管理员</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="5%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="15%" bgcolor="#EBEBEB">管理员账号</td>
+					<td width="55%" bgcolor="#EBEBEB">管理员权限</td>
+                    <td width="15%" bgcolor="#EBEBEB">创建时间</td>
+                    <td width="10%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$Adminlist name=op.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$Adminlist[op].id.]</font></div></td>
+                    <td>[.$Adminlist[op].adminname.]</td>
+					<td>[.if $Adminlist[op].admin == 1.]全部权限[.else.][.$Adminlist[op].power.][./if.]</td>
+					<td>[.$Adminlist[op].time.]</td>
+                    <td>
+					
+					<a href="emmm_manageview.php?id=[.$Adminlist[op].id.]">编辑</a>
+					
+					[.if $Adminlist[op].admin == 2.]
+					&nbsp;&nbsp;-&nbsp;&nbsp;<a href="?emmm_cms=del&id=[.$Adminlist[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a>
+					[./if.]
+					
+					</td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="5">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+				  
+                  <tr>
+                    <td colspan="5">[.$emmmpage.]</td>
+                  </tr>
+                </table>
+		</div>
+	  </li>
+  </ul>
+  
+  <ul>
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td width="10%"><div align="right">管理员账号</div></td>
+			<td width="90%"><input name="COL_Adminname" type="text" class="win" [.$emmm_bgcolor.] datatype="*" nullmsg="账号是必填项!"/><font color=red> (*)</font>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">登录密码</div></td>
+			<td><input name="COL_Adminpass" type="text" class="win" [.$emmm_bgcolor.] atatype="*6-16" nullmsg="请设置密码！" errormsg="密码范围在6~16位之间！" /><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">确认密码</div></td>
+			<td><input name="COL_Adminpassto" type="text" class="win" [.$emmm_bgcolor.] datatype="*" recheck="COL_Adminpass" nullmsg="请再输入一次密码！" errormsg="您两次输入的账号密码不一致！" /><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">管理权限</div></td>
+			<td>
+			
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="01" />&nbsp;网站语言配置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="02" />&nbsp;网站功能管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="03" />&nbsp;图片水印设置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="04" />&nbsp;系统邮件设置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="05" />&nbsp;模板安装使用&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="06" />&nbsp;在线编辑模板&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="07" />&nbsp;模板标签&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="08" />&nbsp;网站栏目管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="09" />&nbsp;基本信息设置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="10" />&nbsp;留言板管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="11" />&nbsp;BANNER管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="12" />&nbsp;浮动客服管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="13" />&nbsp;热门搜索词&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="14" />&nbsp;文章管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="15" />&nbsp;图集管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="16" />&nbsp;视频管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="17" />&nbsp;下载管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="18" />&nbsp;招聘管理&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="19" />&nbsp;会员选项&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="20" />&nbsp;会员管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="21" />&nbsp;用户组管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="22" />&nbsp;站内邮件&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="23" />&nbsp;会员充值&nbsp;&nbsp;
+			  [.*<input type="checkbox" name="COL_Adminpower[]" value="24" />&nbsp;管理员角色&nbsp;&nbsp;*.]
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="25" />&nbsp;广告管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="26" />&nbsp;友情链接管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="27" />&nbsp;插件管理&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="28" />&nbsp;手机网站管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="29" />&nbsp;微信网站管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="30" />&nbsp;支付宝服务窗管理&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="31" />&nbsp;数据库操作&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="32" />&nbsp;执行SQL语句&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="33" />&nbsp;后台信息检索&nbsp;&nbsp
+			  <input type="checkbox" name="COL_Adminpower[]" value="36" />&nbsp;API接口管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="37" />&nbsp;评论管理&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="38" />&nbsp;商品管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="39" />&nbsp;商城设置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="40" />&nbsp;订单处理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="41" />&nbsp;仓库管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="42" />&nbsp;商品规格管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="43" />&nbsp;商品属性管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="44" />&nbsp;品牌管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="45" />&nbsp;运费模板&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="46" />&nbsp;网站相关优化&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="47" />&nbsp;积分领取管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="48" />&nbsp;后台建站备忘录&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="49" />&nbsp;翻页按钮样式&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="50" />&nbsp;优惠券管理&nbsp;&nbsp;
+			  </p>
+			  <p style=" width:640px; float:left; background:#FF0000; color:#fff;">
+			  <input type="checkbox" name="COL_Adminpower[]" value="34" />&nbsp;编辑权限(一但加入这个权限，意味着该管理员有权编辑文章、图集、视频、商品、下载、招聘、留言板等数据。)
+			  </p>
+			  <p style=" width:640px; float:left; background:#FF0000; color:#fff;">
+			  <input type="checkbox" name="COL_Adminpower[]" value="35" />&nbsp;删除权限(一但加入这个权限，意味着该管理员有权删除文章、图集、视频、商品、下载、招聘、留言板等数据。)
+			  </p>
+			</td>
+		  </tr>
+		   <tr>
+		   	<td><input type="hidden" name="COL_Admin" value="2" /></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

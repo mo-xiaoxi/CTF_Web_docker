@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>搜索结果-[.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+
+[.include file="cn/cn_top.html".]
+<div class="main">
+	<div style="clear:both; height:50px; line-height:50px;">
+	<a href="/" title="网站首页">网站首页</a> >> 搜索结果
+	</div>
+	<div style="clear:both;"></div>
+<div class="shop_prlist">
+	<ul>
+		<table width="100%" border="0" cellpadding="10">
+			[.foreach $search as $op.]
+			<tr bgcolor="[.cycle values="#f4f4f4,#ffffff".]">
+			<td width="10" style="border-bottom:1px #CCCCCC dashed;"><img src="[.$op.minimg.]" border="0" width="100" height="100" /></td>
+			<td style="border-bottom:1px #CCCCCC dashed;" valign="top"><a href="[.$op.url.]" target="_blank">[.$op.title.]</a>
+			<p style="font-size:12px; color:#999999; padding:10px 0px 0px 30px;">[.$op.content|truncate:400:"...".]</p>
+			</td>
+			</tr>
+			[.foreachelse.]
+			<tr>
+			<td>未搜索到记录！</td>
+			</tr>
+			[./foreach.]
+			<tr>
+				<td colspan="2">[.$emmmpage.]</td>
+			</tr>
+	  </table> 
+	</ul>
+</div>
+</div>
+[.include file="cn/cn_foot.html".]
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$opcms.title.] - [.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+<script type="text/javascript">
+$(document).ready(function() {
+	jQuery.jqtab = function(tabtit,tab_conbox,shijian) {
+		$(tab_conbox).find("li").hide();
+		$(tabtit).find("li:first").addClass("thistab").show(); 
+		$(tab_conbox).find("li:first").show();
+	
+		$(tabtit).find("li").bind(shijian,function(){
+		  $(this).addClass("thistab").siblings("li").removeClass("thistab"); 
+			var activeindex = $(tabtit).find("li").index(this);
+			$(tab_conbox).children().eq(activeindex).show().siblings().hide();
+			return false;
+		});
+	
+	};
+	/*调用方法如下：*/
+	$.jqtab("#tabs","#tab_conbox","click");
+});
+function sx(type){
+	if(type == 1){
+		$(".classhidden").slideDown();	
+	}else{
+		$(".classhidden").slideUp();	
+	}
+}
+</script>
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <form id="form1" name="form1" method="post" action="[.$webpath.]client/wap/?cn-shoppingcart.html-&emmm_cms=shopping">
+        <div class="content">
+            <div id="slideBox" class="slideBox2">
+                <div class="bd">
+                    <ul>
+                        [.foreach $opcms.img as $key => $op.]
+                        <li><a class="pic"><img src="[.$webpath.][.$op.img.]" alt="[.$opcms.title.]"/></a></li>
+                        [./foreach.]
+                    </ul>
+                </div>
+                <div class="hd">
+                    <ul></ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="title">
+            	[.$opcms.title.]
+				<div class="clear"></div>
+				<div class="f-l">
+					<p class="pt-5"><del>￥[.$opcms.market.]</del></p>
+					<p>￥[.$opcms.webmarket.]</p>
+				</div>
+				<div class="f-r f-333">
+					[.$opcms.brand.title.] 
+				</div>
+            </div>
+            <div class="clear"></div>
+            <div class="class f-l mt-10 mb-10">
+            	<a onClick="sx(1);" id="wap_sx">选择：商品规格/数量/快递</a>
+            </div>
+            <div class="classhidden">
+				[.emmm_gg id=$opcms.specificationsid arr=$opcms.specifications mktprice=$opcms.market price=$opcms.webmarket mktpricefont="价格" pricefont="优惠价" stock="库存" stocks=$opcms.stock numberfont="货号" number=$opcms.goodsno amount="购买数量" freightfont="快递至" symbol="：" moneytype="￥" usermoney=$opcms.usermoney freight=$opcms.freight.]
+				<div class="clear"></div>
+				<a onclick="sx(2);" class="btn btn-success-o radius-5 pt-5 pb-5 pl-25 pr-25 f-l mt-15 mb-15">我选好了</a>
+            </div>
+            <LINK href="/function/plugs/product/base_wap.css" rel=stylesheet>
+            <div class="clear"></div>
+            <div class="shopfoot2">
+                <ul>
+                    <li>
+						<a href="/client/wap/?cn-shoppingcart.html">
+							<span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-cart2-selected"></span><p>购物车</p>
+						</a>
+					</li>
+                    <li>
+						<a href="mqq://im/chat?chat_type=wpa&uin=[.$emmm_web.webqq.]&version=1&src_type=web">
+							<span class="icon YIQI-UI-iconfont YIQI-UI-iconfont-kefu"></span><p>客服</p>
+						</a>
+					</li>
+                    <li class="br0">
+                        <input type="hidden" name="pid" value="[.$opcms.id.]" />
+                        <input type="submit" name="Submit" value="加入购物车" class="btn btn-danger radius-0" style=" width:100%; height:50px; font-size:16px;" />
+                    </li>
+                </ul>
+            </div>
+            </form>
+            <div class="clear"></div>
+            <div class="content_2">
+            
+                    <div id="tabbox">
+                        <ul class="tabs" id="tabs">
+                           <li><a>内容</a></li>
+                           <li><a>发货</a></li>
+                           <li><a>评论</a></li>
+                        </ul>
+                        <ul class="tab_conbox" id="tab_conbox">
+                            <li class="tab_con maximg">
+								[.foreach from=$opcms.attribute item=aop.]
+								<p>[.$aop.name.]：[.$aop.key.]</p>
+								[./foreach.]
+								<div class="clear"></div>
+								[.$opcms.content.]
+                            </li>
+                            <li class="tab_con maximg">
+                               [.$shopset.sendout.]
+                            </li>
+                            <li class="tab_con maximg">
+							<style type="text/css">
+								tr,td {padding:2px;}
+							</style>
+                                [.comment id=$opcms.id type=$ip.type row="10".]
+                            </li>
+                        </ul>
+                    </div>
+                    
+            </div>
+            <div class="clear"></div>
+            <div class="copy">
+                <p>(C) [.$emmm_web.webname.]</p>
+                <p>[.$emmm_web.by.]</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="rightnav">
+        	<ul>
+                [.callcolumn id="2" row="8" lang="cn" type="td" name="callcolumn".]
+                <li><a href="[.$callcolumn.wapurl.]" title="[.$callcolumn.title.]">[.$callcolumn.title.]</a></li>
+                [./callcolumn.]
+			</ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+TouchSlide({ 
+	slideCell:"#slideBox",
+	titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+	mainCell:".bd ul", 
+	effect:"leftLoop", 
+	autoPage:true,//自动分页
+	autoPlay:true //自动播放
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq183#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script charset="utf-8" src="templates/images/emmm.js"></script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li [.if $smarty.get.opcms == 'articleview'.]class="hover"[./if.]><a href="?opcms=articleview"><font color="#000000">文章评论</font></a></li>
+  <li [.if $smarty.get.opcms == 'photoview'.]class="hover"[./if.]><a href="?opcms=photoview"><font color="#000000">图集评论</font></a></li>
+  <li [.if $smarty.get.opcms == 'videoview'.]class="hover"[./if.]><a href="?opcms=videoview"><font color="#000000">视频评论</font></a></li>
+  <li [.if $smarty.get.opcms == 'downview'.]class="hover"[./if.]><a href="?opcms=downview"><font color="#000000">下载评论</font></a></li>
+  <li [.if $smarty.get.opcms == 'jobview'.]class="hover"[./if.]><a href="?opcms=jobview"><font color="#000000">招聘评论</font></a></li>
+  <li [.if $smarty.get.opcms == 'productview'.]class="hover"[./if.]><a href="?opcms=productview"><font color="#000000">商品评论</font></a></li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <form id="form2" name="form2" method="post" action="?emmm_cms=Batch">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				 	<td width="5%" bgcolor="#EBEBEB"><div align="center">批量?</div></td>
+				  	<td width="5%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="30%" bgcolor="#EBEBEB">评论内容</td>
+                    <td width="20%" bgcolor="#EBEBEB">被评论文章</td>
+					<td width="15%" bgcolor="#EBEBEB">评论人</td>
+					<td width="10%" bgcolor="#EBEBEB">IP</td>
+					<td width="15%" bgcolor="#EBEBEB">时间</td>
+                  </tr>
+				  [.section loop=$comment name=op.]
+                  <tr>
+				 	 <td><div align="center"><input type="checkbox" name="op_b[]" value="[.$comment[op].id.]" />
+				 	 </div></td>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$comment[op].id.]</font></div></td>
+                    <td>
+					<p>[.$comment[op].content.]</p>
+					[.if $comment[op].gocontent != ''.]
+					<p style="color:#FF3300">您的回复：[.$comment[op].gocontent.]&nbsp;&nbsp;&nbsp;&nbsp;([.$comment[op].gotime.])</p>
+					[./if.]
+					<a href="javascript:dialog([.$comment[op].id.])">[点击回复]</a>
+					</td>
+                    <td>[.$comment[op].sj.]</td>
+					<td>
+					
+					<p>[.$comment[op].name.]</p>
+					[.if $comment[op].type == 'productview'.]
+					<p>([.if $comment[op].vote == 1.]好评[.elseif $comment[op].vote == 2.]中评[.elseif $comment[op].vote == 3.]差评[.else.]未做评价[./if.])</p>
+					<p>(宝贝与描述相符度：[.$comment[op].scoring[0].]&nbsp;星)</p>
+					<p>(卖家服务态度：[.$comment[op].scoring[1].]&nbsp;星)</p>
+					<p>(卖家发货速度：[.$comment[op].scoring[2].]&nbsp;星)</p>
+					[./if.]
+					
+					</td>
+					<td>[.$comment[op].ip.]</td>
+					<td>[.$comment[op].time.]</td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="7">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+				  <tr>
+				  	<td><div align="center"><input onclick="selectAll()" type="checkbox" name="controlAll" style="controlAll" id="controlAll"/></div></td>
+					<td colspan="6"></td>
+				  </tr>
+				  <tr>
+                    <td colspan="7">
+					<input type="submit" name="Submit" value="批量删除" style="width:80px; height:25px; background: #0099FF; color:#FFFFFF; border:0px;" onclick="javascript:return confirm('确认删除吗?')" />
+					</td>
+                  </tr>
+                  <tr>
+                    <td colspan="7">[.$emmmpage.]</td>
+                  </tr>
+                </table>
+                </form>
+        </div>
+	  </li>
+  </ul>
+ </div>
+</div>
+<script>
+//弹出一个页面层
+function dialog(id){
+    $.layer({
+        type: 1,
+        title: '评论回复ID:'+id,
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['300px', '300px'],
+        page: {html: '<form id="form1" name="form1" method="POST" action="?emmm_cms=reply&id='+id+'" class="registerform"><textarea name="COL_Gocontent" style="width:250px; border:0px; height:160px; padding:20px;">输入你要回复的文字</textarea>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="回复" class="emmm-anniu"/></form>'}
+    });
+};
+</script>
+[.include file="emmm_foot.html".]
+</body>
+</html>

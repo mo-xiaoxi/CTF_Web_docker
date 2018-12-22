@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心 - [.$emmm_web.website.]</title>
+<link rel="stylesheet" href="[.$templatepath.]css/style.css" type="text/css" />
+<script type="text/javascript" src="[.$webpath.]function/plugs/YIQI-UI/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" type="text/css" />
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="YIQI-UI">
+    [.include file="cn_top.html".] 
+    <div class="clear"></div>
+    <div class="emmm_center">
+    <div class="clear"></div>
+    
+        <div class="emmm_login">
+            <div class="emmm_user_left">
+                [.include file="cn_leftnav.html".] 
+            </div>
+            <div class="emmm_user_right">
+            
+            [.*订单模板开始*.]
+            <script src="../../function/plugs/layer/layer.min.js"></script>
+            <style type="text/css">
+            tr,td { padding:6px;}
+			input {-webkit-appearance: checkbox; border:1px #ccc solid; }
+            </style>
+            
+            [.if isset($smarty.get.tag).]
+            <script type="text/javascript">$(document).ready(function(){$("#[.$smarty.get.tag.]").addClass("btn btn-primary radius-5 pt-5 pb-5 pl-10 pr-10");});</script>
+            [.else.]
+            <script type="text/javascript">$(document).ready(function(){$("#qb").addClass("btn btn-primary radius-5 pt-5 pb-5 pl-10 pr-10");});</script>
+            [./if.]
+			</script>
+            <form id="form2" name="form2" method="post" action="[.$webpath.]function/emmm_play.class.php?emmm_shoporders">
+              <table width="100%" border="0" class="table table-border table-hover">
+              	<tr>
+                	<td colspan="7" class="shopnav">
+                    	<a href="?cn-usershopping-op.html" id="qb">全部订单</a>
+                        <a href="?cn-usershopping-op.html-&tag=dfk" id="dfk">待付款</a>
+                        <a href="?cn-usershopping-op.html-&tag=dfh" id="dfh">待发货</a>
+                        <a href="?cn-usershopping-op.html-&tag=dqs" id="dqs">待签收/评价</a>
+                    </td>
+                </tr>
+                <tr style="background:url([.$webpath.]skin/clubgb.png) repeat-x;">
+                  <td width="20"></td>
+                  <td width="200">单号</td>
+                  <td>商品</td>
+                  <td width="80">价格</td>
+                  <td width="70">&nbsp;</td>
+                  <td width="70">&nbsp;</td>
+                  <td width="40">&nbsp;</td>
+                </tr>
+                [.foreach $orderslist as $op.]
+                <tr bgcolor="[.cycle values="#ffffff,#f5f5f5".]">
+                  <td>[.if $op.pay == 1.]<div align="center"><input type="checkbox" name="id[]" value="[.$op.id.]" /></div>[./if.]</td>
+                  <td>[.$op.number.]</td>
+                  <td>
+                  <p class="f-14">[.$op.title|truncate:30:"...".]</p>
+                  <p class="f-12 mt-5 f-999">[.if $op.pratt != ''.]([.$op.pratt.])[./if.]&nbsp;[.$op.text.]</p>
+                  </td>
+                  <td>
+                  <p>[.$op.usermarket.]&nbsp;×&nbsp;[.$op.num.]</p>
+                  <p class="f-999 mt-5">(运费：[.$op.freight.]元)</p>
+                  </td>
+                  <td><div align="center">
+                  [.if $op.pay == 1.]
+                  <a href="[.$webpath.]?cn-shoppingorders.html-&id=[.$op.id.]"><img src="[.$webpath.]skin/fukuan.gif" border="0" /></a>
+                  [.else.]
+                      [.if $op.send == 1.]
+                      <p>待发货...</p>
+                      [.else.]
+                      <p>已发货</p>
+                      <p><a href="javascript:dialog('[.$op.express.]','[.$op.expressnum.]')"><span style="color:#999999;">物流查询</span></a></p>
+                      [./if.]
+                  [./if.]
+                  </div></td>
+                  <td><div align="center">
+                  [.if $op.send != 1.]
+                    [.if $op.sign == 0.]
+                        <a href="[.$webpath.]client/user/?cn-usershopping-op.html-&emmm_cms=sign&id=[.$op.id.]&dh=[.$op.number.]" onclick="javascript:return confirm('确认签收吗?')">【签收】</a>
+                        [.else.]
+                        已签收
+                    [./if.]
+                  [./if.]
+                  </div></td>
+                  <td><div align="center">
+                  [.if $op.pay == 1.]
+                      <a href="[.$webpath.]client/user/?cn-usershopping-op.html-&emmm_cms=del&id=[.$op.id.]&dh=[.$op.number.]" onclick="javascript:return confirm('确认删除吗?')">删除</a>
+                        [.else.]
+                        
+                        [.if $op.sign == 1.]
+                            <a href="../../function/plugs/Comment/product-content.php?id=[.$op.prid.]&type=productview&row=10" target="_blank">评论</a>
+                        [./if.]
+                        
+                  [./if.]
+                  </div></td>
+                </tr>
+                [./foreach.]
+                <tr>
+                  <td colspan="7">
+                     <input type="submit" value="合并付款" class="btn-l pd-15 btn-lr-10"  />
+                     <input type="button" value="未付款商品统一付款" class="btn-r pd-15 btn-rr-10" onclick=window.open("[.$webpath.]?cn-shoppingorders.html","_self") />
+                     <input type="hidden" value="[.$ip.lang.]" name="lang" />
+                  </td>
+                </tr>
+              </table>
+              </form>
+              <script> 
+                function dialog(title,number){
+                    $.layer({
+                        type: 2,
+                        title: '快递查询',
+                        shade: [0],
+                        border: [5, 0.3, '#000'],
+                        area: ['600px', '340px'],
+                        iframe:{src: '../../function/api/kuaidi100/index.php?title='+title+'&number='+number}
+                    });
+                };
+                </script>
+                 
+                <link rel="stylesheet" href="../../function/plugs/Validform/style.css" type="text/css" />
+                <script type="text/javascript" src="../../function/plugs/Validform/Validform_v5.3.2.js"></script>
+                <script type="text/javascript"> 
+                $(function(){
+                    $(".registerform").Validform();
+                })
+                </script>
+                <div style=" clear:both; height:20px;"></div>
+                [.$emmmpage.]
+              [.*订单模板结束*.]
+              
+            </div>
+        </div>
+    </div>
+    [.include file="cn_foot.html".]
+</div>
+</body>
+</html>

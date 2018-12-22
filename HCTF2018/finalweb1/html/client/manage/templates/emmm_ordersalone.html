@@ -1,0 +1,90 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script charset="utf-8" src="templates/images/emmm.js"></script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" ><a href="emmm_orders.php">综合订单列表</a></li>
+  <li class="hover">单项订单处理</li>
+  <li style="width:500px;">
+	<form id="form2" name="form2" method="post" action="?emmm_cms=search">
+		<input type="text" value="输入会员账号或商品订单号搜索TA的订单" style="width:300px;float:left; margin:5px 0 0 50px;" name="content"><input type="submit" value="搜索" style="float:left; margin-top:5px;">
+	</form>
+  </li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <form id="form2" name="form2" method="post" action="?emmm_cms=Batch">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				 	<td width="5%" bgcolor="#EBEBEB"><div align="center">批量?</div></td>
+				  	<td width="3%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="30%" bgcolor="#EBEBEB">商品</td>
+					<td width="18%" bgcolor="#EBEBEB">商品订单号</td>
+                    <td width="7%" bgcolor="#EBEBEB">订单时间</td>
+					<td width="6%" bgcolor="#EBEBEB">付款？</td>
+					<td width="6%" bgcolor="#EBEBEB">发货？</td>
+					<td width="9%" bgcolor="#EBEBEB">发货时间</td>
+					<td width="6%" bgcolor="#EBEBEB">签收？</td>
+                    <td width="10%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$orders name=op.]
+                  <tr>
+				 	 <td><div align="center"><input type="checkbox" name="op_b[]" value="[.$orders[op].id.]" />
+				 	 </div></td>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$orders[op].id.]</font></div></td>
+                    <td>[.$orders[op].title.]</td>
+					<td>[.$orders[op].number.]</td>
+					<td>[.$orders[op].time.]</td>
+					<td>
+					[.if $orders[op].integralok == 0.]
+					[.if $orders[op].pay == 1.]<img src="[.$webpath.]skin/weifukuan.gif" border="0" />[.elseif $orders[op].pay == 2.]<img src="[.$webpath.]skin/yifukuan.gif" border="0" />[.elseif $orders[op].pay == 3.]<img src="[.$webpath.]skin/hdfukuan.gif" border="0" />[./if.]
+					[.else.]
+					<img src="[.$webpath.]skin/jfdh.gif" border="0" />
+					[./if.]
+					</td>
+					<td>[.if $orders[op].send == 1.]<img src="[.$webpath.]skin/weifahuo.gif" border="0" />[.elseif $orders[op].send == 2.]<img src="[.$webpath.]skin/yifahuo.gif" border="0" />[./if.]</td>
+                    <td>[.$orders[op].gotime.]</td>
+                    <td>[.if $orders[op].sign == 0.]未签收[.elseif $orders[op].sign == 1.]已签收[./if.]</td>
+                    <td><a href="emmm_ordersview.php?id=[.$orders[op].id.]"><img src="[.$webpath.]skin/chulidingdan.gif" border="0" /></a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="9">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+				  <tr>
+				  	<td><div align="center"><input onclick="selectAll()" type="checkbox" name="controlAll" style="controlAll" id="controlAll"/></div></td>
+					<td colspan="9"></td>
+				  </tr>
+				  <tr>
+                    <td colspan="10">
+					<input type="submit" name="Submit" value="批量删除" style="width:80px; height:25px; background: #0099FF; color:#FFFFFF; border:0px;" onclick="javascript:return confirm('确定删除吗？删除后无法恢复了。')" />
+					</td>
+                  </tr>
+                  <tr>
+                    <td colspan="10">[.$emmmpage.]</td>
+                  </tr>
+                </table>
+                </form>
+        </div>
+	  </li>
+  </ul>
+  
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

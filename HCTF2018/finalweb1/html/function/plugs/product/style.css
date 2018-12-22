@@ -1,0 +1,79 @@
+
+.prleft { width:430px; height:auto; float:left;}
+.prright { width:520px; float:left;}
+
+
+/* clearfix */
+.clearfix:after{ visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
+*html .clearfix{ zoom:1;}
+.preview{width:400px; height:480px; float:left;}
+
+/* smallImg */
+.smallImg{position:relative; height:52px; margin-top:1px; background-color:#F1F0F0; padding:6px 0; width:400px; overflow:hidden;float:left;}
+.scrollbutton{width:14px; height:50px; overflow:hidden; position:relative; float:left; cursor:pointer; }
+.scrollbutton.smallImgUp , .scrollbutton.smallImgUp.disabled{background:url(d_08.png) no-repeat;}
+.scrollbutton.smallImgDown , .scrollbutton.smallImgDown.disabled{background:url(d_09.png) no-repeat; margin-left:385px; margin-top:-50px;}
+
+#imageMenu {height:50px; width:370px; overflow:hidden; margin-left:0; float:left;}
+#imageMenu li {height:50px; width:60px; overflow:hidden; float:left; text-align:center;}
+#imageMenu li img{width:50px; height:50px;cursor:pointer;}
+#imageMenu li#onlickImg img, #imageMenu li:hover img{ width:44px; height:44px; border:3px solid #959595;}
+
+/* bigImg */
+.bigImg{position:relative; float:left; width:430px; height:400px; overflow:hidden;}
+.bigImg #midimg{width:400px; height:400px;}
+.bigImg #winSelector{width:130px; height:130px;}
+#winSelector{position:absolute; cursor:crosshair; filter:alpha(opacity=15); -moz-opacity:0.15; opacity:0.15; background-color:#000; border:1px solid #fff;}
+
+/* bigView */
+#bigView{position:absolute; border: 1px solid #959595; overflow: hidden; z-index:99999; margin-top:240px; margin-left:-10px;}
+#bigView img{position:absolute; width:1000px; height:1000px;}
+
+/**/
+.contentleft { width:210px; float:left; border:1px #CCCCCC solid; height: auto; padding:20px; overflow:hidden;}
+.contentleft ul { margin-bottom:30px; height:auto; overflow:hidden;}
+.contentleft ul h1 { font-size:14px; font-weight:500;}
+.contentleft ul li { width:105px; height:40px; line-height:40px; float:left;}
+.contentleft ul li a { padding-left:30px; display:block;}
+.contentleft ul p { height:240px; text-align:center;}
+.contentright { float:left; margin-left:30px; width:910px;}
+
+/*选项卡第一种形式*/
+#tabs0 {
+	height: auto;
+	width: 100%;
+	margin:0 auto;
+	margin-bottom:60px;
+}
+.menu0{
+	width: 100%;
+	background:#f4f4f4;
+}
+.menu0 li{
+	display:block;
+	float: left;
+	width:100px;
+	height:50px;
+	line-height:50px;
+	text-align: center;
+	cursor:pointer;
+	font-size:14px;
+}
+.menu0 li.hover{
+	border-bottom:3px #005AA9 solid
+}
+#main0 { border-top:1px #CCCCCC solid;}
+#main0 img { max-width:100%;}
+#main0 a img { max-width:100%;}
+#main0 ul{
+	display: none;
+	padding:10px 0;
+}
+#main0 ul.block{
+	display: block;
+}
+
+.shuxing { margin-bottom:30px; height:auto; overflow:hidden; border:1px #CCCCCC solid; padding:20px;}
+.shuxing span { width:230px; float:left; height:30px; line-height:30px; margin-right:80px; font-size:14px; color:#999}
+.shuxing .shoppp { font-weight:bold;}
+.shuxing .shopcs { font-weight:bold;}

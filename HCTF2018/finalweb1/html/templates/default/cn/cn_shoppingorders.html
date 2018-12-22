@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>收银台结算 - 企业商城 - [.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="Author" content="vidar.club" />
+<LINK href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" rel=stylesheet>
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+<LINK href="[.$templatepath.]shop/css/emmm.css" rel=stylesheet>
+<script type="text/javascript" src="[.$webpath.]function/plugs/YIQI-UI/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/emmm.js"></script>
+<script type="text/javascript" src="[.$webpath.]function/plugs/layer/layer.min.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/banner1.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/rightnav.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+	tcjs('wx');
+	tcjs('sj');
+	tcjs('wxkf');
+	navjs('navleft');
+});
+</script>
+</head>
+<body>
+[.include file="cn/cn_shoptop.html".]
+<div class="clear"></div>
+	<div class="center">
+        <div class="shopviewright" style="width:1200px;">
+            <ul>
+
+	[.*订单处理模板开始，如果更换模板请从这里复制*.]
+	<style type="text/css">
+	td { padding:10px;} 
+	select {-webkit-appearance: menulist; border:1px #ccc solid; }
+	.shopadd { width:94%; height:80px; overflow:hidden; float:left; padding:50px 3% 20px; background:url([.$webpath.]skin/addgb.png) #FDFAF3 bottom repeat-x;}
+	.shopadd li { height:80px; float:left;}
+	.shopadd li p { margin-bottom:5px; }
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$("#coupon").change(function(){
+				var a = $(this).val();
+				var b = a.split('|');
+				var c = $("#couponmoney").html();
+				var d = $("#sto_money").val();
+				if(a == 'emmm'){
+					$("#couponmoney").html(d);
+				}else{
+					if(d < b[2]){
+						alert("总价不能小于优惠券面值!");
+						window.location.reload();
+						return false;
+					}
+					$("#couponmoney").html(d - b[2]);
+					document.getElementById('x').disabled=false;
+                    document.getElementById('x').className='btn';
+				}
+			});
+		})
+	</script>
+	[.if $ordersarray == 1.]
+		<div class="shopadd">
+				<li>
+						<p><strong>物流信息:</strong></p>
+						<p>收件人姓名：[.$shopadd.name.]</p>
+						<p>联系电话：[.$shopadd.tel.] &nbsp;&nbsp;&nbsp; 收件地址：[.$shopadd.add.]</p>
+				</li>
+				<li style="float:right; line-height:80px;">
+					<a href="[.$webpath.]client/user/?cn-usershopadd.html" style="font-size:18px;">修改物流信息 >>></a>
+				</li>
+		</div>
+		<form id="form1" name="form1" method="post" action="" class="registerform">
+            <table width="100%" border="0" cellpadding="10" bgcolor="#ffffff">
+            <tr>
+              <td colspan="7">
+              		结算订单列表：
+                	<span style="float:right; background:#ff0000; border-radius:5px; padding:3px 10px 3px 10px;"><a href="[.$webpath.]client/user/?cn-usershopping-op.html"><font color="#FFFFFF">重新选择商品</font></a></span>
+              </td>
+            </tr>
+			<tr style="background:#f4f4f4;">
+				<td colspan="2">商品名称</td>
+				<td width="100">价格</td>
+				<td width="100">成交价格</td>
+				<td width="100">数量/重量</td>
+				<td width="50">运费</td>
+				<td width="50"></td>
+			</tr>
+            [.foreach $orderslist as $op.]
+            <tr>
+			  <td width="80">
+				<img src="[.$op.img.]" width="80" height="80">
+			  </td>
+              <td>
+				  <p style="font-size:20px;">
+					  [.$op.title.]
+					  <input type="hidden" name="id[]" value="[.$op.id.]" />
+				  </p>
+				  <p style="font-size:12px; color:#999; margin-top:10px;">
+					[.$op.pratt.][.if $op.text != ''.]([.$op.text.])[./if.]
+				  </p>
+			  </td>
+              <td><del>[.$op.webmarket.]&nbsp;元</del></td>
+              <td style="color:#FF3300;">[.$op.usermarket.]&nbsp;元</td>
+              <td>[.$op.num.]&nbsp;&nbsp;/&nbsp;&nbsp;[.$op.weight.]KG</td>
+			  <td>[.$op.freight.]&nbsp;元</td>
+              <td><div align="center">
+              <a href="[.$webpath.]client/user/?cn-usershopping-op.html-&emmm_cms=del&id=[.$op.id.]&dh=[.$op.number.]&o" onclick="javascript:return confirm('确认删除吗?')"><img src="[.$webpath.]skin/Trash.png" alt="删除" title="删除" /></a>
+              </div></td>
+            </tr>
+            <tr>
+              <td colspan="7"><div style="height:10px; border-bottom:1px #CCCCCC solid;"></div></td>
+            </tr>
+            [./foreach.]
+            </table>
+            <div style="clear:both;"></div>
+            <table width="100%" border="0" align="center" cellpadding="10" bgcolor="#FFFFFF">
+              <tr>
+                <td width="90"><div align="right">付款：</div></td>
+                <td><span style="font-size:18px; color:#FF3300; font-family:Arial, Helvetica, sans-serif">[.$op.total.]</span>&nbsp;元</td>
+              </tr>
+              <tr>
+                <td><div align="right">运费：</div></td>
+                <td><span style="font-size:18px; font-family:Arial, Helvetica, sans-serif">[.$op.freightt.]&nbsp;元&nbsp;<span style="font-size:12px; color:#999;">(系统自动计算运费，如需要更改运费请联系网站客服，修改后在提交订单。谢谢合作！)<!--公式如(数量 * 重量 - 首重 * 续重 + 首重)--></span></td>
+              </tr>
+			  <tr>
+                <td><div align="right">优惠券：</div></td>
+                <td>
+				
+                <input type="hidden" value="[.$op.idmd5.]" name="idmd5" />
+				<select name="coupon" id="coupon">
+					<option value="emmm">不使用优惠券</option> 
+					[.foreach $coupon as $r.]
+					<option value="[.$r.id.]|[.$r.md.]|[.$r.money.]">[.$r.title.]</option> 
+					[.foreachelse.]
+					<option value="0|0|0">无可用优惠券</option> 
+					[./foreach.]
+				</select>
+				
+				</td>
+			  </tr>
+              <tr>
+                <td><div align="right">总计付款：</div></td>
+                <td><span style="font-size:26px; color:#FF3300; font-family:Arial, Helvetica, sans-serif" id="couponmoney">[.$op.total + $op.freightt.]</span>&nbsp;元<span>&nbsp;&nbsp;<a href="#" onclick="window.location.reload();">[刷新价格]</a></span>
+				<input type="hidden" value="[.$op.total + $op.freightt.]" id="sto_money" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+					<style type="text/css">.new-btn-login-sp{border:1px solid #d74c00;padding:1px;display:inline-block}.new-btn-login{background-color:transparent;background-image:url("../../function/api/alipay_quick/images/new-btn-fixed.png");border:medium none}.new-btn-login{background-position:0 -198px;width:82px;color:#fff;font-weight:bold;height:28px;line-height:28px;padding:0 10px 3px}.new-btn-login:hover{background-position:0 -167px;width:82px;color:#fff;font-weight:bold;height:28px;line-height:28px;padding:0 10px 3px}#tabs0{height: auto; overflow:hidden; width:100%; float:left; margin-top:50px;}.menu0{width:100%;height:40px;background: #f4f4f4;}.menu0 li{display:block;float:left;width:150px;height:40px;line-height:40px;font-size:14px;text-align:center;cursor:pointer}.menu0 li.hover{background:#005AA9; color:#FFF; }#main0 {border:1px #ccc solid;padding: 50px 0 80px 30px;} #main0 ul{display:none}#main0 ul.block{display:block}.nopay{text-align:center;margin-top:50px; font-size:14px;}.yhlogo{width:110px; height:90px; float:left; text-align:center; margin-bottom:20px;}.fukuan { float:left; margin-top:30px; border:0px; height:50px; background:#FF3300; font-size:20px; color:#FFFFFF; width:170px; border-radius:5px 5px 5px 5px;}.btnGray { width:170px; border-radius:5px 5px 5px 5px; height:50px; font-size:20px; float:left; margin-top:30px; background: #CCCCCC; border:0px; color:#333333;}.btn { float:left; margin-top:30px; border:0px; font-size:20px; height:50px; background:#FF3300; color:#FFFFFF; width:170px;border-radius:5px 5px 5px 5px;}.hdfkan{float:left; margin:40px 0 0 30px;}
+                    </style>
+                    <script>
+						var payurl = new Array();
+							payurl['money'] = '[.$webpath.]?cn-shoppingorders.html-&emmm_cms=buyok';
+							payurl['alipay'] = '[.$webpath.]function/api/alipay_quick/alipayapi.php';
+							payurl['bank'] = '[.$webpath.]function/api/alipay_webpay/alipayapi.php';
+							payurl['weixinpay'] = '[.$webpath.]function/api/weixinpay/native.php';
+						
+						function setTab(m,n,paytype){
+							var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+							var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+							for(i=0;i<tli.length;i++){
+								tli[i].className=i==n?"hover":"";
+								mli[i].style.display=i==n?"block":"none";
+							}
+							$("#form1").attr("action",payurl[paytype]);
+						}
+						
+						$(document).ready(function(){
+							$("#form1").attr("action",payurl['money']);
+						});
+                    </script>
+                    <div id="tabs0">
+                     <ul class="menu0" id="menu0">
+                        <li onclick="setTab(0,0,'money')" class="hover">余额</li>
+                        <li onclick="setTab(0,1,'alipay')">支付宝</li>
+                        <li onclick="setTab(0,2,'weixinpay')">微信</li>
+                        <!--li onclick="setTab(0,3,'bank')">银行卡</li-->
+                     </ul>
+                     <div style="clear:both;"></div>
+                     <div class="main" id="main0">
+                      <ul class="block" id="YIQI-UI">
+                            <div class="ml-20">账户余额：<span style="font-size:26px; color: #c00;">[.$userview.money.]</span>&nbsp;&nbsp;元</div>
+                            <table width="100%" border="0" align="center" cellpadding="10">         
+                                <tr>
+                                    <td>
+                                    <script language="javascript">
+                                        function agree(){
+                                          if (document.getElementById('btn_license').checked){
+                                            document.getElementById('x').disabled=false;
+                                            document.getElementById('x').className='btn';
+                                            return confirm('付款后订单即时生成，无法后退等操作。');
+                                                }else{
+                                            document.getElementById('x').disabled='disabled';  
+                                            document.getElementById('x').className='btnGray';
+                                            }
+                                        }
+                                    </script>
+                                    [.if $userview.money < $op.total+$op.freightt.]
+                                    <input id="x" type="submit" name="Submit" value="付 款" class="btnGray" disabled="disabled" />
+                                    [.else.]
+                                    <input type="submit" name="Submit" value="付 款" class="fukuan" onclick="javascript:return confirm('付款后订单即时生成，无法后退等操作。')" />
+                                    [./if.]
+                                    [.if $shopset['delivery'] == 1.]
+                                        <div class="hdfkan"><input name="delivery" type="checkbox" onclick="agree();" id="btn_license" value="1"/>&nbsp;使用货到付款</div>
+                                    [./if.]
+                                    </td>
+                                </tr>
+                            </table>
+                      </ul>
+                      <ul id="YIQI-UI">
+                        [.if $userpaypai['alipay_quick'][1] == 1.]
+                          <table width="100%" border="0" align="center" cellpadding="10">
+                            <tr>
+                              <td>
+                              	<p><img src="[.$webpath.]function/api/alipay_quick/images/alipay.gif" width="135" /></p>
+                                <p class="text-c" style="width:135px;"><input type="radio" name="alipay" value="fk"  checked="checked" /></p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <input type="submit" name="Submit" value="付 款" class="fukuan" /><span class="f-l ml-20 mt-45 f-12 f-999">说明：付款后要等到支付宝页面跳转回我公司页面后，在关闭页面或浏览器。</span>
+                              </td>
+                            </tr>
+                          </table>
+                          [.else.]
+                            <div class="nopay">支付宝付款暂时关闭,请选择其它付款方式!</div>
+                          [./if.]
+                      </ul>
+					  <ul id="YIQI-UI">
+                      	[.if $userpaypai['weixinpay'][1] == 1.]
+                          <table width="100%" border="0" align="center" cellpadding="10">
+                            <tr>
+                              <td>
+                              	<p><img src="[.$webpath.]function/api/weixinpay/image/weixinlogo.jpg" width="135" /></p>
+                                <p class="text-c" style="width:135px;"><input type="radio" name="weixinpay" value="fk"  checked="checked" /></p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <input type="submit" name="Submit" value="付 款" class="fukuan" /><span class="f-l ml-20 mt-45 f-12 f-999">说明：付款后要等到微信页面跳转回我公司页面后，在关闭页面或浏览器。</span>
+                              </td>
+                            </tr>
+                          </table>
+                          [.else.]
+                            <div class="nopay">微信扫码付款暂时关闭,请选择其它付款方式!</div>
+                          [./if.]
+                      </ul>
+                     </div>
+                    </div>
+                 </td>
+              </tr>
+            </table>
+		</form>
+		[.else.]
+		<table width="100%" border="0" align="center" cellpadding="10">
+			<tr>
+			  <td>
+				<div align="center">
+				<img src="[.$webpath.]skin/ordersno.jpg" style="margin-top:50px;">
+				</div>
+			  </td>
+			</tr>
+		</table>
+		[./if.]
+	[.*订单模板结束*.]
+
+            </ul>
+        </div>
+    </div>
+<div class="clear" style="margin-bottom:100px;"></div>
+[.include file="cn/cn_shopfoot.html".]
+</body>
+</html>

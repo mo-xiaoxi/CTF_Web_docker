@@ -1,0 +1,134 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script charset="utf-8" src="templates/images/emmm.js"></script>
+<script src="../../function/plugs/layer/layer.min.js"></script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">优惠券列表</li>
+  <li onclick="setTab(0,1)">添加优惠券</li>
+  <li><a href="emmm_couponlist.php?emmm">领取列表</a></li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <form id="form2" name="form2" method="post" action="?emmm_cms=Batch">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="5%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="15%" bgcolor="#EBEBEB">标题</td>
+                    <td width="7%" bgcolor="#EBEBEB">优惠券面值</td>
+                    <td width="15%" bgcolor="#EBEBEB">时间限制</td>
+                    <td width="20%" bgcolor="#EBEBEB">条件/描述</td>
+                    <td width="15%" bgcolor="#EBEBEB">发布时间</td>
+                    <td width="14%" bgcolor="#EBEBEB">类型</td>
+                    <td width="4%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$coupon name=op.]
+                  <tr>
+				  	<td rowspan="2"><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$coupon[op].id.]</font></div></td>
+                    <td>[.$coupon[op].title.]</td>
+                    <td>[.$coupon[op].money.]</td>
+                    <td>[.$coupon[op].timewin.]</td>
+                    <td><p>满[.$coupon[op].moneygo.]使用</p><p>备注:[.$coupon[op].content.]</p></td>
+                    <td>[.$coupon[op].time.]</td>
+                    <td>[.if $coupon[op].type == 0.]全部会员可领取[.else.]<a href="javascript:dialog([.$coupon[op].id.])" style="color:#55B6D9">向指定会员发放[./if.]</td>
+                    <td><a href="?emmm_cms=del&id=[.$coupon[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a></td>
+				  </tr>
+				  <tr>
+					<td colspan="7">[.if $coupon[op].type == 0.]领取地址:http://[.$weburl.]/function/emmm_coupon.php?class=[.$coupon[op].id.]&md=[.$coupon[op].md.][./if.]</td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="6">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                  <tr>
+                    <td colspan="8">[.$emmmpage.]</td>
+                  </tr>
+                </table>
+                </form>
+        </div>
+	  </li>
+  </ul>
+  
+  <ul>
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td><div align="right">优惠券标题</div></td>
+			<td><input name="COL_Title" type="text" class="win" [.$emmm_bgcolor.] datatype="*" nullmsg="标题是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">优惠券面值</div></td>
+			<td><input name="COL_Money" type="text" class="win" value="0.00" [.$emmm_bgcolor.] datatype="*" nullmsg="金额必填项!" /> 只支持小数后2位</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">时间限制</div></td>
+			<td><input name="COL_Timewin" type="text" class="win" id="date" [.$emmm_bgcolor.] /> 在这个时间前可以用,留空表示无限制</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">满足条件</div></td>
+			<td>满 <input name="COL_Moneygo" type="text" class="win" value="0.00" [.$emmm_bgcolor.] /> 元可以使用,只支持小数后2位(0表示无限制)</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">备注</div></td>
+			<td>
+				<textarea name="COL_Content" class="wtextarea" id="container" style="width:80%; height:100px;"></textarea>
+				<!--p>限制用户领取数量,在备注内容后面加入 #10 表示每个账号最多领10张. 如: 这是备注的内容#10</p-->
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">属性</div></td>
+			<td>
+				<input type="radio" name="COL_Type" value="0" checked />全部用户可领取 &nbsp;&nbsp;
+				<input type="radio" name="COL_Type" value="1" />向指定会员发放
+			</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		   <tr>
+		   	<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+<script charset="utf-8" src="../../function/plugs/laydate/laydate.js"></script>
+<script>
+laydate.render({
+  elem: '#date',
+  type: 'datetime',
+  min: 0
+});
+function dialog(id){
+    $.layer({
+        type: 2,
+        title: '选择会员',
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['90%', '600px'],
+		iframe:{src: 'emmm_user.php?type=coupon&couponclass='+id,scrolling: 'yes'}
+    });
+};
+</script>
+[.include file="emmm_foot.html".]
+</body>
+</html>

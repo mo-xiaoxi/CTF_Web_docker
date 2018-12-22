@@ -1,0 +1,80 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">数据库备份</li>
+  <li onclick="setTab(0,1)">数据库恢复</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<table width="90%" border="0" align="center" cellpadding="20">
+          <tr>
+            <td><div align="center"><input type=button onclick=window.open("emmm_bakgo.php","_self") value="点击开始备份数据库" style="width:200px; height:60px; background: #0099CC; color:#FFFFFF; border:0px;"></div></td>
+          </tr>
+        </table>
+	  </li>
+  </ul>
+
+  <ul>
+	  <li>
+
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="5%" bgcolor="#EBEBEB"><div align="center">行号</div></td>
+                    <td width="10%" bgcolor="#EBEBEB">备份路径</td>
+                    <td width="20%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$myscandir name=op.]
+				  [.if $myscandir[op].url == '../../function/backup/数据库说明.txt' or $myscandir[op].url == '../../function/backup/index.htm'.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$myscandir[op].i.]</font></div></td>
+					<td>[.$myscandir[op].url.]</td>
+                    <td><a href="[.$myscandir[op].url.]"  target="_blank">[打开]</a></td>
+                  </tr>				  
+				  [.else.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$myscandir[op].i.]</font></div></td>
+					<td>[.$myscandir[op].url.]/</td>
+                    <td><a href="[.$myscandir[op].url.]/index.php"  target="_blank">[恢复该数据]</a></td>
+                  </tr>
+				  [./if.]
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="3">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                </table>
+				
+	  </li>
+  </ul>
+
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

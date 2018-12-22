@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<!-- 声明文档使用的字符编码 -->
+<meta charset="utf-8">
+<!-- 优先使用 IE 最新版本和 Chrome -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<!-- 网页作者 -->
+<meta name="author" content="vidar.club"/>
+<!-- 为移动设备添加 viewport -->
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边 http://bigc.at/ios-webapp-viewport-meta.orz -->
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<!-- 添加到主屏后的标题（iOS 6 新增） -->
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<!-- 设置苹果工具栏颜色 -->
+<!-- 启用360浏览器的极速模式(webkit) -->
+<meta name="renderer" content="webkit">
+<!-- 避免IE使用兼容模式 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- 不让百度转码 -->
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+<meta name="HandheldFriendly" content="true">
+<!-- 微软的老式浏览器 -->
+<meta name="MobileOptimized" content="320">
+<!-- uc强制竖屏 -->
+<meta name="screen-orientation" content="portrait">
+<!-- QQ强制竖屏 -->
+<meta name="x5-orientation" content="portrait">
+<!-- UC强制全屏 -->
+<meta name="full-screen" content="yes">
+<!-- QQ强制全屏 -->
+<meta name="x5-fullscreen" content="true">
+<!-- UC应用模式 -->
+<meta name="browsermode" content="application">
+<!-- QQ应用模式 -->
+<meta name="x5-page-mode" content="app">
+<!-- windows phone 点击无高光 -->
+<meta name="msapplication-tap-highlight" content="no">
+<title>404</title>
+<link rel="stylesheet" type="text/css" href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" />
+<script type="text/javascript">       
+function countDown(secs,surl){           
+ var jumpTo = document.getElementById('jumpTo');  
+ jumpTo.innerHTML=secs;    
+ if(--secs>0){       
+	 setTimeout("countDown("+secs+",'"+surl+"')",1000);       
+	 }       
+ else{         
+	 location.href=surl;       
+	 -ma  
+	 }       
+ }       
+</script>
+</head>
+<body>
+	<div id="YIQI-UI">
+		<div class="pt-50 text-c">
+			<h1 style="font-size:170px;"><i>404</i></h1>
+			<p><a href="http://[.$emmm_web.weburl.]"><span id="jumpTo">10</span>秒后自动跳转首页，也可点击直接跳转</a>  </p>
+		</div>
+	</div>
+	<script type="text/javascript">  
+		countDown(10,'http://[.$emmm_web.weburl.]');
+	</script> 
+</body>
+</html>

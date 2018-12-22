@@ -1,0 +1,186 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+
+ function showandhide(v){
+  //alert(v);
+  for(i=1;i<3;i++){
+   document.getElementById(i).style.display = 'none';
+   if(i==v){
+    document.getElementById(v).style.display = 'block';
+   }
+  }
+ }
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">处理订单</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <form id="form2" name="form2" method="post" action="?emmm_cms=edit&id=[.$emmm_orders.id.]">
+                  <table width="100%" border="0" cellpadding="10">
+                    <tr>
+                      <td width="20%"><div align="right">订单号：</div></td>
+                      <td width="80%">[.$emmm_orders.COL_Ordersnumber.]
+					  <input type="hidden" name="COL_Ordersnumber" value="[.$emmm_orders.COL_Ordersnumber.]" />
+					  </td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#FFFFF0"><div align="right">订单时间：</div></td>
+                      <td bgcolor="#FFFFF0">[.$emmm_orders.time.]</td>
+                    </tr>
+                    <tr>
+                      <td><div align="right">订购商品：</div></td>
+                      <td>[.$emmm_orders.COL_Ordersname.]</td>
+                    </tr>
+					<tr>
+                      <td bgcolor="#FFFFF0"><div align="right" style="color:#FF3300;">用户要求：</div></td>
+                      <td bgcolor="#FFFFF0">[.$emmm_orders.COL_Ordersproductatt.]</td>
+                    </tr>
+					<tr>
+                      <td><div align="right" style="color:#FF3300;">备注：</div></td>
+                      <td>[.$emmm_orders.COL_Ordersusetext.]</td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#FFFFF0"><div align="right">网站价格：</div></td>
+                      <td bgcolor="#FFFFF0">[.$emmm_orders.COL_Orderswebmarket.]&nbsp;&nbsp;元</td>
+                    </tr>
+                    <tr>
+                      <td><div align="right">TA的价格(成交价)：</div></td>
+                      <td><input type="text" name="COL_Ordersusermarket" class="win3" value="[.$emmm_orders.COL_Ordersusermarket.]" />&nbsp;&nbsp;元</td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#FFFFF0"><div align="right">购买数量：</div></td>
+                      <td bgcolor="#FFFFF0">[.$emmm_orders.COL_Ordersnum.]</td>
+                    </tr>
+					<tr>
+                      <td bgcolor="#FFFFF0"><div align="right">商品总价：</div></td>
+                      <td bgcolor="#FFFFF0">[.$emmm_orders.COL_Ordersnum * $emmm_orders.COL_Ordersusermarket.] &nbsp;&nbsp;元</td>
+                    </tr>
+					<tr>
+                      <td bgcolor="#FFFFF0"><div align="right">商品重量：</div></td>
+                      <td bgcolor="#FFFFF0">[.$emmm_orders.COL_Ordersweight.]</td>
+                    </tr>
+					<tr>
+                      <td bgcolor="#FFFFF0"><div align="right">快递运费：</div></td>
+                      <td bgcolor="#FFFFF0"><input type="text" name="COL_Ordersfreight" class="win3" value="[.$emmm_orders.COL_Ordersfreight.]" />&nbsp;&nbsp;元</td>
+                    </tr>
+                    <tr>
+                      <td><div align="right">购买人账号：</div></td>
+                      <td>[.$emmm_orders.COL_Ordersemail.]
+				      <input type="hidden" name="COL_Useremail" value="[.$emmm_orders.COL_Ordersemail.]" />
+					  </td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#FFFFF0"><div align="right">购买人姓名：</div></td>
+                      <td bgcolor="#FFFFF0">[.$emmm_orders.COL_Ordersusername.]</td>
+                    </tr>
+                    <tr>
+                      <td><div align="right">购买人电话：</div></td>
+                      <td>[.$emmm_orders.COL_Ordersusertel.]
+					  <input type="hidden" name="COL_Ordersusertel" value="[.$emmm_orders.COL_Ordersusertel.]" />
+					  </td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#FFFFF0"><div align="right">发货地址：</div></td>
+                      <td bgcolor="#FFFFF0">[.$emmm_orders.COL_Ordersuseradd.]</td>
+                    </tr>
+                    <tr>
+                      <td><div align="right">是否付款？</div></td>
+                      <td>
+					  [.if $emmm_orders.COL_Integralok == 0.]
+					  [.if $emmm_orders.COL_Orderspay == 1.]<img src="[.$webpath.]skin/weifukuan.gif" border="0" />[.elseif $emmm_orders.COL_Orderspay == 2.]<img src="[.$webpath.]skin/yifukuan.gif" border="0" />[.elseif $emmm_orders.COL_Orderspay == 3.]<img src="[.$webpath.]skin/hdfukuan.gif" border="0" />&nbsp;(货到付款，在发货前一定要与买家联系好！)[./if.]
+					  [.else.]
+					  <img src="[.$webpath.]skin/jfdh.gif" border="0" />
+					  [./if.]  
+					  </td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#FFFFF0"><div align="right">是否发货？</div></td>
+                      <td bgcolor="#FFFFF0"><input name="COL_Orderssend" type="radio" value="1" [.if $emmm_orders.COL_Orderssend == 1.]checked="checked"[./if.] />
+                        不发货 
+                        <input type="radio" name="COL_Orderssend" value="2" [.if $emmm_orders.COL_Orderssend == 2.]checked="checked"[./if.] />
+                        发货</td>
+                    </tr>
+					<tr>
+                      <td bgcolor="#FFFFF0"><div align="right">用户是否签收？</div></td>
+                      <td bgcolor="#FFFFF0"><input name="COL_Sign" type="radio" value="0" [.if $emmm_orders.COL_Sign == 0.]checked="checked"[./if.] />
+                        未签收
+                        <input type="radio" name="COL_Sign" value="1" [.if $emmm_orders.COL_Sign == 1.]checked="checked"[./if.] />
+                        已签收</td>
+                    </tr>
+                    <tr>
+                      <td><div align="right">快递名称：</div></td>
+                      <td>
+					  <div style="float:left;">
+					    <select name="COL_Ordersexpress" onchange = "showandhide(this.value)">
+							<option value="no" [.if $emmm_orders.COL_Ordersexpress == 'no'.]selected="selected"[./if.]>不使用物流</option>
+						  <option value="ems" [.if $emmm_orders.COL_Ordersexpress == 'ems'.]selected="selected"[./if.]>EMS</option>
+						  <option value="guotongkuaidi" [.if $emmm_orders.COL_Ordersexpress == 'guotongkuaidi'.]selected="selected"[./if.]>国通快递</option>
+						  <option value="huitongkuaidi" [.if $emmm_orders.COL_Ordersexpress == 'huitongkuaidi'.]selected="selected"[./if.]>汇通快运</option>
+						  <option value="lianb" [.if $emmm_orders.COL_Ordersexpress == 'lianb'.]selected="selected"[./if.]>联邦快递（国内）</option>
+						  <option value="quanfengkuaidi" [.if $emmm_orders.COL_Ordersexpress == 'quanfengkuaidi'.]selected="selected"[./if.]>全峰快递</option>
+						  <option value="shentong" [.if $emmm_orders.COL_Ordersexpress == 'shentong'.]selected="selected"[./if.]>申通</option>
+						  <option value="shunfeng" [.if $emmm_orders.COL_Ordersexpress == 'shunfeng'.]selected="selected"[./if.]>顺丰</option>
+						   <option value="tiantian" [.if $emmm_orders.COL_Ordersexpress == 'tiantian'.]selected="selected"[./if.]>天天快递</option>
+						    <option value="yuantong" [.if $emmm_orders.COL_Ordersexpress == 'yuantong'.]selected="selected"[./if.]>圆通速递</option>
+							 <option value="yunda" [.if $emmm_orders.COL_Ordersexpress == 'yunda'.]selected="selected"[./if.]>韵达快运</option>
+							  <option value="zhaijisong" [.if $emmm_orders.COL_Ordersexpress == 'zhaijisong'.]selected="selected"[./if.]>宅急送</option>
+							   <option value="zhongtiekuaiyun" [.if $emmm_orders.COL_Ordersexpress == 'zhongtiekuaiyun'.]selected="selected"[./if.]>中铁快运</option>
+							    <option value="zhongtong" [.if $emmm_orders.COL_Ordersexpress == 'zhongtong'.]selected="selected"[./if.]>中通速递</option>
+								<option value="1" [.if $emmm_orders.COL_Ordersexpress == '1'.]selected="selected"[./if.] >===其它===</option>
+				        </select>
+						</div>
+						<div id="1" style="float:left;display:none;">
+						&nbsp;&nbsp;其它快递代码：
+					  <input name="COL_Ordersexpress2" type="text" class="win3" value="[.$emmm_orders.COL_Ordersexpress.]"  />
+					  (目前采用的接口不支持中文，如果是发顺发快递，请输入 shunfeng &nbsp;&nbsp;&nbsp;<a href="http://vidar.club/kuaidiapi.html" target="_blank"><font color="#0099FF">查看快递参考代码</font></a>)
+					  </div>
+					  <div id="2" style="float:left;display:none;"></div>
+					  </td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#FFFFF0"><div align="right">快递单号：</div></td>
+                      <td bgcolor="#FFFFF0"><input name="COL_Ordersexpressnum" type="text" class="win" value="[.$emmm_orders.COL_Ordersexpressnum.]"  /></td>
+                    </tr>
+                    <tr>
+                      <td><div align="right"></div></td>
+                      <td><input type="submit" name="Submit" value="处理订单" class="emmm-anniu"/></td>
+                    </tr>
+                  </table>
+                </form>
+        </div>
+	  </li>
+  </ul>
+  
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

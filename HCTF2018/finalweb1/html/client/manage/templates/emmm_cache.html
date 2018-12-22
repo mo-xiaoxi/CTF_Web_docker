@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script language="JavaScript" type="text/javascript" src="../../../function/plugs/jquery/1.7.2/jquery-1.7.2.min.js"></script>
+<link href="images/emmm_login.css" rel="stylesheet" type="text/css"> 
+<style type="text/css">
+<!--
+.STYLE1 {color: #FFFFFF}
+-->
+</style>
+<script type="text/javascript">
+function checkbox(){
+	$("#bianyi").removeAttr("checked");
+}
+
+function radio(){
+	$("input:checkbox").removeAttr("checked");
+}
+</script>
+</head>
+
+<body>
+<Div class="emmm_newslist">
+<form id="form1" name="form1" method="post" action="../emmm_out.php?emmm_admin=del">
+<table width="90%" border="0" align="center" cellpadding="10" style="margin-top:30px;">
+  <tr>
+    <td colspan="2" bgcolor="#488fcd"><span class="STYLE1">清理缓存文件</span></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+	
+		<p>1) 更新过哪个模块的数据就清理哪个缓存,不需要全选清理</p>
+		<p>2) 受 PHP 版本的影响 , 如果全选不会清理 , 请单选清理</p>
+	
+	</td>
+  </tr>
+  <tr>
+    <td width="6%"><div align="right">
+      <input type="checkbox" name="checkbox[]" value="c" id="cview" onchange="checkbox()" />
+    </div></td>
+    <td width="94%"><label for="cview">栏目总数计算缓存 (页码缓存)</label></td>
+  </tr>
+  <tr>
+    <td width="6%"><div align="right">
+      <input type="checkbox" name="checkbox[]" value="aboutview" id="aboutview" onchange="checkbox()" />
+    </div></td>
+    <td width="94%"><label for="aboutview">单页面缓存 (栏目为单页面类型 , 比如关于我们页面)</label></td>
+  </tr>
+  <tr>
+    <td width="6%"><div align="right">
+      <input type="checkbox" name="checkbox[]" value="service" id="service" onchange="checkbox()" />
+    </div></td>
+    <td width="94%"><label for="service">浮动客服缓存</label></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+      <input type="checkbox" name="checkbox[]" value="about" id="about" onchange="checkbox()" />
+    </div></td>
+    <td><label for="about">单独调用单页缓存 (前台使用[.info.] 这个标签的缓存)</label></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+      <input type="checkbox" name="checkbox[]" value="video" id="video" onchange="checkbox()" />
+    </div></td>
+    <td><label for="video">单独调用视频缓存 (前台使用[.info.] 这个标签的缓存)</label></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+      <input type="checkbox" name="checkbox[]" value="ad" id="ad" onchange="checkbox()" />
+    </div></td>
+    <td><label for="ad">全站广告缓存</label></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+      <input type="checkbox" name="checkbox[]" value="banner" id="banner" onchange="checkbox()" />
+    </div></td>
+    <td><label for="banner">BANNER缓存</label></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+      <input type="checkbox" name="checkbox[]" value="web" id="web" onchange="checkbox()" />
+    </div></td>
+    <td><label for="web">网站基本信息缓存</label></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+      <input type="checkbox" name="checkbox[]" value="link" id="link" onchange="checkbox()" />
+    </div></td>
+    <td><label for="link">友情链接缓存</label></td>
+  </tr>
+  <tr>
+    <td><div align="right">
+      <input type="radio" name="radiobutton" value="by" id="bianyi"  onchange="radio()" />
+    </div></td>
+    <td>编译文件 (不建议经常清空)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="Submit" value="提交" class="emmm-anniu" /></td>
+  </tr>
+</table>
+</form>
+</Div>
+</body>
+</html>

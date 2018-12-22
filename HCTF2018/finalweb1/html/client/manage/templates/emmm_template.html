@@ -1,0 +1,78 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li class="hover">模板管理使用</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="20%" bgcolor="#EBEBEB"><div align="center">缩略图</div></td>
+					<td width="40%" bgcolor="#EBEBEB">模板说明</td>
+                    <td width="20%" bgcolor="#EBEBEB">模板路径</td>
+                    <td width="20%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$myscandir name=op.]
+                  <tr>
+				  	<td><div align="center"><img src="[.if file_exists($myscandir[op].img).][.$myscandir[op].url.]/index.jpg[.else.]../../skin/noimage.png[./if.]" style="width:175px; height:195px; border:0px;" /></div></td>
+					<td valign="top" style="font-size:14px;">[.include file="../[.$myscandir[op].author.]".] [.*没搞明白,这里为什么还要返回一层 ../*.]</td>
+					<td style="font-size:14px;">[.$myscandir[op].url.]/</td>
+					[.if $myscandir[op].url|replace:'../../templates/':'' == $emmm_temp.COL_Temppath.]
+					<td><font color="#009900">正在使用此模板</font></td>
+					[.else.]
+
+						[.if $myscandir[op].url|replace:'../../templates/':'' == 'user'.]
+						<td>[会员中心模板]</td>
+						[.elseif $myscandir[op].url|replace:'../../templates/':'' == 'wap'.]
+						<td>[手机网站模板]</td>
+						[.elseif $myscandir[op].url|replace:'../../templates/':'' == '404.html'.]
+						<td>[404模板]</td>
+						[.else.]
+						<td><a href="?emmm_cms=edit&temp=[.$myscandir[op].url|replace:'../../templates/':''.]">[使用此模板]</a></td>
+						[./if.]
+
+
+					[./if.]
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="4">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                </table>
+				
+	  </li>
+  </ul>
+
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

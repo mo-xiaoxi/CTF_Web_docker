@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+<div id="YIQI-UI">
+
+[.include file="cn/cn_top.html".]
+
+    <div class="center">
+        <div class="index_banner">
+            [.include file="cn/cn_banner.html".]
+        </div>
+        <div class="clear"></div>
+        <div class="toptel pt-15">
+        	服务热线：[.$emmm_web.webtel.] <a href="tel:[.$emmm_web.webtel.]" class="btn btn-danger radius-4 pt-5 pb-5 pl-15 pr-15">立即拨打</a>
+        </div>
+        <div class="clear"></div>
+        <div class="index_nav">
+            [.callcolumn id="0" row="8" lang="cn" type="td" name="callcolumn".]
+            <li><a href="[.$callcolumn.wapurl.]" title="[.$callcolumn.title.]">[.$callcolumn.title.]</a></li>
+            [./callcolumn.]
+        </div>
+        <div class="clear"></div>
+        <div class="listproduct mt-15">
+			<script type="text/javascript">
+				$(function(){
+					$(".noacc").hide();
+				});
+				var op_page = 2; //从第2页开始加载
+				var op_limit = 0; //0=按后台设置否侧按这里设置
+				var op_model = '[.$ip.type.]'; //获取栏目类型
+				var op_classid = [.$ip.listid.]; //获取栏目ID
+				var op_lang = 'cn'; //设置语言
+				var op_typeclass = ''; //产品附加属性
+				$(window).scroll(function() {
+						var scrollTop = $(this).scrollTop();
+						var scrollHeight = $(document).height();
+						var windowHeight = $(this).height();
+						if (scrollTop + windowHeight == scrollHeight) {
+							
+							$.post("[.$webpath.]function/emmm_ajax.class.php",{page:op_page,model:op_model,id:op_classid,limit:op_limit,lang:op_lang},function(result){
+								if(result == 0){
+									$(".noacc").show();
+								}else{
+									$("#op_ajax_page").append(result);
+									$(".noacc").hide();
+									op_page += 1;
+								}
+							},'json');
+							
+						}
+				});
+			</script>
+        	<h1 class="f-l">[.$listname.title.]</h1>
+			<div class="clear"></div>
+            <ul id="op_ajax_page">
+                [.list id="$listid" form="photo" name="list".] 
+                <li><a href="[.$list.wapurl.]" title="[.$list.title.]"><img src="[.$list.minimg.]"></a>
+                <p><a href="[.$list.wapurl.]" title="[.$list.title.]">[.$list.title.]</a></p></li>
+                [./list.]
+            </ul>
+            <div class="clear"></div>
+            <ul class="text-c f-999 noacc">
+					数据已全部加载完!
+			</ul>
+        </div>
+        <div class="clear"></div>
+        <div class="index_lx">
+            <div class="left">
+                <p>+86 [.$emmm_web.webmobi.]</p>
+				<p style="margin-top:-10px;">[.$emmm_web.webemail.]</p>
+                <p style="margin-top:-10px;">[.$emmm_web.webadd.]</p>
+            </div>
+            <div class="right">
+                <a href="tel:[.$emmm_web.webmobi.]" class="phone">立即拨打</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="bq">
+            <p>版权所有 (C) [.$emmm_web.webname.]</p>
+            <p>[.$emmm_web.by.]</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+	[.include file="cn/cn_foot.html".]
+    
+</div>
+</body>
+</html>

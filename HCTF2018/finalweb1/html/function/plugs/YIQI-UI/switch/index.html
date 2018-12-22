@@ -1,0 +1,180 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>bootstrapSwitch</title>
+<link rel="stylesheet" href="../YIQI-UI.min.css">
+<link rel="stylesheet" href="YIQI-UI-bootstrapSwitch.css">
+<link href="../font/YIQI-UI-iconfont.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="YIQI-UI">
+<h3>尺寸（Size）</h3>
+<div class="bs-docs-example">
+  <div class="switch size-L">
+    <input type="checkbox" checked />
+  </div>
+  <div class="switch">
+    <input type="checkbox" checked />
+  </div>
+  <div class="switch size-S">
+    <input type="checkbox" checked />
+  </div>
+  <div class="switch size-MINI">
+    <input type="checkbox" checked />
+  </div>
+</div>
+<h3>颜色（Colors）</h3>
+<div class="bs-docs-example">
+  <div class="switch" data-on="primary" data-off="info">
+    <input type="checkbox" checked />
+  </div>
+  <div class="switch" data-on="info" data-off="success">
+    <input type="checkbox" checked />
+  </div>
+  <div class="switch" data-on="success" data-off="warning">
+    <input type="checkbox" checked />
+  </div>
+  <div class="switch" data-on="warning" data-off="danger">
+    <input type="checkbox" checked />
+  </div>
+  <div class="switch" data-on="danger" data-off="primary">
+    <input type="checkbox" checked />
+  </div>
+</div>
+<h3>动画（Animation）</h3>
+<div class="bs-docs-example">
+  <div class="switch" data-animated="false">
+    <input type="checkbox" checked />
+  </div>
+</div>
+<h3>禁用（Disabled）</h3>
+<div class="bs-docs-example">
+  <div class="switch">
+    <input type="checkbox" checked disabled />
+  </div>
+</div>
+<h3>文本（Text）</h3>
+<div class="bs-docs-example">
+  <div class="switch" data-on-label="开" data-off-label="关">
+    <input type="checkbox" checked />
+  </div>
+</div>
+<h3>HTML文本（HTML text）</h3>
+<div class="bs-docs-example">
+  <div class="switch" data-on-label="<i class='iconfont'>&#xf00b2;</i>" data-off-label="<i class='iconfont'>&#xf00b3;</i>">
+    <input type="checkbox" checked />
+  </div>
+</div>
+<pre class="prettyprint linenums">&lt;div class=&quot;switch&quot; data-on-label=&quot;&lt;i class='icon-ok icon-white'&gt;&lt;/i&gt;&quot; data-off-label=&quot;&lt;i class='icon-remove'&gt;&lt;/i&gt;&quot;&gt;
+	&lt;input type=&quot;checkbox&quot; checked /&gt;
+&lt;/div&gt;</pre>
+<h3>事件处理（Event handler） <small>javascript</small></h3>
+<div class="bs-docs-example">
+  <div id="mySwitch" class="switch">
+    <input type="checkbox" checked />
+  </div>
+</div>
+<pre class="prettyprint linenums">$('#mySwitch').on('switch-change', function (e, data) {<br>    var $el = $(data.el)<br>      , value = data.value;<br>    console.log(e, $el, value);<br>});</pre>
+<h3>Toggle State <small>javascript</small></h3>
+<div class="bs-docs-example">
+  <div id="toggle-state-switch" class="switch">
+    <input type="checkbox" checked />
+  </div>
+  <br>
+  <br>
+  <div id="toggle-state-switch-button-on" class="btn btn-primary radius">ON!</div>
+  <div id="toggle-state-switch-button" class="btn btn-primary radius">Toggle me!</div>
+  <div id="toggle-state-switch-button-off" class="btn btn-primary radius">OFF!</div>
+</div>
+<pre class="prettyprint linenums">
+$('#toggle-state-switch').bootstrapSwitch('toggleState');
+$('#toggle-state-switch').bootstrapSwitch('setState', false); // true || false
+</pre>
+<h3>销毁（Destroy） <small>javascript</small></h3>
+<div class="bs-docs-example">
+  <div id="destroy-switch" class="switch">
+    <input type="checkbox" checked />
+  </div>
+  <br>
+  <br>
+  <button id="btn-destroy-switch" class="btn btn-danger radius"> Destroy me! </button>
+</div>
+<pre class="prettyprint linenums">
+$('#destroy-switch').bootstrapSwitch('destroy');
+</pre>
+<h3>创建（Create） <small>javascript</small></h3>
+<div class="bs-docs-example">
+  <input id="create-switch" type="checkbox" checked />
+  <br>
+  <br>
+  <div id="btn-create" class="btn btn-default radius">Create</div>
+</div>
+<pre class="prettyprint linenums">$('#create-switch').wrap('&lt;div class=&quot;switch&quot; /&gt;').parent().bootstrapSwitch();</pre>
+<h3>禁用（Disabled） <small>javascript</small></h3>
+<div class="bs-docs-example">
+  <div id="disable-switch" class="switch">
+    <input type="checkbox" checked />
+  </div>
+  <br>
+  <br>
+  <button id="btn-is-active-switch" class="btn btn-default radius"> Is active? </button>
+  <button id="btn-toggle-activation-switch" class="btn btn-default radius"> Toggle activation! </button>
+  <button id="btn-disable-switch" class="btn btn-default radius"> Disable! </button>
+  <button id="btn-activate-switch" class="btn btn-default radius"> Activate! </button>
+</div>
+</div>
+<pre class="prettyprint linenums">
+$('#disable-switch').bootstrapSwitch('isActive');
+$('#disable-switch').bootstrapSwitch('toggleActivation');
+$('#disable-switch').bootstrapSwitch('setActive', false);  // true || false
+</pre>
+<script type="text/javascript" src="../jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="YIQI-UI-bootstrapSwitch.js"></script>
+<script>
+	$('.code').laycode();
+    $('#mySwitch').on('switch-change', function (e, data) {
+        var $el = $(data.el)
+            , value = data.value;
+        console.log(e, $el, value);
+    });
+
+    $('#toggle-state-switch-button').on('click', function () {
+        $('#toggle-state-switch').bootstrapSwitch('toggleState');
+    });
+
+    $('#toggle-state-switch-button-on').on('click', function () {
+        $('#toggle-state-switch').bootstrapSwitch('setState', true);
+    });
+
+    $('#toggle-state-switch-button-off').on('click', function () {
+        $('#toggle-state-switch').bootstrapSwitch('setState', false);
+    });
+
+    $('#btn-destroy-switch').on('click', function () {
+        $('#destroy-switch').bootstrapSwitch('destroy');
+        $(this).remove();
+    });
+
+    $('#btn-create').on('click', function () {
+        $('#create-switch').wrap('<div class="switch" />').parent().bootstrapSwitch();
+        $(this).remove()
+    });
+
+    $('#btn-is-active-switch').on('click', function () {
+        alert($('#disable-switch').bootstrapSwitch('isActive'));
+    });
+
+    $('#btn-toggle-activation-switch').on('click', function () {
+        $('#disable-switch').bootstrapSwitch('toggleActivation');
+    });
+
+    $('#btn-disable-switch').on('click', function () {
+        $('#disable-switch').bootstrapSwitch('setActive', false);
+    });
+
+    $('#btn-activate-switch').on('click', function () {
+        $('#disable-switch').bootstrapSwitch('setActive', true);
+    });
+</script>
+</body>
+</html>

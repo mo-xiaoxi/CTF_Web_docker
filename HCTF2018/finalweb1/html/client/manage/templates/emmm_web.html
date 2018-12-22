@@ -1,0 +1,169 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<form id="form1" name="form1" method="POST" action="?emmm_cms=edit" class="registerform">
+<!--第一种形式-->
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">网站信息</li>
+  <li onclick="setTab(0,1)">基本信息</li>
+  <li onclick="setTab(0,2)">其它信息</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block"><li>
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td width="170"><div align="right">网站标题</div></td>
+			<td><input name="COL_Website" type="text" value="[.$emmm_web.COL_Website.]" class="win inputxt" [.$emmm_bgcolor.] datatype="*" nullmsg="网站标题是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td width="170" valign="top"><div align="right">短标题</div></td>
+			<td><input name="COL_Websitemin" type="text" value="[.$emmm_web.COL_Websitemin.]" class="win inputxt" [.$emmm_bgcolor.] />
+			<p>应用于邮件或短信尾部,做为落款用!</p>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">网站地址</div></td>
+			<td><input name="COL_Weburl" type="text" value="[.$emmm_web.COL_Weburl.]" class="win" [.$emmm_bgcolor.]  datatype="*" nullmsg="网站地址是必填项!"/><font color="#ff0000"> (*)</font><p>1.不要用 http:// 开头 — 不要用 / 结尾</p><p>2.正确的写法是：[.$smarty.server.SERVER_NAME.]</p></td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">网站Logo</div></td>
+			<td><input name="COL_Weblogo" type="text" id="upload" [.$emmm_bgcolor.] value="[.$emmm_web.COL_Weblogo.]" class="win"  />&nbsp;
+			<input type="button" id="image3" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+			
+		<link rel="stylesheet" href="../../function/editor/themes/default/default.css" />
+		<script src="../../function/editor/kindeditor.js"></script>
+		<script src="../../function/editor/lang/zh_CN.js"></script>
+		<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image3').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#upload').val(url);
+								$("#logoimgimg").attr('src',url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+		<p>&nbsp;</p>
+		<p><img src="../../[.$emmm_web.COL_Weblogo.]" border="0" id="logoimgimg" style="max-width:300px;"></p>
+		
+
+			</td>
+		  </tr>
+		</table>
+  </li></ul>
+  <ul><li>
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td width="170"><div align="right">公司名称</div></td>
+			<td><input name="COL_Webname" type="text" value="[.$emmm_web.COL_Webname.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">公司地址</div></td>
+			<td><input name="COL_Webadd" type="text" value="[.$emmm_web.COL_Webadd.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">固定电话</div></td>
+			<td><input name="COL_Webtel" type="text" value="[.$emmm_web.COL_Webtel.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">移动电话</div></td>
+			<td><input name="COL_Webmobi" type="text" value="[.$emmm_web.COL_Webmobi.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">传真号码</div></td>
+			<td><input name="COL_Webfax" type="text" value="[.$emmm_web.COL_Webfax.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">Email</div></td>
+			<td><input name="COL_Webemail" type="text" value="[.$emmm_web.COL_Webemail.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">邮编</div></td>
+			<td><input name="COL_Webzip" type="text" value="[.$emmm_web.COL_Webzip.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">QQ</div></td>
+			<td><input name="COL_Webqq" type="text" value="[.$emmm_web.COL_Webqq.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">联系人</div></td>
+			<td><input name="COL_Weblinkman" type="text" value="[.$emmm_web.COL_Weblinkman.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">微信号</div></td>
+			<td><input name="COL_Weixin" type="text" value="[.$emmm_web.COL_Weixin.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">微信二维码</div></td>
+			<td><input name="COL_Weixinerweima" type="text" value="[.$emmm_web.COL_Weixinerweima.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">支付宝号</div></td>
+			<td><input name="COL_Alipayname" type="text" value="[.$emmm_web.COL_Alipayname.]" class="win" [.$emmm_bgcolor.] />(只用于展示，非支付宝接口)</td>
+		  </tr>
+  		</table>
+  </li></ul>
+  <ul><li>
+  
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td width="170"><div align="right">ICP备案</div></td>
+			<td><input name="COL_Webicp" type="text" value="[.$emmm_web.COL_Webicp.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">建站时间</div></td>
+			<td><input name="COL_Webtime" type="text" value="[.$emmm_web.COL_Webtime.]" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">第三方统计代码</div></td>
+			<td><textarea name="COL_Webstatistics" cols="50" rows="5" class="wtextarea" [.$emmm_bgcolor.]>[.$emmm_web.COL_Webstatistics.]</textarea></td>
+		  </tr>
+		</table>
+		
+  </li></ul>
+ </div>
+</div>
+		<table width="90%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+</form>
+[.include file="emmm_foot.html".]
+</body>
+</html>

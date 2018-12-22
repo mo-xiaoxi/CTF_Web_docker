@@ -1,0 +1,102 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">信息列表</li>
+  <li onclick="setTab(0,1)">添加信息</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="10%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="30%" bgcolor="#EBEBEB">分类规格名称</td>
+					<td width="10%" bgcolor="#EBEBEB">类型</td>
+					<td width="10%" bgcolor="#EBEBEB">排序</td>
+                    <td width="20%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$Specifications name=op.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$Specifications[op].id.]</font></div></td>
+					<td>[.$Specifications[op].name.]&nbsp;<span style="color:#666666; font-size:10px">([.$Specifications[op].nameto.])</span></td>
+					<td>[.if $Specifications[op].class == 1.]文字[.else.]图片[./if.]</td>
+					<td>[.$Specifications[op].sorting.]</td>
+                    <td><a href="emmm_productspecifications_o.php?id=[.$Specifications[op].id.]">编辑</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="?emmm_cms=del&id=[.$Specifications[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="5">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                </table>
+		</div>
+	  </li>
+  </ul>
+  
+  <ul>
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td><div align="right">分类规格名称</div></td>
+			<td><input name="COL_Title" type="text" class="win" [.$emmm_bgcolor.] datatype="*" nullmsg="名称是必填项!"/>&nbsp;例如：尺码<font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">分类规格名称备注</div></td>
+			<td><input name="COL_Titleto" type="text" class="win" [.$emmm_bgcolor.] datatype="*" nullmsg="备注是必填项!"/>&nbsp;例如：女鞋<font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">类型</div></td>
+			<td><input name="COL_Class" type="radio" value="1" checked="checked" />&nbsp;文字&nbsp;&nbsp;
+			<input name="COL_Class" type="radio" value="2" />&nbsp;图片&nbsp;&nbsp;</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">规格值</div></td>
+			<td><textarea name="COL_Value" class="wtextarea" [.$emmm_bgcolor.] datatype="*" nullmsg="值是必填项!" ></textarea><font color=red> (*)</font>
+			<br /><br />多个值用 | 格开 如：36|37</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">排序</div></td>
+			<td><input name="COL_Sorting" type="text" class="win2" [.$emmm_bgcolor.] value="99" datatype="*" nullmsg="排序是必填项!"/>&nbsp;数字越小越靠前</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

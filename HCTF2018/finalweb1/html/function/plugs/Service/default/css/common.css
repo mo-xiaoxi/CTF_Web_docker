@@ -1,0 +1,145 @@
+.ukasky_livecontact {
+	POSITION: fixed; TOP: 180px; RIGHT: 1px; _position: absolute; z-index:999999;
+}
+.ukasky_livecontact A {
+	COLOR: #00a0e9
+}
+.ukasky_livecontact A:hover {
+	COLOR: #ff8100; TEXT-DECORATION: none
+}
+.ukasky_livecontact .floatL {
+	POSITION: relative; WIDTH: 28px; FLOAT: left
+}
+.ukasky_livecontact .floatL A {
+	TEXT-INDENT: -9999px; DISPLAY: block; FONT-SIZE: 0px
+}
+.ukasky_livecontact .floatR {
+	BACKGROUND: url(float_bg.gif);
+}
+.ukasky_livecontact .tp {
+	BACKGROUND: url(float_bg.gif)
+}
+.ukasky_livecontact .cn {
+	BACKGROUND: url(float_bg.gif); min-height:300px;
+}
+.ukasky_livecontact .floatR {
+	PADDING-BOTTOM: 15px; WIDTH: 130px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: -131px bottom; FLOAT: left; OVERFLOW: hidden;
+}
+.ukasky_livecontact .tp {
+	BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0% 0%; HEIGHT: 10px
+}
+.ukasky_livecontact .cn {
+	BACKGROUND-REPEAT: repeat-y; BACKGROUND-POSITION: -262px 0px
+}
+.ukasky_livecontact .cn H3 {
+	TEXT-INDENT: -9999px; HEIGHT: 36px; FONT-SIZE: 0px
+}
+.ukasky_livecontact .cn UL {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 14px; PADDING-RIGHT: 14px; PADDING-TOP: 0px
+}
+.ukasky_livecontact .cn UL LI {
+	BORDER-BOTTOM: #e6e5e4 1px solid; LINE-HEIGHT: 36px; WORD-WRAP: break-word; HEIGHT: 36px; OVERFLOW: hidden; WORD-BREAK: normal
+}
+.ukasky_livecontact .titZx {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .titDh {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .titDc {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .icoZx {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .icoTc {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .icoFf {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .icoTl {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .btnOpen {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .btnOpen_n {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .btnCtn {
+	BACKGROUND: url(float_s.png) no-repeat
+}
+.ukasky_livecontact .titZx {
+	BACKGROUND-POSITION: 5px -10px
+}
+.ukasky_livecontact .titDh {
+	BACKGROUND-POSITION: 5px -66px
+}
+.ukasky_livecontact .titDc {
+	BACKGROUND-POSITION: 5px -124px
+}
+.ukasky_livecontact .icoZx {
+	BACKGROUND-POSITION: 2px -154px
+}
+.ukasky_livecontact .icoTc {
+	BACKGROUND-POSITION: 0px -323px
+}
+.ukasky_livecontact .icoFf {
+	BACKGROUND-POSITION: 2px -213px
+}
+.ukasky_livecontact .icoTl {
+	PADDING-LEFT: 20px; DISPLAY: block; FONT-FAMILY: "Î¢ÈíÑÅºÚ"; BACKGROUND-POSITION: 2px -266px; FLOAT: left
+}
+.ukasky_livecontact .btnOpen {
+	BACKGROUND-POSITION: -30px -396px
+}
+.ukasky_livecontact .btnOpen_n {
+	BACKGROUND-POSITION: 0px -530px
+}
+.ukasky_livecontact .btnCtn {
+	BACKGROUND-POSITION: 0px -396px
+}
+.ukasky_livecontact .icoZx {
+	PADDING-LEFT: 28px; DISPLAY: block; FLOAT: left
+}
+.ukasky_livecontact .icoTc {
+	PADDING-LEFT: 28px; DISPLAY: block; FLOAT: left
+}
+.ukasky_livecontact .icoFf {
+	PADDING-LEFT: 28px; DISPLAY: block; FLOAT: left
+}
+.ukasky_livecontact .btnOpen {
+	POSITION: relative; WIDTH: 28px; HEIGHT: 118px; TOP: 80px; LEFT: 2px
+}
+.ukasky_livecontact .btnOpen_n {
+	POSITION: relative; WIDTH: 28px; HEIGHT: 118px; TOP: 80px; LEFT: 2px
+}
+.ukasky_livecontact .btnCtn {
+	POSITION: relative; WIDTH: 28px; HEIGHT: 118px; TOP: 80px; LEFT: 2px
+}
+.ukasky_livecontact .btnOpen {
+	TOP: 118px; LEFT: 1px
+}
+.ukasky_livecontact .btnOpen_n {
+	TOP: 118px; LEFT: 1px
+}
+.ukasky_livecontact .btnCtn {
+	TOP: 118px; LEFT: 2px
+}
+.ukasky_livecontact UL LI H3.titDc A {
+	WIDTH: 80px; DISPLAY: block; HEIGHT: 36px
+}
+.ukasky_livecontact UL LI.yidacms_qqtop {
+	BORDER-BOTTOM: #ace5f9 1px solid
+}
+.ukasky_livecontact UL LI.bot {
+	BORDER-BOTTOM-STYLE: none
+}
+.ukasky_livecontact UL.webZx {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 164px; PADDING-RIGHT: 0px; BACKGROUND: url(webZx_bg.jpg) no-repeat; HEIGHT: 65px; PADDING-TOP: 0px
+}
+.ukasky_livecontact UL LI.webZx-in {
+	BORDER-BOTTOM-STYLE: none; PADDING-LEFT: 5px; HEIGHT: 50px; PADDING-TOP: 8px
+}
+.ukasky_livecontact {TOP:200px;}

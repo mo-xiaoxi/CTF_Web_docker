@@ -1,0 +1,149 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li class="hover">编 辑</li>
+  <li><a href="javascript:history.go(-1)"><font color="#000000">返 回</font></a></li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$emmm_admin.id.]" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td width="10%"><div align="right">管理员账号</div></td>
+			<td width="90%"><input name="COL_Adminname" type="text" class="win" value="[.$emmm_admin.COL_Adminname.]" [.$emmm_bgcolor.] datatype="*" nullmsg="账号是必填项!"/><font color=red> (*)</font>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">登录密码</div></td>
+			<td><input name="COL_Adminpass" type="text" class="win" value="" [.$emmm_bgcolor.] />(不修改请保持为空！)
+			<input name="password" type="hidden" value="[.$emmm_admin.COL_Adminpass.]"/>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">确认密码</div></td>
+			<td><input name="COL_Adminpassto" type="text" class="win" value="" [.$emmm_bgcolor.] />(不修改请保持为空！)</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">管理权限</div></td>
+			<td>
+			[.if $emmm_admin.COL_Admin == 1.]
+			<p>全部管理权限</p>
+			[.else.]
+			  <p>
+			  <input name="COL_Adminpower[]" type="checkbox" value="01" [.if strstr($emmm_admin.COL_Adminpower,"01").]checked="checked"[./if.] /> &nbsp;网站语言配置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="02" [.if strstr($emmm_admin.COL_Adminpower,"02").]checked="checked"[./if.] />&nbsp;网站功能管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="03" [.if strstr($emmm_admin.COL_Adminpower,"03").]checked="checked"[./if.] />&nbsp;图片水印设置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="04" [.if strstr($emmm_admin.COL_Adminpower,"04").]checked="checked"[./if.] />&nbsp;系统邮件设置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="05" [.if strstr($emmm_admin.COL_Adminpower,"05").]checked="checked"[./if.] />&nbsp;模板安装使用&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="06" [.if strstr($emmm_admin.COL_Adminpower,"06").]checked="checked"[./if.] />&nbsp;在线编辑模板&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="07" [.if strstr($emmm_admin.COL_Adminpower,"07").]checked="checked"[./if.] />&nbsp;模板标签&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="08" [.if strstr($emmm_admin.COL_Adminpower,"08").]checked="checked"[./if.] />&nbsp;网站栏目管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="09" [.if strstr($emmm_admin.COL_Adminpower,"09").]checked="checked"[./if.] />&nbsp;基本信息设置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="10" [.if strstr($emmm_admin.COL_Adminpower,"10").]checked="checked"[./if.] />&nbsp;留言板管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="11" [.if strstr($emmm_admin.COL_Adminpower,"11").]checked="checked"[./if.] />&nbsp;BANNER管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="12" [.if strstr($emmm_admin.COL_Adminpower,"12").]checked="checked"[./if.] />&nbsp;浮动客服管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="13" [.if strstr($emmm_admin.COL_Adminpower,"13").]checked="checked"[./if.] />&nbsp;热门搜索词&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="14" [.if strstr($emmm_admin.COL_Adminpower,"14").]checked="checked"[./if.] />&nbsp;文章管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="15" [.if strstr($emmm_admin.COL_Adminpower,"15").]checked="checked"[./if.] />&nbsp;图集管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="16" [.if strstr($emmm_admin.COL_Adminpower,"16").]checked="checked"[./if.] />&nbsp;视频管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="17" [.if strstr($emmm_admin.COL_Adminpower,"17").]checked="checked"[./if.] />&nbsp;下载管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="18" [.if strstr($emmm_admin.COL_Adminpower,"18").]checked="checked"[./if.] />&nbsp;招聘管理&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="19" [.if strstr($emmm_admin.COL_Adminpower,"19").]checked="checked"[./if.] />&nbsp;会员选项&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="20" [.if strstr($emmm_admin.COL_Adminpower,"20").]checked="checked"[./if.] />&nbsp;会员管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="21" [.if strstr($emmm_admin.COL_Adminpower,"21").]checked="checked"[./if.] />&nbsp;用户组管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="22" [.if strstr($emmm_admin.COL_Adminpower,"22").]checked="checked"[./if.] />&nbsp;站内邮件&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="23" [.if strstr($emmm_admin.COL_Adminpower,"23").]checked="checked"[./if.] />&nbsp;会员充值&nbsp;&nbsp;
+			  [.*<input type="checkbox" name="COL_Adminpower[]" value="24" [.if strstr($emmm_admin.COL_Adminpower,"24").]checked="checked"[./if.] />&nbsp;管理员角色&nbsp;&nbsp;*.]
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="25" [.if strstr($emmm_admin.COL_Adminpower,"25").]checked="checked"[./if.] />&nbsp;广告管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="26" [.if strstr($emmm_admin.COL_Adminpower,"26").]checked="checked"[./if.] />&nbsp;友情链接管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="27" [.if strstr($emmm_admin.COL_Adminpower,"27").]checked="checked"[./if.] />&nbsp;插件管理&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="28" [.if strstr($emmm_admin.COL_Adminpower,"28").]checked="checked"[./if.] />&nbsp;手机网站管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="29" [.if strstr($emmm_admin.COL_Adminpower,"29").]checked="checked"[./if.] />&nbsp;微信网站管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="30" [.if strstr($emmm_admin.COL_Adminpower,"30").]checked="checked"[./if.] />&nbsp;支付宝服务窗管理&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="31" [.if strstr($emmm_admin.COL_Adminpower,"31").]checked="checked"[./if.] />&nbsp;数据库操作&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="32" [.if strstr($emmm_admin.COL_Adminpower,"32").]checked="checked"[./if.] />&nbsp;执行SQL语句&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="33" [.if strstr($emmm_admin.COL_Adminpower,"33").]checked="checked"[./if.] />&nbsp;后台信息检索&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="36" [.if strstr($emmm_admin.COL_Adminpower,"36").]checked="checked"[./if.] />&nbsp;API接口管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="37" [.if strstr($emmm_admin.COL_Adminpower,"37").]checked="checked"[./if.] />&nbsp;评论管理&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="38" [.if strstr($emmm_admin.COL_Adminpower,"38").]checked="checked"[./if.] />&nbsp;商品管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="39" [.if strstr($emmm_admin.COL_Adminpower,"39").]checked="checked"[./if.] />&nbsp;商城设置&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="40" [.if strstr($emmm_admin.COL_Adminpower,"40").]checked="checked"[./if.] />&nbsp;订单处理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="41" [.if strstr($emmm_admin.COL_Adminpower,"41").]checked="checked"[./if.] />&nbsp;仓库管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="42" [.if strstr($emmm_admin.COL_Adminpower,"42").]checked="checked"[./if.] />&nbsp;商品规格管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="43" [.if strstr($emmm_admin.COL_Adminpower,"43").]checked="checked"[./if.] />&nbsp;商品属性管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="44" [.if strstr($emmm_admin.COL_Adminpower,"44").]checked="checked"[./if.] />&nbsp;品牌管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="45" [.if strstr($emmm_admin.COL_Adminpower,"45").]checked="checked"[./if.] />&nbsp;运费模板&nbsp;&nbsp;
+			  </p>
+			  <p>
+			  <input type="checkbox" name="COL_Adminpower[]" value="46" [.if strstr($emmm_admin.COL_Adminpower,"46").]checked="checked"[./if.] />&nbsp;网站相关优化&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="47" [.if strstr($emmm_admin.COL_Adminpower,"47").]checked="checked"[./if.] />&nbsp;积分领取管理&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="48" [.if strstr($emmm_admin.COL_Adminpower,"48").]checked="checked"[./if.] />&nbsp;后台建站备忘录&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="49" [.if strstr($emmm_admin.COL_Adminpower,"49").]checked="checked"[./if.] />&nbsp;翻页按钮样式&nbsp;&nbsp;
+			  <input type="checkbox" name="COL_Adminpower[]" value="50" [.if strstr($emmm_admin.COL_Adminpower,"50").]checked="checked"[./if.] />&nbsp;优惠券管理&nbsp;&nbsp;
+			  </p>
+			  <p style=" width:640px; float:left; background:#FF0000; color:#fff;">
+			  <input type="checkbox" name="COL_Adminpower[]" value="34" [.if strstr($emmm_admin.COL_Adminpower,"34").]checked="checked"[./if.] />&nbsp;编辑权限(一但加入这个权限，意味着该管理员有权编辑文章、图集、视频、商品、下载、招聘、留言板等数据。)
+			  </p>
+			  <p style=" width:640px; float:left; background:#FF0000; color:#fff;">
+			  <input type="checkbox" name="COL_Adminpower[]" value="35" [.if strstr($emmm_admin.COL_Adminpower,"35").]checked="checked"[./if.] />&nbsp;删除权限(一但加入这个权限，意味着该管理员有权删除文章、图集、视频、商品、下载、招聘、留言板等数据。)
+			  </p>
+			 [./if.]
+			</td>
+		  </tr>
+		   <tr>
+		   	<td>
+			<input name="power" type="hidden" value="[.$emmm_admin.COL_Admin.]"/>
+			<input name="name" type="hidden" value="[.$emmm_admin.COL_Adminname.]"/>
+			</td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

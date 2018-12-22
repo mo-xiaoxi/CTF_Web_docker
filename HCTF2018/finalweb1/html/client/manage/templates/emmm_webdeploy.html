@@ -1,0 +1,202 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<form id="form1" name="form1" method="POST" action="?emmm_cms=edit" class="registerform">
+<!--第一种形式-->
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">功能管理</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block"><li>
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center" class="emmm_newslist">
+		  <tr>
+		  	<td width="170"><div align="right">网站开关</div></td>
+			<td><input name="COL_Weboff" type="radio" value="1" [.if $emmm_web.COL_Weboff == 1.]checked="checked"[./if.] />
+			  开 
+		      <input type="radio" name="COL_Weboff" value="2" [.if $emmm_web.COL_Weboff == 2.]checked="checked"[./if.] />
+		      关</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">网站关闭后留言</div></td>
+			<td><textarea name="COL_Webofftext" class="wtextarea" [.$emmm_bgcolor.] >[.$emmm_web.COL_Webofftext.]</textarea>			</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">网站首页默认语言</div></td>
+			<td>
+			  <table width="100%" border="0" cellpadding="10">
+                <tr>
+                  <td width="16%"><div align="right">网站首页</div></td>
+                  <td width="84%">
+				  
+					[.section loop=$langlist name=op.]
+					<input name="COL_Langone" type="radio" value="[.$langlist[op].lang.]" [.if $emmm_web.COL_Home[0] == $langlist[op].lang.] checked="checked" [./if.] />[.$langlist[op].font.]&nbsp;&nbsp;
+					[./section.]
+					
+				  </td>
+                </tr>
+                <tr>
+                  <td><div align="right">会员中心首页</div></td>
+                  <td>
+				  
+					[.section loop=$langlist name=op.]
+					<input name="COL_Langtwo" type="radio" value="[.$langlist[op].lang.]" [.if $emmm_web.COL_Home[1] == $langlist[op].lang.] checked="checked" [./if.] />[.$langlist[op].font.]&nbsp;&nbsp;
+					[./section.]
+				  
+				  </td>
+                </tr>
+                <tr>
+                  <td><div align="right">手机网站首页</div></td>
+                  <td>
+				  
+					[.section loop=$langlist name=op.]
+					<input name="COL_Langthree" type="radio" value="[.$langlist[op].lang.]" [.if $emmm_web.COL_Home[2] == $langlist[op].lang.] checked="checked" [./if.] />[.$langlist[op].font.]&nbsp;&nbsp;
+					[./section.]
+									  
+				  </td>
+                </tr>
+              </table>			</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">翻页设置</div></td>
+			<td><table width="100%" border="0" cellpadding="5">
+              <tr>
+                <td width="12%"><div align="right">文章翻页</div></td>
+                <td width="20%"><input name="COL_Webpage[]" type="text" class="win2" value="[.$emmm_web.COL_Webpage[0].]" [.$emmm_bgcolor.] /></td>
+                <td width="13%"><div align="right">商品翻页</div></td>
+                <td width="55%"><input name="COL_Webpage[]" type="text" class="win2" value="[.$emmm_web.COL_Webpage[1].]" [.$emmm_bgcolor.] /></td>
+              </tr>
+              <tr>
+                <td><div align="right">图集翻页</div></td>
+                <td><input name="COL_Webpage[]" type="text" class="win2" value="[.$emmm_web.COL_Webpage[2].]" [.$emmm_bgcolor.] /></td>
+                <td><div align="right">视频翻页</div></td>
+                <td><input name="COL_Webpage[]" type="text" class="win2" value="[.$emmm_web.COL_Webpage[3].]" [.$emmm_bgcolor.] /></td>
+              </tr>
+              <tr>
+                <td><div align="right">下载翻页</div></td>
+                <td><input name="COL_Webpage[]" type="text" class="win2" value="[.$emmm_web.COL_Webpage[4].]" [.$emmm_bgcolor.] /></td>
+                <td><div align="right">招聘翻页</div></td>
+                <td><input name="COL_Webpage[]" type="text" class="win2" value="[.$emmm_web.COL_Webpage[5].]" [.$emmm_bgcolor.] /></td>
+              </tr>
+              <tr>
+                <td><div align="right">留言板翻页</div></td>
+                <td><input name="COL_Webpage[]" type="text" class="win2" value="[.$emmm_web.COL_Webpage[6].]" [.$emmm_bgcolor.] /></td>
+                <td><div align="right"></div></td>
+                <td>&nbsp;</td>
+              </tr>
+            </table></td>
+		  </tr>
+		  <tr>
+		    <td valign="top"><div align="right">开启自动分词</div></td>
+		    <td><input name="COL_Webfenci" type="radio" value="1" [.if $emmm_web.COL_Webfenci == 1.]checked="checked"[./if.] />
+开
+  <input type="radio" name="COL_Webfenci" value="2" [.if $emmm_web.COL_Webfenci == 2.]checked="checked"[./if.] />
+关 （开启后台添加数据时会微增加服务器压力） </td>
+		    </tr>
+			<tr>
+		    <td><div align="right">浮动客服</div></td>
+		    <td>
+			  <select name="COL_Webservice">
+			  [.foreach $Service as $op.]
+			    <option value="[.$op.url.]" [.if $emmm_web.COL_Webservice == $op.url.]selected="selected"[./if.] >[.$op.url.]</option>
+			  [./foreach.]
+			  	<option value="close" [.if $emmm_web.COL_Webservice == 'close'.]selected="selected"[./if.] >关闭</option>
+			  </select>
+			</td>
+		    </tr>
+			<tr>
+		    <td><div align="right">商品评论控制</div></td>
+		    <td><input name="COL_Webpcomment" type="radio" value="1" [.if $emmm_web.COL_Webpcomment == 1.]checked="checked"[./if.] />
+		      开启	
+		        <input type="radio" name="COL_Webpcomment" value="2" [.if $emmm_web.COL_Webpcomment == 2.]checked="checked"[./if.] />
+		        关闭 
+		        <input type="radio" name="COL_Webpcomment" value="3" [.if $emmm_web.COL_Webpcomment == 3.]checked="checked"[./if.] />
+		        登录才可以评论 
+		        <input type="radio" name="COL_Webpcomment" value="4" [.if $emmm_web.COL_Webpcomment == 4.]checked="checked"[./if.] />
+		        只有购买过商品的才可以评论</td>
+		    </tr>
+			<tr>
+		    <td><div align="right">其它评论控制</div></td>
+		    <td><input name="COL_Webocomment" type="radio" value="1" [.if $emmm_web.COL_Webocomment == 1.]checked="checked"[./if.] />
+		      开启	
+		        <input type="radio" name="COL_Webocomment" value="2" [.if $emmm_web.COL_Webocomment == 2.]checked="checked"[./if.] />
+		        关闭 
+		        <input type="radio" name="COL_Webocomment" value="3" [.if $emmm_web.COL_Webocomment == 3.]checked="checked"[./if.] />
+		        登录才可以评论</td>
+		    </tr>
+			<tr>
+		    <td><div align="right">访问权限设置</div></td>
+		    <td><input name="COL_Webweight" type="radio" value="1" [.if $emmm_web.COL_Webweight == 1.]checked="checked"[./if.] />
+		      按会员组等级	
+		        <input type="radio" name="COL_Webweight" value="2" [.if $emmm_web.COL_Webweight == 2.]checked="checked"[./if.] />
+		        按会员组权重</td>
+		    </tr>
+			<tr>
+		    <td><div align="right">删除附件？</div></td>
+		    <td><input name="COL_Webfile" type="radio" value="2" [.if $emmm_web.COL_Webfile == 2.]checked="checked"[./if.] />
+		      当删除数据时连同附件一起删除	
+		        <input type="radio" name="COL_Webfile" value="1" [.if $emmm_web.COL_Webfile == 1.]checked="checked"[./if.] />
+		        当删除数据时不删除附件</td>
+		    </tr>
+			<tr>
+		    <td><div align="right">启动UCenter整合</div></td>
+		    <td><input name="COL_Ucenter" type="radio" value="0" [.if $emmm_web.COL_Ucenter == 0.]checked="checked"[./if.] />
+		      关闭	
+		        <input type="radio" name="COL_Ucenter" value="1" [.if $emmm_web.COL_Ucenter == 1.]checked="checked"[./if.] />
+		        启动</td>
+		    </tr>
+			<tr>
+		    <td><div align="right">搜索间隔时间</div></td>
+		    <td><input name="COL_Searchtime" type="text" value="[.$emmm_web.COL_Searchtime.]" class="win2" />
+		      秒</td>
+		    </tr>
+			<tr>
+		  	<td valign="top"><div align="right">过滤敏感字</div></td>
+			<td><textarea name="COL_Sensitive" class="wtextarea" [.$emmm_bgcolor.] >[.$emmm_web.COL_Sensitive.]</textarea>
+			多个词请用 | 格开
+			</td>
+		  </tr>
+			<tr>
+		    <td><div align="right">留言板控制</div></td>
+		    <td><input name="COL_Bookuser" type="radio" value="0" [.if $emmm_web.COL_Bookuser == 0.]checked="checked"[./if.] />
+		      游客可以留言	
+		        <input type="radio" name="COL_Bookuser" value="1" [.if $emmm_web.COL_Bookuser == 1.]checked="checked"[./if.] />
+		        会员可以留言</td>
+		    </tr>
+		</table>
+  </li></ul>
+ </div>
+</div>
+		<table width="90%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+</form>
+[.include file="emmm_foot.html".]
+</body>
+</html>

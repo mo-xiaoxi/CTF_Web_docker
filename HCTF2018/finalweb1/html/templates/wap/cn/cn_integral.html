@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <div class="content">
+        
+        <div class="prlist pt-10">
+            <ul>
+                [.list id="$listid" form="product" sql="&& `COL_Integralok`=1" name="list".] 
+                <li [.if $list.i % 2 == 0.]class="mr0"[./if.]><a href="[.$list.wapurl.]" title="[.$list.title.]"><img src="[.$list.minimg.]">
+                <p>[.$list.title.]</p>
+                <p>需要&nbsp;<span>[.$list.integralexchange.]</span>&nbsp;积分兑换</p>
+                </a>
+                </li>
+                [./list.]
+            </ul>
+            <div class="clear"></div>
+            <ul class="page mt-10 mb-10 f-l ml-5 mr-5">
+                [.$emmmpage.]
+            </ul>
+            <div class="clear"></div>
+            <div class="copy">
+                <p>(C) [.$emmm_web.webname.]</p>
+                <p>[.$emmm_web.by.]</p>
+            </div>
+        </div>
+        
+        <div class="clear"></div>
+        <div class="rightnav">
+        	<ul>
+                [.callcolumn id="2" row="8" lang="cn" type="td" name="callcolumn".]
+                <li><a href="[.$callcolumn.wapurl.]" title="[.$callcolumn.title.]">[.$callcolumn.title.]</a></li>
+                [./callcolumn.]
+			</ul>
+        </div>
+    </div>
+	[.include file="cn/cn_shopfoot.html".]
+</div>
+</body>
+</html>

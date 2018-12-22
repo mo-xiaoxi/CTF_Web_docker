@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心 - [.$emmm_web.website.]</title>
+<link rel="stylesheet" href="[.$templatepath.]css/style.css" type="text/css" />
+<script type="text/javascript" src="[.$webpath.]function/plugs/YIQI-UI/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" type="text/css" />
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="YIQI-UI">
+    [.include file="cn_top.html".] 
+    <div class="clear"></div>
+    <div class="emmm_center">
+        <div class="clear"></div>
+        <div class="emmm_login">
+            <div class="emmm_user_left">
+                [.include file="cn_leftnav.html".] 
+            </div>
+            <div class="emmm_user_right">
+                <div class="emmm_user_up">
+                    <div class="user_touxiang"><img src="/client/user/index.php?img=[.$image.]" width="150" /></div>
+                    <div class="left">
+                        <p><span></span>账号：[.$user.email.]</p>
+                        [.if !empty($user.name).]<p><span></span>姓名：[.$user.name.]</p>[./if.]
+                        <p><span></span>电话/邮件：[.$user.tel.]</p>
+                        <p><span></span>用户组：[.$user.class.]</p>
+                    </div>
+                    <div class="right">
+                        <div class="xj"><span></span>余额：<i>[.$user.money.]</i>&nbsp;元</div>
+                        <div class="jf"><span></span>积分：[.$user.integral.]&nbsp;分</div>
+                        <div class="yhq"><span></span>优惠券：[.$user.coupon.]&nbsp;张</div>
+                    </div>
+                </div>
+                  <div class="emmm_user_down mt-50">
+                        <h1>推广给好友注册：</h1>
+                        <div class="clear"></div>
+                        <table width="100%" border="0" cellpadding="10">
+                          <tr>
+                            <td width="10%"><div align="right">推广地址：</div></td>
+                            <td width="90%"><textarea style=" width:540px; height:20px; border:1px #CCCCCC solid; padding:10px;">http://[.$emmm_web.weburl.]/client/user/?cn-reg.html-&introducer=[.$user.id.]</textarea></td>
+                          </tr>
+                          <tr>
+                            <td><div align="right">说明：</div></td><td><p>复制上面地址，邀请其它会员注册。</p><p>成功注册一个用户，奖励网站现金：[.$usercontrol.money[2].]&nbsp;&nbsp;&nbsp;&nbsp;积分：[.$usercontrol.money[3].]</p></td>
+                          </tr>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+    [.include file="cn_foot.html".]
+</div>
+</body>
+</html>

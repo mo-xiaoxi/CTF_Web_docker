@@ -1,0 +1,82 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+
+
+[.#jq172#.]
+<link rel="stylesheet" href="templates/images/menu/jquery.treeview.css?t=[.$smarty.now.]" />
+<script src="templates/images/menu/jquery.cookie.js" type="text/javascript"></script>
+<script src="templates/images/menu/jquery.treeview.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	// fourth example
+	$("#black, #gray").treeview({
+		control: "#treecontrol",
+		persist: "cookie",
+		cookieId: "treeview-red"
+	});
+
+});
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li class="hover">栏目列表</li>
+  <li><a href="emmm_columnadd.php"><font color="#000000">创建栏目</font></a></li>
+  <li><a href="emmm_columnback.php"><font color="#000000">找回栏目</font></a></li>
+ </ul>
+ <div class="main" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block" style="padding:0px;">
+	  <li>
+		<div class="emmm_newslist">
+			<div style="height:40px; line-height:40px; color:#FFFFFF; background:#a5d1f7; border-bottom:2px #488fcd solid; padding-left:30px;">
+				<p style="float:left;">网站无限级栏目管理页面</p>
+				<p id="treecontrol">
+					<a href="#">全部闭合</a>
+					<a href="#">全部展开</a>
+					<a href="#">切换所有</a>
+					<a href="emmm_column_batch.php">批量编辑所有</a>
+				</p>
+			</div>
+	<div style="clear:both;"></div>
+	<ul id="black" class="treeview-red">
+		[.function name=menu.]
+				[.foreach $data as $op.]
+					<li class="closed"><span class="font">
+					<font style="background:#009933; color:#FFFFFF; padding:2px;">ID:[.$op.id.]</font>
+					<font style="background:#FF6600; color:#FFFFFF; padding:2px;">[.$op.lang.]</font>
+					[.if $op.model == 'weburl'.]<font style="background:#0099FF; color:#FFFFFF; padding:2px;">外</font>[./if.]
+					[.if $op.model == 'about'.]<font style="background: #FF66FF; color:#FFFFFF; padding:2px;">单</font>[./if.]
+					[.$op.title.] [.if $op.titleto != ''.]<font color="#CCCCCC">([.$op.titleto.])</font>[./if.]<div class="font2"> <font style="width:180px; float:left;">地址:<input type="text" name="textfield" value="[.if $op.model == 'weburl'.][.$op.weburl.][.else.]?[.$op.lang.]-[.$op.model.]-[.$op.id.].html[./if.]" /></font>&nbsp;&nbsp;权重:[.$op.weight.]&nbsp;&nbsp;-&nbsp;&nbsp;[.if $op.hide == 0.]显示[.else.]<font color="#CC0000" style="font-size:14px;">隐藏</font>[./if.]&nbsp;&nbsp;-&nbsp;&nbsp;<a href="emmm_columnadd.php?id=[.$op.id.]&emmm_cms=oadd">添加子栏目</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="emmm_columnadd.php?id=[.$op.id.]&emmm_cms=oedit">编辑</a>[.if $op.id == 1.]&nbsp;&nbsp;-&nbsp;&nbsp;可隐藏不可删除[.else.]&nbsp;&nbsp;-&nbsp;&nbsp;<a href="emmm_column.php?id=[.$op.id.]&emmm_cms=del" onclick="javascript:return confirm('确认删除吗?')">删除</a>[./if.]</div>
+					</span> 
+					[.if isset($op.child).]
+					<ul id="gray">
+						[.call name=menu data=$op.child.]
+					</ul>
+					[./if.]
+					
+					</li>
+				[./foreach.]
+		[./function.]
+		[.call name=menu data=$arr.]
+	</ul>
+	
+
+   
+		</div>
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

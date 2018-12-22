@@ -1,0 +1,152 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" [.if $smarty.get.id == 'emmm'.]class="hover"[./if.]>信息列表</li>
+  <li onclick="setTab(0,1)" [.if $smarty.get.id == 'emmms'.]class="hover"[./if.]>添加信息</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul [.if $smarty.get.id == 'emmm'.]class="block"[./if.]>
+	  <li>
+		<div class="emmm_newslist">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="10%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+					<td width="20%" bgcolor="#EBEBEB">品牌LOGO</td>
+                    <td width="50%" bgcolor="#EBEBEB">品牌名称</td>
+                    <td width="20%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$Brand name=op.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$Brand[op].id.]</font></div></td>
+					<td><img src="[.if !$Brand[op].img.]../../skin/noimage.png[.else.][.if strstr($Brand[op].img,'http://').][.$Brand[op].img.][.else.][.$webpath.][.$Brand[op].img.][./if.][./if.]" border="0" width="150" height="80" /></td>
+					<td>[.$Brand[op].name.]</td>
+                    <td><a href="?our=edit&pid=[.$Brand[op].id.]&id=emmms">编辑</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="?emmm_cms=del&id=[.$Brand[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="3">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                </table>
+		</div>
+	  </li>
+  </ul>
+[.if !isset($smarty.get.our).]
+  <ul>
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td><div align="right">品牌名称</div></td>
+			<td><input name="COL_Brand" type="text" class="win" [.$emmm_bgcolor.] datatype="*" nullmsg="名称是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">品牌LOGO</div></td>
+			<td><input name="COL_Img" type="text" class="win" [.$emmm_bgcolor.] id="upload" />&nbsp;
+			<input type="button" id="image3" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+			
+		[.include file="emmm_editor.html".]
+		<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image3').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#upload').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script></td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+[.else.]
+  <ul [.if $smarty.get.id == 'emmms'.]class="block"[./if.]>
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$emmm_productp.id.]" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td><div align="right">品牌名称</div></td>
+			<td><input name="COL_Brand" type="text" class="win" [.$emmm_bgcolor.] value="[.$emmm_productp.COL_Brand.]" datatype="*" nullmsg="名称是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">品牌LOGO</div></td>
+			<td><input name="COL_Img" type="text" class="win" value="[.$emmm_productp.COL_Img.]" [.$emmm_bgcolor.] id="upload2" />&nbsp;
+			<input type="button" id="image4" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+			
+		[.include file="emmm_editor.html".]
+		<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image4').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload2').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#upload2').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script></td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+[./if.]
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

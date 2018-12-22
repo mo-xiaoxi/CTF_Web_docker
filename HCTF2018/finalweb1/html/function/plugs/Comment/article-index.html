@@ -1,0 +1,51 @@
+<form id="form1" name="form1" method="post" action="[.$plugsurl.]article-content.php?emmm_cms=add&id=[.$opcms.id.]&type=[.$ip.type.]&row=10">
+<table width="100%" border="1" align="center" cellpadding="10" bordercolor="#EEEEEE" style="border-collapse:collapse;">
+[.foreach $comment as $op.]
+  <tr>
+   <td width="12%" rowspan="2" valign="top"><div align="center"><img src="[.$webpath.]skin/userhead_s.jpg" border="0" /></div></td>
+    <td width="88%" height="20"><span style="float:right;">[.$op.time.]</span>[.$op.name.] <font color="#CCCCCC" size="2">([.$op.ip.])</font></td>
+  </tr>
+  <tr>
+    <td height="98" valign="top">
+	[.$op.content.]
+			
+			[.if $op.gocontent != ''.]
+			<div style="clear:both; height:20px;"></div>
+			<p>管理员回复：[.$op.gocontent.]&nbsp;&nbsp;&nbsp;&nbsp;([.$op.gotime.])</p>
+			[./if.]
+	</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#eeeeee"></td>
+  </tr>
+[./foreach.]
+  <tr>
+    <td></td>
+    <td><a href="[.$webpath.]function/plugs/Comment/article-content.php?id=[.$opcms.id.]&type=[.$ip.type.]&row=10" target="_blank">查看全部评论 >>> </a></td>
+  </tr>
+  <tr>
+    <td><div align="right">评论</div></td>
+[.if $webocomment == 2.]
+    <td><textarea name="content" style="width:410px; height:110px; border:1px #cccccc solid;text-align:center; line-height:110px;" disabled="disabled" >评论被关闭:(</textarea></td>
+[.elseif $webocomment == 3.]
+
+			[.if isset($smarty.session.username).]
+			<td><textarea name="content" style="width:410px; height:110px; border:1px #cccccc solid;" ></textarea></td>
+			[.else.]
+			<td><textarea name="content" style="width:410px; height:110px; border:1px #cccccc solid;text-align:center; line-height:110px;" disabled="disabled" >请登录后在评论！</textarea></td>
+			[./if.]
+			
+[.else.]
+	<td><textarea name="content" style="width:410px; height:110px; border:1px #cccccc solid;" ></textarea></td>
+[./if.]
+  </tr>
+  <tr>
+    <td><div align="right">验证码</div></td>
+    <td><input type="text" name="code" style="width:100px; height:23px; border:1px #cccccc solid; line-height:23px;" onfocus="document.getElementById('checkcode2').src+='?'" />&nbsp;&nbsp;<img title="点击刷新" id="checkcode2" src="[.$webpath.]function/emmm_code.php" align="absbottom" onclick="this.src='[.$webpath.]function/emmm_code.php?'+Math.random();" width="80" height="25"></img></td>
+  </tr>
+  <tr>
+    <td>&nbsp;<input type="hidden" name="COL_Class" value="[.$opcms.id.]" /><input type="hidden" name="COL_Type" value="[.$ip.type.]" /></td>
+    <td><input type="submit" name="Submit" value="提交评论" style="width:100px; height:30px;background:#3399FF; color:#FFFFFF; border:0px;" /></td>
+  </tr>
+</table>
+</form>

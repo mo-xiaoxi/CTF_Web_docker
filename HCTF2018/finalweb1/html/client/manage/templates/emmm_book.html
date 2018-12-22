@@ -1,0 +1,185 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq183#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+
+
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" [.if $smarty.get.id == 'emmm'.]class="hover"[./if.]>查看留言</li>
+  <li onclick="setTab(0,1)" [.if $smarty.get.id == 'emmms'.]class="hover"[./if.]>版块管理</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul [.if $smarty.get.id == 'emmm'.]class="block"[./if.]>
+	  <li>
+		<div class="emmm_newslist">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="12%" bgcolor="#EBEBEB"><div align="center">版块</div></td>
+                    <td width="40%" bgcolor="#EBEBEB">留言内容</td>
+					<td width="8%" bgcolor="#EBEBEB">姓名</td>
+					<td width="10%" bgcolor="#EBEBEB">联系方式</td>
+					<td width="10%" bgcolor="#EBEBEB">IP</td>
+                    <td width="15%" bgcolor="#EBEBEB">发布时间</td>
+                    <td width="5%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$Booklist name=op.]
+                  <tr>
+				  	<td><div align="center">
+					<font style="background: #FF9900; color:#FFFFFF; padding:2px; text-align:center;">[.$Booklist[op].lang.]</font>
+					<font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$Booklist[op].class.]</font></div></td>
+                    <td>
+					[.$Booklist[op].content.]&nbsp;&nbsp;{<a href="javascript:dialog([.$Booklist[op].id.])" ><font color="#0099CC">回复这条留言</font></a>}
+					[.if $Booklist[op].reply != ''.]&nbsp;&nbsp;<font style="background: #FF6699; color:#FFFFFF; padding:2px; text-align:center;">您回复:&nbsp;&nbsp;[.$Booklist[op].reply.]</font>[./if.]
+					</td>
+					<td>[.$Booklist[op].name.]</td>
+					<td>[.$Booklist[op].tel.]</td>
+					<td><a href="http://ip138.com/ips138.asp?ip=[.$Booklist[op].ip.]&action=2" target="_blank">[.$Booklist[op].ip.]</a></td>
+                    <td>[.$Booklist[op].time.]</td>
+                    <td><a href="?emmm_cms=bookdel&id=[.$Booklist[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="7">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                  <tr>
+                    <td colspan="7">[.$emmmpage.]</td>
+                  </tr>
+                </table>
+		</div>
+	  </li>
+  </ul>
+  
+  <ul [.if $smarty.get.id == 'emmms'.]class="block"[./if.]>
+	  <li>
+	  
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="10%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="60%" bgcolor="#EBEBEB">版块名称</td>
+                    <td width="20%" bgcolor="#EBEBEB">发布时间</td>
+                    <td width="10%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$Booksection name=op.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$Booksection[op].id.]</font></div></td>
+                    <td>
+					<font style="background: #FF9900; color:#FFFFFF; padding:2px; text-align:center;">[.$Booksection[op].lang.]</font>
+					&nbsp;&nbsp;[.$Booksection[op].title.]&nbsp;&nbsp;{[.$Booksection[op].content.]}
+					</td>
+					<td>[.$Booksection[op].time.]</td>
+                    <td><a href="?id=emmms&our=edit&uid=[.$Booksection[op].id.]">编辑</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="?emmm_cms=del&id=[.$Booksection[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="4">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                </table>
+					  
+	  <div style="clear:both; height:50px;"></div>
+	  [.if !isset($smarty.get.our).]
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		<tr>
+		  	<td><div align="right">语言</div></td>
+			<td>
+			
+			[.section loop=$langlist name=op.]
+			<input name="COL_Booksectionlanguage" type="radio" value="[.$langlist[op].lang.]" [.if $langlist[op].default.] checked="checked" [./if.] />[.$langlist[op].font.]&nbsp;&nbsp;
+			[./section.]
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">版块名称</div></td>
+			<td><input name="COL_Booksectiontitle" type="text" class="win" [.$emmm_bgcolor.] datatype="*" nullmsg="版块名称是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">版块简介</div></td>
+			<td><textarea name="COL_Booksectioncontent" class="wtextarea" id="container" style="width:80%; height:200px;"></textarea></font>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">排序</div></td>
+			<td><input name="COL_Booksectionsorting" type="text" class="win2" value="99" [.$emmm_bgcolor.] datatype="*" nullmsg="排序是必填项!"/> 数字越小越靠前！</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+		[.else.]
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$emmm_booksection.id.]" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		<tr>
+		  	<td><div align="right">语言</div></td>
+			<td>{[.$emmm_booksection.COL_Booksectionlanguage.]}
+			<input type="hidden" name="COL_Booksectionlanguage" value="[.$emmm_booksection.COL_Booksectionlanguage.]" />
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">版块名称</div></td>
+			<td><input name="COL_Booksectiontitle" type="text" class="win" value="[.$emmm_booksection.COL_Booksectiontitle.]" [.$emmm_bgcolor.] datatype="*" nullmsg="版块名称是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">版块简介</div></td>
+			<td><textarea name="COL_Booksectioncontent" class="wtextarea" id="container" style="width:80%; height:200px;">[.$emmm_booksection.COL_Booksectioncontent.]</textarea></font>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">排序</div></td>
+			<td><input name="COL_Booksectionsorting" type="text" class="win2" value="[.$emmm_booksection.COL_Booksectionsorting.]" [.$emmm_bgcolor.] datatype="*" nullmsg="排序是必填项!"/> 数字越小越靠前！</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+		[./if.]
+	  </li>
+  </ul>
+ </div>
+</div>
+<script>
+//弹出一个页面层
+function dialog(id){
+    $.layer({
+        type: 1,
+        title: '留言回复ID:'+id,
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['300px', '300px'],
+        page: {html: '<form id="form1" name="form1" method="POST" action="?emmm_cms=reply&id='+id+'" class="registerform"><textarea name="COL_Bookreply" style="width:250px; border:0px; height:160px; padding:20px;">输入你要回复的文字</textarea>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="回复" class="emmm-anniu"/></form>'}
+    });
+};
+</script>
+[.include file="emmm_foot.html".]
+</body>
+</html>

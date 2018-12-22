@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心 - [.$emmm_web.website.] </title>
+<link rel="stylesheet" href="[.$templatepath.]css/style.css" type="text/css" />
+<script type="text/javascript" src="[.$webpath.]function/plugs/jquery/1.7.2/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" type="text/css" />
+</head>
+<body>
+<div id="YIQI-UI">
+    [.include file="cn_top.html".]
+    <div class="clear"></div>
+    <div class="emmm_center">
+        <div class="clear"></div>
+        <div class="emmm_login">
+              
+                    <div class="f-l emmm_left">
+                        [.if empty($ad.login).]
+                            <img src="[.$templatepath.]images/logobei.png" />
+                        [.else.]
+                            [.$ad.login.]
+                        [./if.]
+                    </div>
+                    <div class="f-r emmm_right">
+                      <div class="logo_font mb-40">立即登录</div>
+                      <div class="clear"></div>
+                    [.*会员登录表单开始*.]
+                    [.if $usercontrol.loginoff == 1.]
+                    <form id="form1" name="form1" method="post" action="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=login" class="registerform">
+                    <table width="100%" border="0" class="table table-hover">
+                          <tr>
+                            <td><div align="right">账号：</div></td>
+                            <td><input type="text" name="COL_Useremail" class="input" datatype="*" value="E-mail 或 手机号码" onfocus="if (value =='E-mail 或 手机号码'){value =''}" onblur="if (value ==''){value='E-mail 或 手机号码'}" /> <font color="#FF0000">*</font></td>
+                          </tr>
+                          <tr>
+                            <td><div align="right">登录密码：</div></td>
+                            <td><input type="password" name="COL_Userpass" class="input" datatype="*" /> 
+                            <font color="#FF0000">* </font>&nbsp;&nbsp;<a href="?[.$ip.lang.]-password.html">忘记密码? </a></td>
+                          </tr>
+                          <tr>
+                            <td><div align="right">验证码：</div></td>
+                            <td><input type="text" name="code" class="input3" datatype="*" onfocus="document.getElementById('checkcode').src+='?'" /> <font color="#FF0000">*</font>&nbsp;<img title="点击刷新" id="checkcode" src="[.$webpath.]function/emmm_code.php" align="absbottom" onclick="this.src='[.$webpath.]function/emmm_code.php?'+Math.random();" width="80" height="25"></img></td>
+                          </tr>
+                          <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                            <input type="hidden" name="lang" value="[.$ip.lang.]" />
+                            <input type="submit" name="Submit" value="立即登录" class="btn btn-danger radius-5 pt-10 pb-10 pl-15 pr-15" /><a href="[.$webpath.]client/user/?cn-reg.html" class="btn btn-success radius-5 pt-10 pb-10 pl-15 pr-15 ml-10">免费注册</a></td>
+                          </tr>
+                    </table>
+                    </form>
+                    <link rel="stylesheet" href="../../function/plugs/Validform/style.css" type="text/css" />
+                    <script type="text/javascript" src="../../function/plugs/Validform/Validform_v5.3.2.js"></script>
+                    <script type="text/javascript">
+                    $(function(){
+                        $(".registerform").Validform();  //就这一行代码！;
+                    })
+                    </script>
+                    [.else.]
+                        <h3>暂时无法提供登录！</h3>
+                    [./if.]
+                    [.*会员登录表单结束*.]
+                    
+                    </div>
+                </div>
+    	</div>
+    [.include file="cn_foot.html".]
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+
+[.include file="cn/cn_top.html".]
+[.include file="cn/cn_banner.html".]
+
+<div class="wrap">
+  <div class="main">
+
+
+<div class="fyRight" style="padding:5px; width:960px;">
+<div class="mainRightMain" style="width:960px;">
+
+
+[.*留言开始*.]
+  <table width="100%" border="1" cellpadding="10" bordercolor="#e7eff3" bgcolor="#ffffff" style="text-align:left; font-size:12px; border-collapse:collapse; padding:0px;">
+    <tr style="background:url([.$webpath.]skin/clubgb.png) repeat-x;">
+      <td style="padding:0px 0px 0px 10px; height:31px; width:600px;"><div align="left">留言列表</div></td>
+      <td style="padding:0px 0px 0px 10px; height:31px;"><div align="left">发表留言</div></td>
+    </tr>
+    <tr>
+      <td valign="top">
+	  
+	  <table width="100%" border="0" cellpadding="10">
+      [.if empty($opcms).]
+      	<tr>
+        	<td>暂无留言,请您发表吧!</td>
+        </tr>
+      [./if.]
+	  [.foreach $opcms as $key => $op.]	
+        <tr>
+          <td width="20%" rowspan="2" valign="top"><div align="center"><img src="[.$webpath.]skin/userhead_s.jpg" border="0" /></div></td>
+          <td width="80%" style="min-height:60px;" valign="top">
+		  <p style=" height:30px; line-height:30px; border-bottom:1px #CCCCCC dashed;"><span style="float:right; font-size:12px; color:#999999;">([.$op.time.])</span>[.$op.name.]</p>
+		  <p style=" margin-top:20px;">[.$op.content.]</p>
+		  </td>
+        </tr>
+        <tr>
+          <td>
+		  		[.if $op.reply != ''.]
+		  		  <table width="100%" border="0" cellpadding="5" bgcolor="#D7E1F9">
+                    <tr>
+                      <td style="border-bottom:1px #ffffff dashed;">管理员回复：</td>
+                    </tr>
+                    <tr>
+                      <td valign="top">[.$op.reply.]</td>
+                    </tr>
+                  </table>
+				[./if.]
+			</td>
+        </tr>
+		 <tr>
+          <td style="border-bottom:1px #CCCCCC dashed; height:10px;">&nbsp;</td>
+		  <td style="border-bottom:1px #CCCCCC dashed; height:10px;">&nbsp;</td>
+        </tr>
+	  [./foreach.]
+      </table>  
+	
+	</td>
+      <td valign="top">
+	    <form id="form1" name="form1" method="post" action="[.$bookform.]">
+		  <table width="100%" border="0" id="float" class="right_fl">
+            <tr>
+              <td><div align="right">姓名：</div></td>
+              [.if $ip.bookuser == 0.]
+              <td><input type="text" name="bookname" style="width:230px; height:25px; border:1px #CCCCCC solid; background:#FFFFFF; font-size:14px; line-height:25px; color:#666666;" /></td>
+              	[.else.]
+                
+                [.if isset($smarty.session.username).]
+                  <td><input type="text" name="bookname" value="[.$smarty.session.name.]" style="width:230px; height:25px; border:1px #CCCCCC solid; background:#f4f4f4; font-size:14px; line-height:25px; color:#ccc;" readonly /></td>
+                  [.else.]
+                  <td><input type="text" name="bookname" style="width:230px; height:25px; border:1px #CCCCCC solid; background:#FFFFFF; font-size:14px; line-height:25px; color:#666666;" /></td>
+                [./if.]
+                
+              [./if.]
+            </tr>
+            <tr>
+              <td><div align="right">联系方式：</div></td>
+              <td><input type="text" name="booktel" style="width:230px; height:25px; border:1px #CCCCCC solid; background:#FFFFFF; font-size:14px; line-height:25px; color:#666666;" /></td>
+            </tr>
+            <tr>
+              <td valign="top"><div align="right">留言内容：</div></td>
+              <td><textarea name="bookcontent" style="width:230px; height:100px; border:1px #CCCCCC solid; background:#FFFFFF; font-size:14px; line-height:25px; color:#666666;"></textarea></td>
+            </tr>
+            <tr>
+              <td><div align="right">验证码：</div></td>
+              <td><input type="text" name="bookcode" style="width:100px; height:25px; border:1px #CCCCCC solid; background:#FFFFFF; font-size:14px; line-height:25px; color:#666666;" onfocus="document.getElementById('checkcode2').src+='?'" />&nbsp;<img title="点击刷新" id="checkcode2" src="[.$webpath.]function/emmm_code.php" align="absbottom" onclick="this.src='[.$webpath.]function/emmm_code.php?'+Math.random();" width="80" height="25"></img></td>
+            </tr>
+            [.if $ip.bookuser == 0.]
+            <tr>
+              <td><div align="right"></div></td>
+              <td><input type="submit" name="Submit" value="提 交" style="width:80px; height:25px; border:0px; background:#68A7D4; color:#FFFFFF;" /></td>
+            </tr>
+            [.else.]
+            <tr>
+              <td></td>
+                [.if isset($smarty.session.username).]
+                    <td><input type="submit" name="Submit" value="提 交" style="width:80px; height:25px; border:0px; background:#68A7D4; color:#FFFFFF;" /></td>
+                     [.else.]
+                    <td>请先登录,在发表留言!</td>
+                [./if.]
+            </tr>
+            [./if.]
+            <tr>
+              <td><input type="hidden" name="ip" value="[.$ip.ip.]" />
+                <input type="hidden" name="class" value="[.$ip.listid.]" />
+                <input type="hidden" name="lang" value="[.$ip.lang.]" />
+              </td>
+            </tr>
+          </table>
+        </form>
+	  </td>
+    </tr>
+  </table>
+  <div style="clear:both; height:20px;"></div>
+  [.$emmmpage.]
+[.*留言结束*.]
+
+
+    </div>
+  </div>
+</div>
+
+[.include file="cn/cn_foot.html".]
+</body>
+</html>

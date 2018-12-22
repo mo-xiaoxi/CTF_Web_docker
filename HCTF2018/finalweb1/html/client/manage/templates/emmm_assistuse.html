@@ -1,0 +1,87 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$COL_Adminpowerfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<style type="text/css">
+	.list { float:left; height: auto; padding:10px; }
+	.list ul { padding:0px;}
+	.list ul li { width:160px; height:40px; background:#f3f3f3; color:#999999; text-align:left; float:left; margin-right:20px; margin-bottom:20px; text-align:center; line-height:40px;}
+	.list ul li a { color:#999999;}
+	.list ul li a:hover { width:160px; height:40px; background: #0099FF; color:#FFFFFF; display:block; text-align:center; line-height:40px;}
+</style>
+</head>
+
+<body>
+
+
+<table width="90%" border="1" align="center" cellpadding="10" bordercolor="#F4f4f4" style="margin-top:10px; border-collapse:collapse;">
+  <tr>
+    <td style="height:20px; background:#f4f4f4; color:#999999;">勤劳的&nbsp;[.$COL_Adminname.]&nbsp;您好，以下功能您都可以参与管理：</td>
+  </tr>
+  <tr>
+    <td>
+		<div class="list">
+			<ul>
+				[.if strstr($COL_Adminpower,"01").]<li><a href="emmm_lang.php?id=emmm">网站语言配置</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"02").]<li><a href="emmm_webdeploy.php?id=emmm">网站功能管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"03").]<li><a href="emmm_watermark.php?id=emmm">图片水印设置</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"04").]<li><a href="emmm_mail.php?id=emmm">系统邮件设置</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"05").]<li><a href="emmm_template.php?id=emmm">模板安装使用</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"06").]<li><a href="emmm_filebox.php">上传文件管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"07").]<li><a href="tags.php">模板标签</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"08").]<li><a href="emmm_column.php?id=emmm">网站栏目管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"09").]<li><a href="emmm_web.php?id=emmm">基本信息设置</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"10").]<li><a href="emmm_book.php?id=emmm">留言板管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"11").]<li><a href="emmm_banner.php?id=emmm">BANNER管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"12").]<li><a href="emmm_qq.php?id=emmm">浮动客服管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"13").]<li><a href="emmm_usersearch.php?id=emmm">热门搜索词</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"14").]<li><a href="emmm_article.php?id=emmm">文章管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"15").]<li><a href="emmm_photo.php?id=emmm">图集管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"16").]<li><a href="emmm_video.php?id=emmm">视频管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"17").]<li><a href="emmm_down.php?id=emmm">下载管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"18").]<li><a href="emmm_job.php?id=emmm">招聘管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"19").]<li><a href="emmm_usercontrol.php?id=emmm">会员选项</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"20").]<li><a href="emmm_user.php?id=emmm">会员管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"21").]<li><a href="emmm_usergroup.php?id=emmm">用户组管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"22").]<li><a href="emmm_usermessage.php?id=emmm">站内邮件</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"23").]<li><a href="emmm_pay.php?id=emmm">会员充值</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"24").]<li><a href="emmm_manage.php?id=emmm">管理员角色</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"25").]<li><a href="emmm_ad.php?id=emmm">广告管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"26").]<li><a href="emmm_link.php?id=emmm">友情链接管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"27").]<li><a href="emmm_plug.php?id=emmm">插件管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"28").]<li><a href="emmm_wap.php?id=emmm">手机网站管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"29").]<li><a href="emmm_weixin.php?id=emmm">微信网站管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"30").]<li><a href="emmm_yixin.php?id=emmm">支付宝服务窗管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"31").]<li><a href="emmm_bak.php?id=emmm">数据库操作</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"32").]<li><a href="emmm_sql.php?id=emmm">执行SQL语句</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"33").]<li><a href="emmm_adminsearch.php?id=emmm">后台信息检索</a></li>[./if.]			
+				[.if strstr($COL_Adminpower,"36").]<li><a href="emmm_api.php?id=emmm">API接口管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"37").]<li><a href="emmm_comment.php?opcms=articleview">评论管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"38").]<li><a href="emmm_productlist.php?id=emmm">商品管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"39").]<li><a href="emmm_productset.php?id=emmm">商城设置</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"40").]<li><a href="emmm_orders.php?id=emmm">订单处理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"41").]<li><a href="emmm_productlibrary.php?id=emmm">仓库管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"42").]<li><a href="emmm_productspecifications.php?id=emmm">商品规格管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"43").]<li><a href="emmm_productattribute.php?id=emmm">商品属性管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"44").]<li><a href="emmm_productp.php?id=emmm">品牌管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"45").]<li><a href="emmm_freight.php?id=emmm">运费模板</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"46").]<li><a href="emmm_webseo.php?id=emmm">网站相关优化</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"47").]<li><a href="emmm_integral.php?id=emmm">积分领取管理</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"48").]<li><a href="emmm_record.php?id=emmm">后台建站备忘录</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"49").]<li><a href="emmm_templatepages.php?id=emmm">翻页按钮样式</a></li>[./if.]
+				[.if strstr($COL_Adminpower,"50").]<li><a href="emmm_coupon.php?id=emmm">优惠券管理</a></li>[./if.]
+			</ul>
+		</div>
+	</td>
+  </tr>
+</table>
+
+
+
+[.include file="emmm_foot.html".]
+</body>
+</html>

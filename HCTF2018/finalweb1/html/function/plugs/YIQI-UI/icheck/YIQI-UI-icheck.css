@@ -1,0 +1,190 @@
+/* iCheck.js Minimal skin
+----------------------------------- */
+#YIQI-UI .icheckbox,#YIQI-UI .iradio{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(minimal.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox,#YIQI-UI .icheckbox.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox.hover,#YIQI-UI .icheckbox:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio,#YIQI-UI .iradio.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio.hover,#YIQI-UI .iradio:hover{background-position: -120px 0}
+#YIQI-UI .iradio.checked{background-position: -140px 0}
+#YIQI-UI .iradio.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI.icheckbox,#YIQI-UI.iradio{background-image: url(minimal@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* red */
+#YIQI-UI .icheckbox-red,#YIQI-UI .iradio-red{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(red.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-red,#YIQI-UI .icheckbox-red.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-red.hover,#YIQI-UI .icheckbox-red:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-red.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-red.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-red.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-red,.iradio-red.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-red.hover,#YIQI-UI .iradio-red:hover{background-position: -120px 0}
+#YIQI-UI .iradio-red.checked{background-position: -140px 0}
+#YIQI-UI .iradio-red.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-red.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI.icheckbox-red,#YIQI-UI.iradio-red{background-image: url(red@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* green */
+#YIQI-UI .icheckbox-green,#YIQI-UI .iradio-green{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(green.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-green,#YIQI-UI .icheckbox-green.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-green.hover,#YIQI-UI .icheckbox-green:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-green.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-green.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-green.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-green,.iradio-green.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-green.hover,.iradio-green:hover{background-position: -120px 0}
+#YIQI-UI .iradio-green.checked{background-position: -140px 0}
+#YIQI-UI .iradio-green.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-green.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI .icheckbox-green,#YIQI-UI .iradio-green{background-image: url(green@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* blue */
+#YIQI-UI .icheckbox-blue,#YIQI-UI .iradio-blue{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(blue.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-blue,#YIQI-UI .icheckbox-blue.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-blue.hover,#YIQI-UI .icheckbox-blue:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-blue.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-blue.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-blue.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-blue,#YIQI-UI .iradio-blue.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-blue.hover,#YIQI-UI .iradio-blue:hover{background-position: -120px 0}
+#YIQI-UI .iradio-blue.checked{background-position: -140px 0}
+#YIQI-UI .iradio-blue.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-blue.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI.icheckbox-blue#YIQI-UI,.iradio-blue{background-image: url(blue@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* aero */
+#YIQI-UI .icheckbox-aero,#YIQI-UI .iradio-aero{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(aero.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-aero,#YIQI-UI .icheckbox-aero.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-aero.hover,#YIQI-UI .icheckbox-aero:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-aero.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-aero.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-aero.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-aero,#YIQI-UI .iradio-aero.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-aero.hover,#YIQI-UI .iradio-aero:hover{background-position: -120px 0}
+#YIQI-UI .iradio-aero.checked{background-position: -140px 0}
+#YIQI-UI .iradio-aero.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-aero.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI.icheckbox-aero,#YIQI-UI.iradio-aero{background-image: url(aero@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* grey */
+#YIQI-UI .icheckbox-grey,#YIQI-UI .iradio-grey{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(grey.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-grey,#YIQI-UI .icheckbox-grey.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-grey.hover,#YIQI-UI .icheckbox-grey:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-grey.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-grey.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-grey.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-grey,#YIQI-UI .iradio-grey.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-grey.hover,#YIQI-UI .iradio-grey:hover{background-position: -120px 0}
+#YIQI-UI .iradio-grey.checked{background-position: -140px 0}
+#YIQI-UI .iradio-grey.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-grey.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI .icheckbox-grey,#YIQI-UI .iradio-grey{background-image: url(grey@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* orange */
+#YIQI-UI .icheckbox-orange,#YIQI-UI .iradio-orange{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(orange.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-orange,#YIQI-UI .icheckbox-orange.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-orange.hover,#YIQI-UI .icheckbox-orange:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-orange.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-orange.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-orange.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-orange,#YIQI-UI .iradio-orange.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-orange.hover,#YIQI-UI .iradio-orange:hover{background-position: -120px 0}
+#YIQI-UI .iradio-orange.checked{background-position: -140px 0}
+#YIQI-UI .iradio-orange.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-orange.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI .icheckbox-orange,#YIQI-UI .iradio-orange{background-image: url(orange@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* yellow */
+#YIQI-UI .icheckbox-yellow,#YIQI-UI .iradio-yellow{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(yellow.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-yellow,#YIQI-UI .icheckbox-yellow.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-yellow.hover,#YIQI-UI .icheckbox-yellow:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-yellow.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-yellow.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-yellow.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-yellow,#YIQI-UI .iradio-yellow.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-yellow.hover,#YIQI-UI .iradio-yellow:hover{background-position: -120px 0}
+#YIQI-UI .iradio-yellow.checked{background-position: -140px 0}
+#YIQI-UI .iradio-yellow.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-yellow.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI.icheckbox-yellow,#YIQI-UI.iradio-yellow{background-image: url(yellow@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* pink */
+#YIQI-UI .icheckbox-pink,#YIQI-UI .iradio-pink{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(pink.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-pink,#YIQI-UI .icheckbox-pink.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-pink.hover,#YIQI-UI .icheckbox-pink:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-pink.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-pink.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-pink.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-pink,#YIQI-UI .iradio-pink.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-pink.hover,#YIQI-UI .iradio-pink:hover{background-position: -120px 0}
+#YIQI-UI .iradio-pink.checked{background-position: -140px 0}
+#YIQI-UI .iradio-pink.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-pink.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI .icheckbox-pink,#YIQI-UI .iradio-pink{background-image: url(pink@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+/* purple */
+#YIQI-UI .icheckbox-purple,#YIQI-UI .iradio-purple{display: block;margin: 0;padding: 0;width: 18px;height: 18px;background: url(purple.png) no-repeat;border: none;cursor: pointer; float:left; margin-right:10px;}
+#YIQI-UI .icheckbox-purple,#YIQI-UI .icheckbox-purple.static:hover{background-position: 0 0}
+#YIQI-UI .icheckbox-purple.hover,#YIQI-UI .icheckbox-purple:hover{background-position: -20px 0}
+#YIQI-UI .icheckbox-purple.checked{background-position: -40px 0}
+#YIQI-UI .icheckbox-purple.disabled{background-position: -60px 0;cursor: default}
+#YIQI-UI .icheckbox-purple.checked.disabled{background-position: -80px 0}
+#YIQI-UI .iradio-purple,#YIQI-UI .iradio-purple.static:hover{background-position: -100px 0}
+#YIQI-UI .iradio-purple.hover,#YIQI-UI .iradio-purple:hover{background-position: -120px 0}
+#YIQI-UI .iradio-purple.checked{background-position: -140px 0}
+#YIQI-UI .iradio-purple.disabled{background-position: -160px 0;cursor: default}
+#YIQI-UI .iradio-purple.checked.disabled{background-position: -180px 0}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),  only screen and (-moz-min-device-pixel-ratio: 1.5),  only screen and (-o-min-device-pixel-ratio: 1.5),  only screen and (min-device-pixel-ratio: 1.5){#YIQI-UI .icheckbox-purple,#YIQI-UI .iradio-purple{background-image: url(purple@2x.png);
+	-webkit-background-size: 200px 20px;
+	background-size: 200px 20px}
+}
+
+#YIQI-UI .check-box,#YIQI-UI .radio-box {
+	display: inline-block;
+	box-sizing: border-box;
+	cursor: pointer;
+	position: relative;
+	padding-left: 30px;
+	padding-right: 20px;
+}

@@ -1,0 +1,132 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">信息列表</li>
+  <li onclick="setTab(0,1)">会员充值</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="5%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="15%" bgcolor="#EBEBEB">充值账号</td>
+					<td width="10%" bgcolor="#EBEBEB">充值金额</td>
+					<td width="10%" bgcolor="#EBEBEB">充值积分</td>
+					<td width="20%" bgcolor="#EBEBEB">充值说明</td>
+					<td width="15%" bgcolor="#EBEBEB">操作人</td>
+					<td width="15%" bgcolor="#EBEBEB">时间</td>
+                    <td width="10%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$pay name=op.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$pay[op].id.]</font></div></td>
+                    <td>[.$pay[op].email.]</td>
+					<td>[.$pay[op].paytype.][.$pay[op].money.]</td>
+					<td>[.$pay[op].paytype.][.$pay[op].integral.]</td>
+                    <td>[.$pay[op].content.]</td>
+					<td>[.$pay[op].admin.]</td>
+					<td>[.$pay[op].time.]</td>
+                    <td><a href="?emmm_cms=del&id=[.$pay[op].id.]" onclick="javascript:return confirm('确认删除吗?')">删除</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="8">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+				  
+                  <tr>
+                    <td colspan="8">[.$emmmpage.]</td>
+                  </tr>
+                </table>
+		</div>
+	  </li>
+  </ul>
+  
+  <ul>
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td><div align="right">操作人</div></td>
+			<td>[.$COL_Adminname.]<input type="hidden" name="COL_Useradmin" value="[.$COL_Adminname.]" /></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">充值账号</div></td>
+			<td><input name="COL_Useremail" type="text" class="win" [.$emmm_bgcolor.] id="searchid" datatype="*" nullmsg="账号是必填项!" /><font color=red> (*)</font>&nbsp;&nbsp;输入会员的账户，email或手机号格式&nbsp;&nbsp;[<a href="javascript:dialog('usersearch')">查找</a>]</td>
+		  </tr>
+		  <tr>
+			<td><div align="right">充值类型</div></td>
+			<td>
+			<select name="jj">
+				<option value ="a">加</option>
+				<option value ="b">减</option>
+			</select>
+			</td>
+		  </tr>
+		 <tr>
+		  	<td><div align="right">充值金额</div></td>
+			<td><input name="COL_Usermoney" type="text" class="win3" [.$emmm_bgcolor.] datatype="*" nullmsg="金额是必填项!" value="0" /><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">充值积分</div></td>
+			<td><input name="COL_Userintegral" type="text" class="win3" [.$emmm_bgcolor.] datatype="*" nullmsg="积分是必填项!" value="0" /><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">充值说明</div></td>
+			<td><textarea name="COL_Usercontent" class="wtextarea"></textarea>
+			<font color=red> (*)</font></td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+<script>
+function dialog(id){
+    $.layer({
+        type: 2,
+        title: '搜索',
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['600px', '300px'],
+		iframe:{src: 'emmm_search.php?emmm='+id,scrolling: 'yes'}
+    });
+};
+</script>
+[.include file="emmm_foot.html".]
+</body>
+</html>

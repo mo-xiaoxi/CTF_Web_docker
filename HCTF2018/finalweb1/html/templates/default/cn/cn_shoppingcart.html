@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>购物车 - 企业商城 - [.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]" />
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="Author" content="vidar.club" />
+<LINK href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" rel=stylesheet>
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+<LINK href="[.$templatepath.]shop/css/emmm.css" rel=stylesheet>
+<script type="text/javascript" src="[.$webpath.]function/plugs/YIQI-UI/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/emmm.js"></script>
+<script type="text/javascript" src="[.$webpath.]function/plugs/lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/banner1.js"></script>
+<script type="text/javascript" src="[.$templatepath.]shop/js/rightnav.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("img").lazyload({ 
+		 effect: "fadeIn"
+	});    
+	tcjs('wx');
+	tcjs('sj');
+	tcjs('wxkf');
+	navjs('navleft');
+});
+</script>
+</head>
+<body>
+[.include file="cn/cn_shoptop.html".]
+<div class="clear"></div>
+	<div class="center">
+        <div class="shopviewright" style="width:1200px;">
+            <ul>
+
+		[.*购物车模板开始，如果更换模板请从这里复制*.]
+		<script> 
+		$(function(){ 
+			var _url = $('#siteurl').val();
+			$('.delete').click(function(){
+			  setTotal();
+			  t.hide();
+			});
+		
+			$(".add").click(function(){ 
+				var t=$(this).parent('li').find('input[class*=text_box]'); 
+				t.val(parseInt(t.val())+1); 
+				setTotal(); 
+			}); 
+		
+			$(".min").click(function(){ 
+				var t=$(this).parent('li').find('input[class*=text_box]'); 
+				t.val(parseInt(t.val())-1) 
+				if(parseInt(t.val())<1){ 
+					t.val(1); 
+				}
+				setTotal(); 
+			});
+		
+		  $('.text_box').keyup(function(){
+			setTotal();
+		  });
+		  
+		  function setTotal(){ 
+			var s=0; 
+			$("#tab dt").each(function(){ 
+			  var numbers = parseInt($(this).find('input[class*=text_box]').val());
+			  if($.isNumeric(numbers)){
+					numbers = parseInt(numbers);
+						}else{
+					numbers = 0;
+			  }
+			  $(this).find('input[class*=text_box]').val(numbers);
+			  s += numbers*parseFloat($(this).find('span[class*=price]').text());
+				// bof 用ajax在_url中删除指定的购物车中$_SESSION相关信息
+				var pid =$(this).find('input[class*=product_id]');
+				$.ajax({
+					url:_url,
+					type: 'post',
+					data:{proid : pid.val()},
+					success: function(data){ 
+						// 回应    
+					}
+				}); 
+				// end
+			}); 
+			$("#total").html(s.toFixed(2)); 
+		  } 
+		 // setTotal(); 
+
+		});
+		function add(id){
+			$("#addli li").removeClass("gb");
+			$("#add"+id).addClass("gb");
+			$("#shopaddid").val(id);
+		}
+		</script> 
+		<style type="text/css">
+			td { padding:5px;}
+			.min{ width:20px; height:30px; border:0px; float:left;}
+			.text_box { width:50px; height:28px; border:1px #CCCCCC solid; line-height:28px; float:left; text-align:center}
+			.add{ width:20px; height:30px; border:0px; float:left;}
+			.price {color:#cc0000;}
+			.input{width:300px; height:20px; line-height:20px; border:1px #CCCCCC solid; padding:5px;}
+			.spzj { font-size:20px;}
+			.spzj #total {color:#CC0000; font-weight:bold; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+		</style>
+		[.if $ordersarray == 1.]
+			<form id="form1" name="form1" method="post" action="[.$webpath.]?cn-shoppingorders.html-&emmm_cms=buy" class="registerform">
+			<table width="100%" border="1" cellpadding="10" bordercolor="#CCCCCC" bgcolor="#FFFFFF" style="margin:30px 0; border-collapse:collapse;" id="tab">
+			<tr>
+				<td colspan="6"><img src="[.$webpath.]skin/shoppingcart.png" /></td>
+			  </tr>
+			  <tr style="background:url([.$webpath.]skin/clubgb.png) repeat-x;">
+				<td width="150"></td>
+				<td>购物信息</td>
+				<td width="80">网站价格</td>
+				<td width="80">您的价格</td>
+				<td width="120">购买数量</td>
+				<td width="40">&nbsp;</td>
+			  </tr>
+			  
+			  [.foreach $shoppingcart as $op.]
+			  <tr>
+				<td rowspan="2"><div align="center"><img src="[.$op.img.]" width="130" height="130" /></div></td>
+				<td><p style="font-size:14px; color:#000000;">[.$op.title.]</p>
+				<p style="color: #999999; font-size:12px; margin-top:10px;">[.$op.attribute.]</p>
+				<input type="hidden" name="emmm_opcms[]" value="[.$op.id.]" />
+				<input type="hidden" name="emmm_opcms[]" value="[.$op.title.]" />
+				<input type="hidden" name="emmm_opcms[]" value="[.$op.attribute.]" />
+				<input type="hidden" name="emmm_opcms[]" value="[.$op.weight.]" />
+				<input type="hidden" name="emmm_opcms[]" value="[.$op.freight.]" />
+				</td>
+				<td rowspan="2"><del>[.$op.webmarket.]&nbsp;元</del>
+				<input type="hidden" name="emmm_opcms[]" value="[.$op.webmarket.]" /></td>
+
+				<td colspan="2" rowspan="2" style="font-size:16px;">
+					<dt>
+					  <table width="100%" border="0" cellpadding="10">
+						<tr>
+						  <td style="width:70px;font-size:16px;"><span class="price">[.$op.usermarket.]</span>&nbsp;元
+						  <input type="hidden" name="emmm_opcms[]" value="[.$op.usermarket.]" /></td>
+						  <td>
+								  <li>
+								  <input class="min" name="" type="button" value="-" /> 
+								  <input class="text_box" name="emmm_opcms[]" type="text" value="[.$op.number.]" readonly="readonly" /> 
+								  <input class="add" name="" type="button" value="+" />
+								  </li>
+						  </td>
+						</tr>
+					  </table> 
+					</dt> 
+				</td>
+
+				<td rowspan="2" style="font-size:16px;"><div align="center"><a href="[.$webpath.]function/emmm_play.class.php?emmm_shopping=[.$op.cartid.]&lang=cn" onclick="javascript:return confirm('确认删除吗?')"><img src="[.$webpath.]skin/Trash.png" alt="删除" title="删除" /></a></div></td>
+			  </tr>
+			  <tr>
+				<td>买家留言：
+				<input type="text" name="emmm_opcms[]" class="input"/>
+				<input type="hidden" name="emmm_opcms[]" value="[.$op.barcode.]" />
+				[.*隐藏的表单元素，非常重要。更新模板时这里要保留不可以删除！ --开始*.]
+				<input type="hidden" name="emmm_opcms[]" value="|" />
+				[.*隐藏的表单元素，非常重要。更新模板时这里要保留不可以删除！ --结束*.]
+				</td>
+			  </tr>
+              <tr>
+              	<td colspan="6" style="height:5px; border-bottom:1px #ebebeb solid;"></td>
+              </tr>
+			  [./foreach.]
+			</table>
+			<table width="100%">
+			  <tr>
+				<td valign="top" class="spzj">商品总价：<label id="total">[.$op.total.]</label>&nbsp;元</td>
+				<td>
+					<div id="YIQI-UI">
+						<div class="f-r mb-30">
+							<input name="button" type="button" class="btn btn-success radius-5 pd-15"  onclick=window.open("[.$webpath.]","_self") value="继续购物" />
+							<input type="submit" name="Submit" value="结账付款" class="btn btn-danger radius-5 pt-15 pb-15 pl-40 pr-40" />
+						</div>
+					</div>
+				</td>
+				</tr>
+			</table>
+            <div class="clear"></div>
+			</form>
+			[.else.]
+			<table width="100%" border="0" align="center" cellpadding="10">
+				<tr>
+				  <td>
+					<div align="center">
+					<img src="[.$webpath.]skin/ordersno.jpg" style="margin-top:50px;">
+					</div>
+				  </td>
+				</tr>
+			</table>
+			[./if.]
+		[.*购物车模板结束*.]
+
+            </ul>
+        </div>
+    </div>
+<div class="clear"></div>
+[.include file="cn/cn_shopfoot.html".]
+</body>
+</html>

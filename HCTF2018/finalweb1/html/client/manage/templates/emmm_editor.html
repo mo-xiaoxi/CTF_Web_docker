@@ -1,0 +1,14 @@
+		<link rel="stylesheet" href="../../function/editor/themes/default/default.css" />
+		<script charset="utf-8" src="../../function/editor/kindeditor.js"></script>
+		<script charset="utf-8" src="../../function/editor/lang/zh_CN.js"></script>
+		<script>
+			KindEditor.ready(function(K) {
+				K.create('textarea[id="container"]', {
+					allowFileManager : true,
+					autoHeightMode : true,
+					afterCreate : function() {
+						this.loadPlugin('autoheight');
+					}
+				});
+			});
+		</script>

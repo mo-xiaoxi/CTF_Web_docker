@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心 - [.$emmm_web.website.]</title>
+<link rel="stylesheet" href="[.$templatepath.]css/style.css" type="text/css" />
+<script type="text/javascript" src="[.$webpath.]function/plugs/jquery/1.7.2/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" type="text/css" />
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="YIQI-UI">
+    [.include file="cn_top.html".] 
+    <div class="clear"></div>
+    <div class="emmm_center">
+    <div class="clear"></div>
+    
+        <div class="emmm_login">
+            <div class="emmm_user_left">
+                [.include file="cn_leftnav.html".] 
+            </div>
+            <div class="emmm_user_right">
+            [.*站内邮件表单开始*.]
+            <div class="emmm_user_down">
+            <h1>信件列表：</h1>
+              <table width="100%" border="0" class="table table-border table-hover">
+                <tr style="background:url([.$webpath.]skin/clubgb.png) repeat-x;">
+                  <td style="padding:0px 0px 0px 10px; height:31px; width:110px;">发送人</td>
+                  <td style="padding:0px 0px 0px 10px; height:31px; width:110px;">接收人</td>
+                  <td style="padding:0px 0px 0px 10px; height:31px;">内容</td>
+                  <td style="padding:0px 0px 0px 10px; height:31px; width:150px;">时间</td>
+                </tr>
+                [.foreach $mail as $op.]
+                <tr>
+                  <td valign="top">[.if $op.send == $user.email.]我[.else.][.$op.send.][./if.]</td>
+                  <td valign="top">[.if $op.collect == $user.email.]我[.else.][.$op.collect.][./if.]</td>
+                  <td valign="top"><p>[.$op.content.]</p></td>
+                  <td valign="top">[.$op.time.]</td>
+                </tr>
+                [./foreach.]
+              </table>
+              <div style="clear:both; height:20px;"></div>
+              [.$emmmpage.]
+            </div>
+            <div style="clear:both; height:40px;"></div>
+            <script src="../../function/plugs/layer/layer.min.js"></script>
+            <form id="form1" name="form1" method="post" action="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=mail&lang=cn" class="registerform">
+            <table width="100%" border="0" class="table table-hover table-bg">
+            		<tr>
+                    <th colspan="2" style="background:url([.$webpath.]skin/clubgb.png) repeat-x;">我要发站内邮件</th>
+                  </tr>
+                  <tr>
+                    <td width="100"><div align="right">收件账号：</div></td>
+                    <td><input type="text" name="COL_Usercollect" class="input" datatype="*" /> <font color="#FF0000">*</font></td>
+                  </tr>
+                  <tr>
+                    <td valign="top"><div align="right">信件内容：</div></td>
+                    <td><textarea name="COL_Usercontent" class="emmm_textarea"  datatype="*" ></textarea> 
+                    <font color="#FF0000">*</font></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div align="right">
+                        验证码：
+                      </div><input type="hidden" name="lang" value="[.$ip.lang.]" /></td>
+                    <td><input type="text" name="code" class="input3" datatype="*" onfocus="document.getElementById('checkcode').src+='?'" /> <font color="#FF0000">*</font>&nbsp;<img title="点击刷新" id="checkcode" src="[.$webpath.]function/emmm_code.php" align="absbottom" onclick="this.src='[.$webpath.]function/emmm_code.php?'+Math.random();" width="80" height="25"></img>&nbsp;&nbsp;&nbsp;<input type="submit" name="Submit" value="发送" class="btn btn-success radius-5 pt-5 pb-5 pl-20 pr-20" /></td>
+                  </tr>
+            </table>
+            </form>
+            <link rel="stylesheet" href="../../function/plugs/Validform/style.css" type="text/css" />
+            <script type="text/javascript" src="../../function/plugs/Validform/Validform_v5.3.2.js"></script>
+            <script type="text/javascript">
+            $(function(){
+                $(".registerform").Validform();  //就这一行代码！;
+            })
+            </script>
+            </div>
+            [.*站内邮件表单结束*.]
+        </div>
+    </div>
+    [.include file="cn_foot.html".]
+</div>
+</body>
+</html>

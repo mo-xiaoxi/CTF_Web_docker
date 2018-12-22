@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$opcms.title.] - [.$emmm_web.website.]</title>
+<meta name="keywords" content="[.$opcms.tag.]" />
+<meta name="description" content="[.$opcms.description.]"/>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+
+[.include file="cn/cn_top.html".]
+[.include file="cn/cn_banner.html".]
+
+
+<div class="wrap">
+  <div class="main">
+  
+    <div class="fyRight" style="float:left; width:980px;">
+      <div class="title"> <span class="fl">[.$opcms.title.]</span>
+        <div class="fr">您当前的位置：<a href="/" title="首页">首页</a>
+            
+            [.foreach $crumbs as $op.]
+             >> <a href="[.$op.url.]" title="[.$op.title.]">[.$op.title.]</a>
+            [./foreach.]
+
+		</div>
+      </div>
+<div class="mainRightMain ">
+[.$ad.view.]
+<div class="about-1" style="width:960px;">
+
+[.*产品模式*.]
+<form id="form1" name="form1" method="post" action="[.$webpath.]?cn-shoppingcart.html-&emmm_cms=shopping">
+<LINK href="[.$webpath.]function/plugs/product/style.css" rel=stylesheet>
+<style type="text/css">.prright ul{padding:0px}.prright ul li{font-size:14px;margin-top:15px}</style>
+<div class="prleft">
+<img src="[.$opcms.maximg.]" style="width:400px; height:400px; border:0px;" />
+</div>
+<div class="prright">
+	<ul>
+		<li>商品编号：[.$opcms.number.]</li>
+        <li>品牌名称：[.$opcms.brand.title.]</li>
+		<li>价格：<del>[.$opcms.market.]</del></li>
+		<li>优惠价：<span style="color:#FF0000; font-size:22px;">[.$opcms.webmarket.]</span></li>
+		<li>商品库存：[.$opcms.stock.]</li>
+	</ul>
+</div>
+</form>
+<div class="clear"></div>
+<script> 
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+</script>
+<div id="tabs0">
+    <ul class="menu0" id="menu0">
+    	<li onclick="setTab(0,0)" class="hover">商品详情</li>
+    	<li onclick="setTab(0,1)">发货方式</li>
+    </ul>
+    <div class="main" id="main0">
+        <ul class="block">
+            <li>
+                <div class="shuxing">
+                    <span class="clear shopcs">商品参数</span>
+                    <div class="clear"></div>
+                    [.foreach from=$opcms.attribute item=aop.]
+                    <span>[.$aop.name.]：[.$aop.key.]</span>
+                    [./foreach.]	
+                </div>
+                <div class="clear"></div>
+                [.$opcms.content.]
+            </li>
+        </ul>
+        <ul>
+            <li>
+            [.$shopset.sendout.]
+            </li>
+        </ul>
+    </div>
+</div>
+[.*产品模式结束，如果你要修改模板，把以上代码全部复制走*.]
+	</div>
+</div>
+<div align='center'></div>
+          <div class="main_r_nav">
+            <div>[.uptext form="product" type="up" font="上一条：" noacc="暂无数据".]</div>
+            <div>[.uptext form="product" type="down" font="下一条：" noacc="暂无数据".]</div>
+          </div>
+</div>
+</div>
+[.include file="cn/cn_foot.html".]
+</body>
+</html>

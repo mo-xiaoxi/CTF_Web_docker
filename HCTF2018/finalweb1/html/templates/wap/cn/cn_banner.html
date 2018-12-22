@@ -1,0 +1,22 @@
+<div id="slideBox" class="slideBox">
+    <div class="bd">
+        <ul>
+            [.banner lang="cn" row="5" name="banner" id="0" type="1".]
+            <li><a class="pic"><img src="[.$banner.img.]"></a></li>
+            [./banner.]
+        </ul>
+    </div>
+    <div class="hd">
+        <ul></ul>
+    </div>
+</div>
+<script type="text/javascript">
+    TouchSlide({ 
+        slideCell:"#slideBox",
+        titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+        mainCell:".bd ul", 
+        effect:"leftLoop", 
+        autoPage:true,//自动分页
+        autoPlay:true //自动播放
+    });
+</script>

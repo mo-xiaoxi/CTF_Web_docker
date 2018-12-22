@@ -1,0 +1,103 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">API列表</li>
+  <li onclick="setTab(0,1)">添加API</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div class="emmm_newslist">
+		        <table width="100%" border="0" cellpadding="10" class="emmm_newslist">
+                  <tr>
+				  	<td width="5%" bgcolor="#EBEBEB"><div align="center">ID</div></td>
+                    <td width="40%" bgcolor="#EBEBEB">API标题</td>
+					<td width="10%" bgcolor="#EBEBEB">开启/关闭</td>
+                    <td width="20%" bgcolor="#EBEBEB">操作</td>
+                  </tr>
+				  [.section loop=$api name=op.]
+                  <tr>
+				  	<td><div align="center"><font style="background:#009933; color:#FFFFFF; padding:2px; text-align:center;">[.$api[op].id.]</font></div></td>
+                    <td>[.$api[op].key[0].]</td>
+					<td>[.if $api[op].key[1] == 2.]<font color="red">【关闭中】</font>[.else.]【开启中】[./if.]</td>
+                    <td><a href="javascript:dialog([.$api[op].id.],'[.$api[op].keyto.]')">编辑</a></td>
+                  </tr>
+				  [.sectionelse.]
+				  <tr>
+                    <td colspan="4">[.$emmm_access.]</td>
+                  </tr>
+				  [./section.]
+                  <tr>
+                    <td colspan="4">[.$emmmpage.]</td>
+                  </tr>
+                </table>
+        </div>
+	  </li>
+  </ul>
+  
+  <ul>
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td valign="top"><div align="right">API值</div></td>
+			<td><textarea name="COL_Key" class="wtextarea" tyle="width:500px; height:200px;"></textarea><font color=red> (*)</font>
+			<br />
+				<br />
+			正确写法： API名称|开关1=开 2=关|值1|值2|值3...  (API名称必填)
+			</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+<script> 
+//弹出一个页面层
+function dialog(id,name){
+    $.layer({
+        type: 1,
+        title: '编辑:'+id,
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['300px', '300px'],
+        page: {html: '<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id='+id+'" class="registerform"><br /><br />&nbsp;&nbsp;&nbsp;API值：<br>&nbsp;&nbsp;<textarea name="COL_Key" style="width:280px; height:100px;">'+name+'</textarea><br /><br />&nbsp;&nbsp;正确写法：<br>&nbsp;&nbsp; API名称|开关1=开 2=关|值1|值2|值3...  (API名称必填)<br /><br />&nbsp;&nbsp;<input type="submit" name="submit" value="提交" class="emmm-anniu"/></form>'}
+    });
+};
+</script>
+
+[.include file="emmm_foot.html".]
+</body>
+</html>

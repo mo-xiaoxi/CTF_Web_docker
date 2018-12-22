@@ -1,0 +1,15 @@
+<div class="emmm_head">
+	<div class="emmm_center">
+    	<div class="f-l">
+        <div class="emmm_logo"><a href="/"><img src="[.$emmm_web.weblogo.]" /></a></div>
+        </div>
+		<div class="f-r">欢迎光临&nbsp;&nbsp;[.$emmm_web.website.]
+		&nbsp;&nbsp;
+            [.if isset($smarty.session.username).]
+            您好！<a href="[.$webpath.]client/user/">[.$smarty.session.username.]</a>
+            [.else.]
+            [<a href="[.$webpath.]client/user/?cn-reg.html">免费注册</a>]&nbsp;&nbsp;&nbsp;&nbsp;[<a href="[.$webpath.]client/user/?cn-login.html">立即登录</a>]
+            [./if.]
+        </div>
+	</div>
+</div>

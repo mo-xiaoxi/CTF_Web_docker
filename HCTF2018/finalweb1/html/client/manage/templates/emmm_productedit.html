@@ -1,0 +1,521 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">修改信息</li>
+  <li onclick="setTab(0,1)">积分设置</li>
+  <li onclick="setTab(0,2)">商品正文</li>
+  <li onclick="setTab(0,3)">商品组图</li>
+  <li><a href="javascript:history.go(-1)"><font color="#000000">返 回</font></a></li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+ <form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$emmm_product.id.]&page=[.$page.]" class="registerform">
+  <ul class="block">
+	  <li>
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		<tr>
+		  	<td><div align="right">栏目</div></td>
+			<td>
+
+<select name="COL_Class"  datatype="zoo">
+	<option value="0" >请选择</option>
+	[.function name=menu.]
+			[.foreach $data as $op.]
+				<option value="[.$op.id.]|[.$op.lang.]" [.if $op.model != 'product'.]disabled="true" style="color:#FF0000;"[.else.] style="color:#009900"[./if.] [.if $op.id == $emmm_product.COL_Class.]selected="selected"[./if.]>
+				[.if $op.uid != 0.]
+					[.for $foo=1 to $level.]
+					&nbsp;&nbsp;
+					[./for.]
+					└
+				[./if.]
+				[.$op.title.]
+				</option>
+				
+				[.if isset($op.child).]
+					[.call name=menu data=$op.child level=$level+1.]
+				[./if.]
+			[./foreach.]
+	[./function.]
+	[.call name=menu data=$product.]
+</select>
+			<font color="#009900">绿色</font>表示可录入项，<font color="#FF0000">红色</font>禁止录入项.			
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">标题</div></td>
+			<td><input name="COL_Title" type="text" class="win" [.$emmm_bgcolor.] value="[.$emmm_product.COL_Title.]" datatype="*" nullmsg="标题是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">商品缩略图</div></td>
+			<td><input name="COL_Minimg" type="text" class="win" value="[.$emmm_product.COL_Minimg .]" [.$emmm_bgcolor.] id="upload" />
+			&nbsp;<input type="button" id="image3" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+		[.include file="emmm_editor.html".]
+		<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image3').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#upload').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td></td>
+			<td>↑<a onClick="cal();" href="#">复制到下面</a>↓</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">商品大图</div></td>
+			<td><input name="COL_Maximg" type="text" class="win" value="[.$emmm_product.COL_Maximg.]" [.$emmm_bgcolor.] id="upload2"/>
+			&nbsp;<input type="button" id="image4" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+		<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image4').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload2').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#upload2').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">商品编号</div></td>
+			<td><input name="COL_Number" type="text" class="win3" value="[.$emmm_product.COL_Number.]" [.$emmm_bgcolor.] />
+			&nbsp;&nbsp;&nbsp;&nbsp;商品货号&nbsp;<input name="COL_Goodsno" type="text" class="win3" value="[.$emmm_product.COL_Goodsno.]" [.$emmm_bgcolor.] id="hh" />
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">市场价格</div></td>
+			<td><input name="COL_Market" type="text" class="win3" value="[.$emmm_product.COL_Market.]" [.$emmm_bgcolor.] onkeyup="form1.m.value=this.value" id="scj" />
+			&nbsp;&nbsp;&nbsp;&nbsp;本站价格&nbsp;<input name="COL_Webmarket" type="text" class="win3" value="[.$emmm_product.COL_Webmarket.]" [.$emmm_bgcolor.] id="m" />
+			
+
+			<div style="position:absolute; z-index:1000; left:600px; margin-top:-21px;">
+			<fieldset><legend>会员价格</legend>
+			[.section loop=$Usermoney name=op.]
+			&nbsp;&nbsp;&nbsp;[.if $Usermoney[op].id == $Userleve[$Usermoney[op].i]['id'].][.$Userleve[$Usermoney[op].i]['name'].][./if.]:&nbsp;&nbsp;&nbsp;<font color="#FF0000">减</font>&nbsp;&nbsp;&nbsp;<input name="COL_Userj[]" type="hidden" value="[.$Usermoney[op].id.]" value="[.$Usermoney[op].id.]" /><input name="COL_Userj[]" type="text" class="win2" value="[.$Usermoney[op].money.]"/><input name="COL_Userj[]" type="hidden" value="|" />
+			[.if $smarty.section.op.iteration % 3 == 0.]
+			<br />
+			[./if.]
+			[./section.]
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">库存量</div></td>
+			<td>
+			<input name="COL_Stock" type="text" class="win3" value="[.$emmm_product.COL_Stock.]" [.$emmm_bgcolor.] id="kc" />
+			&nbsp;&nbsp;<a onClick="j();">计算器</a>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">品牌</div></td>
+			<td>
+			
+			<select name="COL_Brand">
+			  <option value="0" [.if $emmm_product.COL_Brand == '0'.]selected="selected"[./if.]>无</option>
+				  [.section loop=$Brand name=op.]
+					<option value="[.$Brand[op].id.]" [.if $Brand[op].id == $emmm_product.COL_Brand.]selected="selected"[./if.]>[.$Brand[op].name.]</option>
+				  [./section.]		
+            </select>	
+
+			</td>
+		  </tr>
+		 [.if $Set[0]['set'] == 2.]
+		 <tr>
+		  	<td><div align="right">商品规格</div></td>
+			<td>
+				
+				<input onclick="javascript:dialog()" value="重新选择规格" type="button" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+				<div id="parentIframe"></div>
+				<div id="emmm_gg_sj">
+				<p>&nbsp;</p>
+				<table width="90%" border="1" align="left" cellpadding="5" bordercolor="#E3E3E3" style="border-collapse:collapse;">
+				  <tr>
+				    <td bgcolor="#F4F0F4"><div align="center">货号</div><input type="hidden" name="optitleid[]" value="[.$emmm_product.COL_Specificationsid .]"></td>
+					[.section loop=$Specificationstitle name=op.]
+				    <td bgcolor="#F4F0F4"><div align="center">[.$Specificationstitle[op].name.]</div>
+					<input type="hidden" name="optitle[]" value="[.$Specificationstitle[op].name.]">
+					</td>
+					[./section.]
+				    <td bgcolor="#F4F0F4"><div align="center">市场价</div></td>
+				    <td bgcolor="#F4F0F4"><div align="center">本站价</div></td>
+				    <td bgcolor="#F4F0F4"><div align="center">库存</div></td>
+					<td></td>
+				</tr>
+				[.section loop=$Specifications name=op.]
+				<tr>
+					[.foreach $Specifications[op].three as $op.]
+					<td bgcolor="#Ffffff"><div align="center"><input type="text" name="op[]" value="[.$op.]" style=" width:90px;"></div></td>
+					[./foreach.]
+					<td><input type="hidden" name="op[]" value="|"></td>
+				</tr>
+				[./section.]
+				
+				</table>
+				</div>
+					
+			</td>
+		  </tr>
+		  [./if.]
+		  <tr>
+		  	<td><div align="right">商品属性</div></td>
+			<td>
+			
+			<select name="select" onchange="opsx(this.value)">
+			<option value="0">===请选择===</option>
+				  [.section loop=$Attribute name=op.]
+					<option value="[.$Attribute[op].id.]" >[.$Attribute[op].name.]</option>
+				  [./section.]
+            </select>	
+			<br />
+			<div id="Attribute">
+			
+				<table width="500" border="1" align="left" cellpadding="5" bordercolor="#E3E3E3" style="border-collapse:collapse;">
+				[.section loop=$Pattribute name=op.]
+					  <tr id="pattr[.$Pattribute[op].i.]">
+						<td bgcolor="#F4F0F4"><div align="right">[.$Pattribute[op].class.]：</div></td>
+						<td bgcolor="#ffffff">
+							<select name="COL_Pattribute[]" id="arr[.$Pattribute[op].i.]">
+							[.section loop=$Attributeto name=opo.]
+							[.if $Pattribute[op].class == $Attributeto[opo].name.]
+								[.foreach $Attributeto[opo].three as $op.]
+								<option value="[.$Attributeto[opo].id.]:[.$Attributeto[opo].name.]:[.$op.]" [.if $op == $Pattribute[op].name.]selected="selected"[./if.]>[.$op.]</option>
+								[./foreach.]
+							[./if.]
+							[./section.]
+							</select>
+							&nbsp;&nbsp;<a href="javascript:pattr([.$Pattribute[op].i.]);" style="float:right;">自定义参数值</a>
+						</td>
+					  </tr>	
+				[./section.]
+				</table>
+						
+			
+			</div>
+			<script type="text/javascript">
+				function pattr(id){
+					var arr = $('#arr'+id+' option:selected').val();
+					$("#pattr"+id).html('<td colspan="2" bgcolor="#ffffff"><input type="text" name="COL_Pattribute[]" value="'+arr+'" />&nbsp;&nbsp;(id:标题:参数值 , <font color=red>只能自定义参数值</font>)</td>');
+				}
+			</script>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">商品重量</div></td>
+			<td><input name="COL_Weight" type="text" class="win2" value="[.$emmm_product.COL_Weight.]" [.$emmm_bgcolor.] datatype="*" /> KG&nbsp;&nbsp;(重量是用来计算运费的，按公斤(KG)计算。如果商品不足1KG&nbsp;请填写1，表示按首重来计算。不支持小数点，整数计算)
+			</td>
+		  </tr>		  
+		  <tr>
+		  	<td><div align="right">排序</div></td>
+			<td><input name="COL_Sorting" type="text" class="win2" value="[.$emmm_product.COL_Sorting.]" [.$emmm_bgcolor.] datatype="*" nullmsg="排序是必填项!"/> 数字越小越靠前！</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">属性</div></td>
+			<td>
+				[.html_checkboxes name="COL_Attribute" options=$emmmh_qx selected=$selected separator="&nbsp;&nbsp;".]
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">运费模板</div></td>
+			<td>
+				<select name="COL_Freight" >
+				  [.section loop=$Freight name=op.]
+					<option value="[.$Freight[op].id.]" [.if $Freight[op].id == $emmm_product.COL_Freight.]selected="selected"[./if.]>[.$Freight[op].title.]</option>
+				  [./section.]
+				</select>			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">跳转</div></td>
+			<td><input name="COL_Url" type="text" class="win" value="[.$emmm_product.COL_Url.]" [.$emmm_bgcolor.] /> 如果为空，则不跳转！</td>
+		  </tr>
+		  <tr>
+			<td></td>
+		  	<td><strong>--------------- SEO设置 ---------------</strong></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">关键词</div></td>
+			<td><input name="COL_Tag" type="text" class="win" value="[.$emmm_product.COL_Tag.]" [.$emmm_bgcolor.] />&nbsp;请用英文中的 , 格开</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">描述</div></td>
+			<td><textarea name="COL_Description" class="wtextarea" >[.$emmm_product.COL_Description.]</textarea> 如果为空，自动截取正文前200个字</td>
+		  </tr>
+		</table>
+	  </li>
+  </ul>
+	<ul>
+	  <li>
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		<tr>
+		  	<td><div align="right">赠送积分</div></td>
+			<td><input name="COL_Integral" type="text" class="win2" value="[.$emmm_product.COL_Integral.]" />&nbsp;(成功购买该商品后赠送的积分)</td>
+		</tr>
+		<tr>
+		  	<td><div align="right">积分兑换</div></td>
+			<td><input name="COL_Integralok" type="radio" value="0" [.if $emmm_product.COL_Integralok == 0.]checked="checked"[./if.] />
+			否&nbsp;<input type="radio" name="COL_Integralok" value="1" [.if $emmm_product.COL_Integralok == 1.]checked="checked"[./if.] />是&nbsp;(该商品是否可以用积分来兑换)</td>
+		</tr>
+		<tr>
+		  	<td><div align="right">需要积分</div></td>
+			<td><input name="COL_Integralexchange" type="text" class="win2" value="[.$emmm_product.COL_Integralexchange.]" />&nbsp;(如果开启积分兑换,那么设置需要多少积分可以兑换)</td>
+		</tr>
+		</table>
+	  </li>
+	</ul>
+  <ul>
+	  <li>
+				<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+					<tr>
+                      <td valign="top"><div align="right">商品亮点(简短一句介绍)</div></td>
+                      <td>
+						<input name="COL_Suggest" type="text" class="win" value="[.$emmm_product.COL_Suggest.]" id="COL_Suggest2" />&nbsp;<input type="button" id="COL_Suggest" value="上传图片" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+						<script>
+							KindEditor.ready(function(K) {
+								var editor = K.editor({
+									allowFileManager : true
+								});
+								K('#COL_Suggest').click(function() {
+									editor.loadPlugin('image', function() {
+										editor.plugin.imageDialog({
+											showRemote : false,
+											imageUrl : K('#COL_Suggest2').val(),
+											clickFn : function(url, title, width, height, border, align) {
+												K('#COL_Suggest2').val(url);
+												editor.hideDialog();
+											}
+										});
+									});
+								});
+							});
+						</script>
+					  </td>
+                    </tr>
+                    <tr>
+                      <td valign="top"><div align="right">商品正文</div></td>
+                      <td>
+						<textarea name="COL_Content" class="wtextarea" id="container" style="width:80%; height:400px;">[.$emmm_product.COL_Content.]</textarea><font color=red> (*)</font>
+					  </td>
+                    </tr>
+            </table>
+	  </li>
+  </ul>
+<ul>
+  	<li>
+	
+		<style type="text/css">
+			.img { width:1060px; height:auto; padding:10px; float:left;}
+			.img h1 { height:30px; line-height:30px; font-size:14px; font-weight:500;}
+		</style>
+		<div class="img">
+				<table width="1100" border="0" style="border-bottom:1px #CCCCCC dashed; margin-bottom:30px;">
+                    <tr>
+                      <td width="20%"><h1>[在这里上传商品组图图片]</h1></td>
+                      <td width="80%">
+					  
+		<input type="button" id="J_selectImage" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+		<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#J_selectImage').click(function() {
+					editor.loadPlugin('multiimage', function() {
+						editor.plugin.multiImageDialog({
+							clickFn : function(urlList) {
+								var div = K('#J_imageView');
+								div.html('');
+								var DataImage = [];
+								K.each(urlList, function(i, data) {
+									div.append('<p style=" width:200px; float:left; margin-right:15px; margin-bottom:15px; text-align:center;"><img src="' + data.url + '" style="max-width:200px; border:0px;"><!--<br><a href="javascript:delItem(' + data.url + ')">[删除]</a>--></p>');
+									DataImage.push(data.url);
+								});
+								DataImage = DataImage.join('|');
+								// 未加载 jQuery 使用下面
+								//document.getElementById('uploadimg').value = DataImage;
+								// 加载 jQuery 使用下面
+								$('#uploadimg').val(DataImage);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script> 
+					  
+					  </td>
+                    </tr>
+            </table>
+				<div style="clear:both;"></div>
+				<div id="J_imageView"></div>
+				
+<script>
+    function delete_order(order_id,i){    
+        confirm_ = confirm('删除后图片将无法恢复！确定删除?');
+        if(confirm_){
+            $.ajax({
+                type:"POST",
+                url:'emmm_imgdel.php?url='+order_id,
+                success:function(msg){
+                    //alert("test order");
+                    //all delete is success,this can be execute
+                    $("#tr_"+i).remove();
+                }
+            });
+        }
+    };
+</script>			
+
+<script type="text/javascript" src="../../function/plugs/dragsort/jquery.dragsort-0.5.1.min.js"></script>
+<dd id="list1">				
+[.section loop=$productimglist name=op.]
+<div id="tr_[.$productimglist[op].i.]" style=" width:200px; float:left; margin-right:15px; margin-bottom:15px; text-align:center;"><img src="[.$webpath.][.$productimglist[op].img.]" style="max-width:200px; border:0px;"/><br /><br />标题：<input type="text" name="COL_Productimgname[]" value="[.$productimglist[op].imgname.]"><br /><a href="javascript:;" onclick="delete_order('../../[.$productimglist[op].img.]',[.$productimglist[op].i.])">[删除]</a><input type="hidden" name="COL_Img2[]" value="[.$productimglist[op].img.]"/></div>
+ [.sectionelse.]
+[./section.]
+</dd>
+<input type="hidden" name="COL_Img" value="" id="uploadimg" />
+<!-- save sort order here which can be retrieved on server on postback -->
+<input name="list1SortOrder" type="hidden" />
+<script type="text/javascript">
+	$("#list1").dragsort({ dragSelector: "div", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<div class='placeHolder'></div>" });
+	function saveOrder() {
+		var data = $("#list1 div").map(function() { return $(this).children().html(); }).get();
+		$("input[name=list1SortOrder]").val(data.join("|"));
+	};
+</script>
+		</div>
+			
+	</li>
+</ul>
+   <ul><li></li></ul>
+  <div style="clear:both"></div>
+<table width="100%" border="0">
+  		   <tr>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		   <tr>
+		   	<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		  </tr>
+</table>
+		  
+</form>
+ </div>
+</div>
+
+<script> 
+//复制
+function cal(){
+ var rem = document.getElementById('upload').value;
+ document.getElementById('upload2').value = rem;
+}
+
+//传值
+function hh(){
+        $(".op_hh").val($("#hh").val()); 
+}
+function scj(){
+        $(".op_scj").val($("#scj").val()); 
+}
+function bzj(){
+        $(".op_bzj").val($("#m").val()); 
+}
+function kc(){
+        $(".op_kc").val($("#kc").val()); 
+}
+
+//帮助
+function bmb(){
+        layer.alert('这里不是设定会员的价格，而是设定每个等级的会员<br>按本站价减去多少钱，如：本站价是100元，<br>普通会员设定减20元 。那么普通会员在购买<br>该商品的时候，实际购买价格是80元。<br>0&nbsp;表示不减', 0, !1);
+}
+
+//属性
+function opsx(objs){
+    $(function(){
+           $.get(
+                   'Attribute.php',
+                   {id:objs,our:'sx'},//如果你需要传参数的话，可以写在这里，格式为：{参数名：值,参数名：值...}
+                   function(data){//执行成功之后的回调函数
+                         $('#Attribute').html(data);
+                   }
+           );
+     });
+}
+
+//规格
+function dialog(){
+    $.layer({
+        type: 2,
+        title: '商品规格选择',
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['900px', '500px'],
+		iframe:{src: 'Attribute.php?our=gg',scrolling: 'yes'}
+    });
+};
+
+//计算器
+function j(){
+    $.layer({
+        type: 2,
+        title: '商品计算器',
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['460px', '510px'],
+		iframe:{src: '../manage/plugs/Calculator/index.html',scrolling: 'yes'}
+    });
+};
+</script>
+
+[.include file="emmm_foot.html".]
+</body>
+</html>

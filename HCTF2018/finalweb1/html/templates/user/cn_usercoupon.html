@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心 - [.$emmm_web.website.]</title>
+<link rel="stylesheet" href="[.$templatepath.]css/style.css" type="text/css" />
+<script type="text/javascript" src="[.$webpath.]function/plugs/YIQI-UI/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" href="[.$webpath.]function/plugs/YIQI-UI/YIQI-UI.min.css" type="text/css" />
+<link href="[.$webpath.]function/plugs/YIQI-UI/font/YIQI-UI-iconfont.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="YIQI-UI">
+    [.include file="cn_top.html".] 
+    <div class="clear"></div>
+    <div class="emmm_center">
+    <div class="clear"></div>
+    
+    <div class="emmm_login">
+    
+        <div class="emmm_user_left">
+            [.include file="cn_leftnav.html".] 
+        </div>
+        
+            <div class="emmm_user_right">
+            
+            [.*优惠券列表开始*.]
+			<style type="text/css">
+				.couponlist {width:100%; height:auto; margin-top:20px; float:left;}
+				.couponlist li {width:50%; height:150px; float:left;}
+				.couponlist li.a {background:url([.$webpath.]skin/coupon.png) left top no-repeat;}
+				.couponlist li.b {background:url([.$webpath.]skin/coupon2.png) left top no-repeat;}
+				.couponlist li .left {font-size:90px; color:#fff; float:left; margin:70px 0 0 80px; font-family:Arial; width:100px;}
+				.couponlist li .right {float:left; margin:50px 0 0 65px; font-size:27px; color:#66604B;}
+				.couponlist li .right p { margin-top:0; margin-bottom:10px; font-family:Arial; font-weight:bold;}
+				.couponlist li .right p.f1 {font-size:32px;}
+				.couponlist li .right p span{color:#A75312;}
+			</style>
+              <table width="100%" border="0" class="table table-border table-hover">
+                <tr>
+                  <td>共计：<b>[.$user.coupon.] 张</b></td>
+                </tr>      
+                <tr>
+                  <td class="couponlist">
+				  [.foreach $couponlist as $op.]
+				  <li [.if $op.type == 0.]class="a"[.else.]class="b"[./if.]>
+					<div class="left">[.$op.money.]</div>
+					<div class="right">
+								<p class="f1">[.$op.moneygo.]</p>
+								<p>[.$op.timewin.]</p>
+					</div>
+				  </li>
+				  [./foreach.]
+				  </td>
+                </tr>
+              </table>
+              [.*优惠券列表结束*.]
+              
+            </div>
+        </div>
+    </div>
+    [.include file="cn_foot.html".]
+</div>
+</body>
+</html>

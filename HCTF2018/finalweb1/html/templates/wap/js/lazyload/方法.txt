@@ -1,0 +1,15 @@
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function() { 
+          $("img").lazyload({ 
+                 effect: "fadeIn"
+           });      
+});  
+</script>
+
+
+<li><a href="/?cn-brand-9.html" title="Longines/ÀËÇÙ"><img src="/skin/noimage.png" data-original="/function/uploadfile/20150127/20150127171029.jpg" border="0" width="130" height="80" /></a></li>

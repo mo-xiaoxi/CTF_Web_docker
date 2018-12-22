@@ -1,0 +1,118 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li class="hover">商城设置</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=edit" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td width="15%" valign="top"><div align="right">商城模式</div></td>
+			<td width="85%"><input name="COL_Pattern" type="radio" value="1" [.if $emmm_set.COL_Pattern == 1.]checked="checked"[./if.] /> &nbsp;产品展示模式&nbsp;&nbsp;
+			<input type="radio" name="COL_Pattern" value="2" [.if $emmm_set.COL_Pattern == 2.]checked="checked"[./if.] />&nbsp;商城模式&nbsp;&nbsp;
+			
+			<div style="clear:both;"></div>
+			<div style="background:url(../../skin/admintitlebg.gif) no-repeat; width:610px; height:60px; float:left; padding:30px 0px 0px 20px;">
+				<p>1.产品展示模式：只用于企业产品展示，不能提交订单。</p>
+				<p>2.商城模式：可以帮助企业在线电商，可以提交订单购买等操作。</p>
+			</div>
+			</td>
+		  </tr>
+		 <!-- tr>
+		  	<td valign="top"><div align="right">价格方案</div></td>
+			<td><input type="radio" name="COL_Scheme" value="1" [.if $emmm_set.COL_Scheme == 1.]checked="checked"[./if.] />&nbsp;统一价格方案&nbsp;&nbsp;
+			<input type="radio" name="COL_Scheme" value="2" [.if $emmm_set.COL_Scheme == 2.]checked="checked"[./if.] />&nbsp;按商品规格制定价格&nbsp;&nbsp;
+
+			<div style="clear:both;"></div>
+			<div style="background:url(../../skin/admintitlebg.gif) no-repeat; width:610px; height:60px; float:left; padding:30px 0px 0px 20px;">
+				<p>1.统一价格方案：使用本方案，商品价格只按市场价和本站价计算。规格中的商品价格将失效！</p>
+				<p>2.按商品规格制定价格：使用本方案，商品价格按规格中设置的价格计算。</p>
+			</div>
+			
+			</td>
+		  </tr -->
+		  <tr>
+		  	<td valign="top"><div align="right">支持货到付款？</div></td>
+			<td><input type="radio" name="COL_Delivery" value="0" [.if $emmm_set.COL_Delivery == 0.]checked="checked"[./if.] />&nbsp;不支持&nbsp;&nbsp;
+			<input type="radio" name="COL_Delivery" value="1" [.if $emmm_set.COL_Delivery == 1.]checked="checked"[./if.] />&nbsp;支持&nbsp;&nbsp;	
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">库存数量报警</div></td>
+			<td><input type="text" name="COL_Stock" class="win2" value="[.$emmm_set.COL_Stock.]" datatype="*" nullmsg="库存报警是必填项!" />&nbsp;(低于这个数量，系统会报警)</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">订单选项</div></td>
+			<td><input type="radio" name="COL_buy" value="1" [.if $emmm_set.COL_buy == 1.]checked="checked"[./if.] />&nbsp;游客可以提交订单&nbsp;&nbsp;
+			<input type="radio" name="COL_buy" value="2" [.if $emmm_set.COL_buy == 2.]checked="checked"[./if.] />&nbsp;只有会员可以提交订单&nbsp;&nbsp;
+
+			<div style="clear:both;"></div>
+			<div style="background:url(../../skin/admintitlebg.gif) no-repeat; width:610px; height:60px; float:left; padding:30px 0px 0px 20px;">
+				<p>1.游客可以提交订单：开启后，游客(未登录)可以在线提交订单，并且不会有支付。(需要插件支持)</p>
+				<p>2.只有会员可以提交订单：只有登录以后的会员才可以提交订单，并且按价格支付。</p>
+			</div>
+						
+			</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">后台发货通知</div></td>
+			<td><input type="radio" name="COL_Userbuysms" value="0" [.if $emmm_set.COL_Userbuysms == 0.]checked="checked"[./if.] />&nbsp;不通知&nbsp;&nbsp;
+			<input type="radio" name="COL_Userbuysms" value="1" [.if $emmm_set.COL_Userbuysms == 1.]checked="checked"[./if.] />&nbsp;手机短信通知&nbsp;&nbsp;
+
+			<div style="clear:both;"></div>
+			<div style="background:url(../../skin/admintitlebg.gif) no-repeat; width:610px; height:60px; float:left; padding:30px 0px 0px 20px;">
+				<p>1.手机短信通知，需要开通手机短信接口功能。并在API中配置手机短信接口</p>
+				<p>2.发货通知还可以用EMIAL通知，在后台->全局->系统邮件中设置。</p>
+			</div>
+						
+			</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">发货方式</div></td>
+			<td>
+			前台调用标签[.literal.][.$shopset.sendout.][./literal.]
+			<textarea name="COL_Sendout" class="wtextarea" id="container" style="width:80%; height:400px;">[.$emmm_set.COL_Sendout.]</textarea><font color=red> (*)</font>
+			[.include file="emmm_editor.html".]	
+			</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

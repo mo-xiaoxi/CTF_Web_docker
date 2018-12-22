@@ -1,0 +1,76 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li><a href="emmm_productspecifications.php?id=emmm"><font color="#000000">返回</font></a></li>
+  <li onclick="setTab(0,0)" class="hover">编辑</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+		<div>
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$emmm_productspecifications.id.]" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td><div align="right">分类规格名称</div></td>
+			<td><input name="COL_Title" type="text" class="win" [.$emmm_bgcolor.] datatype="*" value="[.$emmm_productspecifications.COL_Title.]" nullmsg="名称是必填项!"/>&nbsp;例如：尺码<font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">分类规格名称备注</div></td>
+			<td><input name="COL_Titleto" type="text" class="win" [.$emmm_bgcolor.] datatype="*" value="[.$emmm_productspecifications.COL_Titleto.]" nullmsg="备注是必填项!"/>&nbsp;例如：女鞋<font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">类型</div></td>
+			<td><input name="COL_Class" type="radio" value="1" [.if $emmm_productspecifications.COL_Class == 1.] checked="checked" [./if.]/>&nbsp;文字&nbsp;&nbsp;
+			<input name="COL_Class" type="radio" value="2" [.if $emmm_productspecifications.COL_Class == 2.] checked="checked" [./if.]/>&nbsp;图片&nbsp;&nbsp;</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">规格值</div></td>
+			<td><textarea name="COL_Value" class="wtextarea" [.$emmm_bgcolor.] datatype="*" nullmsg="值是必填项!" >[.$emmm_productspecifications.COL_Value.]</textarea><font color=red> (*)</font>
+			<br /><br />多个值用 | 格开 如：36|37</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">排序</div></td>
+			<td><input name="COL_Sorting" type="text" class="win2" [.$emmm_bgcolor.] value="[.$emmm_productspecifications.COL_Sorting.]" datatype="*" nullmsg="排序是必填项!"/>&nbsp;数字越小越靠前</td>
+		  </tr>
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+		</div>
+	  </li>
+  </ul>
+
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

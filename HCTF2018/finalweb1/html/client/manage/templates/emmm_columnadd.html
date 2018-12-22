@@ -1,0 +1,579 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+<SCRIPT language=JavaScript>
+function emmm_aa()
+{
+  var obj = document.form1.COL_Model.value;
+  if(obj == 'article')
+  {
+    about.style.display = 'none';
+    list.style.display = 'block';
+	view.style.display = 'block';
+	emmmppp.style.display = 'none';
+	weburl.style.display = 'none';
+	document.form1.COL_Templist.value='{L}_article.html';
+	document.form1.COL_Tempview.value='{L}_articleview.html';
+  }
+  if(obj == 'product')
+  {
+    about.style.display = 'none';
+    list.style.display = 'block';
+	view.style.display = 'block';
+	emmmppp.style.display = 'block';
+	weburl.style.display = 'none';
+	document.form1.COL_Templist.value='{L}_product.html';
+	document.form1.COL_Tempview.value='{L}_productview.html';
+  }
+  if(obj == 'photo')
+  {
+    about.style.display = 'none';
+    list.style.display = 'block';
+	view.style.display = 'block';
+	emmmppp.style.display = 'none';
+	weburl.style.display = 'none';
+	document.form1.COL_Templist.value='{L}_photo.html';
+	document.form1.COL_Tempview.value='{L}_photoview.html';
+  }
+  if(obj == 'video')
+  {
+    about.style.display = 'none';
+    list.style.display = 'block';
+	view.style.display = 'block';
+	emmmppp.style.display = 'none';
+	weburl.style.display = 'none';
+	document.form1.COL_Templist.value='{L}_video.html';
+	document.form1.COL_Tempview.value='{L}_videoview.html';
+  }
+  if(obj == 'down')
+  {
+    about.style.display = 'none';
+    list.style.display = 'block';
+	view.style.display = 'block';
+	emmmppp.style.display = 'none';
+	weburl.style.display = 'none';
+	document.form1.COL_Templist.value='{L}_down.html';
+	document.form1.COL_Tempview.value='{L}_downview.html';
+  }
+  if(obj == 'job')
+  {
+    about.style.display = 'none';
+    list.style.display = 'block';
+	view.style.display = 'block';
+	emmmppp.style.display = 'none';
+	weburl.style.display = 'none';
+	document.form1.COL_Templist.value='{L}_job.html';
+	document.form1.COL_Tempview.value='{L}_jobview.html';
+  }
+  if(obj == 'about')
+  {
+    about.style.display = 'block';
+    list.style.display = 'none';
+	view.style.display = 'block';
+	emmmppp.style.display = 'none';
+	weburl.style.display = 'none';
+	document.form1.COL_Tempview.value='{L}_about.html';
+
+  }
+  if(obj == 'weburl')
+  {
+     weburl.style.display = 'block';
+     list.style.display = 'none';
+	 view.style.display = 'none';
+	 emmmppp.style.display = 'none';
+	 about.style.display = 'none';
+	 document.form1.COL_Url.value='http://';
+  }
+
+}
+
+function emmm_aaa()
+{
+  var obj = document.form1.emmma.value;
+  if(obj == 'product')
+  {
+	document.form1.COL_Templist.value='{L}_product.html';
+	document.form1.COL_Tempview.value='{L}_productview.html';
+  }
+  if(obj == 'shop')
+  {
+	document.form1.COL_Templist.value='{L}_shoplist.html';
+	document.form1.COL_Tempview.value='{L}_shopview.html';
+  }
+}
+
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+
+			//帮助
+			function weburlts(){
+					layer.alert('?cn-shop.html 商城首页地址(伪静态则为:/cn/shop/)<br>?cn-club.html 留言版块地址(伪静态则为:/cn/club/)<br>/client/user/?cn-reg.html会员注册地址<br>/client/user/?cn-login.html会员登录地址<br>/client/wap/手机访问地址', 0, !1);
+			}
+</script>
+
+</head>
+
+<body>
+
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li><a  href="emmm_column.php"><font color="#000000">栏目列表</font></a></li>
+  <li class="hover">[.if !isset($smarty.get.emmm_cms) || $smarty.get.emmm_cms == 'oadd'.]创建栏目[.else.]编辑栏目[./if.]</li>
+  <li><a href="emmm_columnback.php"><font color="#000000">找回栏目</font></a></li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block">
+	  <li>
+
+	[.if !isset($smarty.get.emmm_cms) || $smarty.get.emmm_cms == 'oadd'.]
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=add" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td width="170"><div align="right">语言分类</div></td>
+			<td>
+			
+			[.section loop=$langlist name=op.]
+			<input name="COL_Lang" type="radio" value="[.$langlist[op].lang.]" [.if $langlist[op].default.] checked="checked" [./if.] />[.$langlist[op].font.]&nbsp;&nbsp;
+			[./section.]
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td width="170"><div align="right">栏目归属</div></td>
+			<td>
+			<select name="COL_Uid">
+			<option value="0" [.if !isset($smarty.get.id).]selected="selected"[./if.] >一级栏目</option>
+			<optgroup label="----------------"></optgroup>
+			
+			[.function name=menu level=0.]
+					[.foreach $data as $k => $op.]
+						<option value="[.$op.id.]" [.if !isset($smarty.get.id).][.elseif $op.id == $smarty.get.id.]selected="selected"[./if.]>
+						{[.$op.lang.]}
+						[.if $op.model == 'weburl'.]-{外}[./if.]
+						[.if $op.model == 'about'.]-{单}[./if.]
+
+						[.if $op.uid != 0.]
+							[.for $foo=1 to $level.]
+							&nbsp;&nbsp;
+							[./for.]
+							└
+						[./if.]
+						
+						[.$op.title.]
+						</option>
+						[.if isset($op.child).]
+							[.call name=menu data=$op.child level=$level+1.]
+						[./if.]	
+					[./foreach.]
+			[./function.]
+			[.call name=menu data=$arr.]
+			
+			</select>
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">模型</div></td>
+			<td>
+			<select name="COL_Model" onchange="emmm_aa(this.value)" datatype="*" nullmsg="请选择模型!">
+			<option value="" selected="selected">=选择模型=</option>
+			  <option value="article">文章模型</option>
+			  <option value="product">商品模型</option>
+			  <option value="photo">图集模型</option>
+			  <option value="video">视频模型</option>
+			  <option value="down">下载模型</option>
+			  <option value="job">招聘模型</option>
+			  <option value="about">单页面</option>
+			  <option value="weburl">外部链接</option>
+			</select>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">栏目标题</div></td>
+			<td>
+			
+			<script>
+			window.onload=function()
+			{
+				var oCheckBox=document.getElementById('cb');
+				var oText=document.getElementById('text');
+				var oTextarea=document.getElementById('textarea1');
+				var oSpan=document.getElementById('span1');
+				oCheckBox.onclick=function(){
+					if(this.checked)
+					{
+						oTextarea.style.display='block';
+						oText.style.display='none';
+						oSpan.innerHTML='&nbsp;&nbsp;<font color=red>(多个标题请用 | 格开)</font>';
+					}
+					else
+					{
+						oText.style.display='block';
+						oTextarea.style.display='none';
+						oSpan.innerHTML='';
+					}
+				};
+			}
+			</script>
+			
+			<input name="COL_Columntitle" id="text" type="text" class="win" style="float:left;" [.$emmm_bgcolor.] />
+			<font color=red> (*)</font>
+			<textarea name="COL_Columntitle_pl" id="textarea1" style="display:none; float:left;" class="wtextarea"></textarea>
+			&nbsp;&nbsp;
+			<input type="checkbox" id="cb" name="pl" value="1"/><label for="cb">批量添加</label><span id="span1"></span>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">栏目副标题</div></td>
+			<td><input name="COL_Columntitleto" type="text" class="win" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  </table>
+		  
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" id="list" style="display:none;">
+		  <tr>
+		  	<td width="170"><div align="right">栏目列表模板</div></td>
+			<td><input name="COL_Templist" type="text" id="listtemp" class="win" value="{L}_article_list.html"/>&nbsp;{L}&nbsp;语言标识符 <font color=red> (*)</font></td>
+		  </tr>
+		  </table>
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" id="view" style="display:none;">
+		  <tr>
+		  	<td width="170"><div align="right">栏目内容模板</div></td>
+			<td><input name="COL_Tempview" type="text" id="viewtemp" class="win" value="{L}_article_view.html"/>&nbsp;{L}&nbsp;语言标识符 <font color=red> (*)</font></td>
+		  </tr>
+		  </table>
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" id="emmmppp" style="display:none;">
+		  <tr>
+		  	<td width="170"></td>
+			<td>
+			<select name="emmma" onchange="emmm_aaa(this.value)">
+			  <option value="product">普通产品模板</option>
+			  <option value="shop">商城模式模板</option>
+			</select>
+			</td>
+		  </tr>
+		  </table>
+
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" id="about" style="display:none;">
+		  <tr>
+		  	<td valign="top" width="170"><div align="right">单页面内容</div></td>
+			<td height="200">
+			<p>用[.literal.][.$opcms.content.] 标签来调用这里面的内容[./literal.]</p>
+			<p>&nbsp;</p>
+			<textarea name="COL_About" id="container" style="width:900px; height:200px;"></textarea>
+			</td>
+		  </tr>
+		  </table>
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" id="weburl" style="display:none;">
+		  <tr>
+		  	<td width="170"><div align="right">外部链接地址</div></td>
+			<td><input name="COL_Url" type="text" id="yidacms_adpic1" class="win" value="" /><font color=red> (*)</font> <a href="javascript:weburlts()">[Emmm常用外部链接]</a></td>
+		  </tr>
+		  </table>
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center">
+		  <tr>
+		  	<td width="170"><div align="right">状态</div></td>
+			<td>
+			<select name="COL_Hide">
+			  <option value="0" selected="selected">显示</option>
+			  <option value="1">隐藏</option>
+			</select>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td width="170"><div align="right">排序</div></td>
+			<td>
+				<input name="COL_Sorting" type="text" class="win2" value="0"  datatype="*" nullmsg="排序是必填项"/><font color=red> (*) 数字</font>
+			</td>
+		  </tr>
+		  
+		  <tr>
+		  	<td valign="top"><div align="right">栏目介绍</div></td>
+			<td><textarea name="COL_Briefing" class="wtextarea" style="width:80%; height:50px;" [.$emmm_bgcolor.]></textarea></td>
+		  </tr>
+		  
+		  <tr>
+		  	<td><div align="right">栏目图片</div></td>
+			<td><input name="COL_Img" type="text" class="win" [.$emmm_bgcolor.] id="upload"/>&nbsp;
+			<input type="button" id="image3" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+			
+			[.include file="emmm_editor.html".]
+			<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image3').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#upload').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+			</td>
+		  </tr>
+		  
+		  <tr>
+		  	<td><div align="right">访问权限</div></td>
+			<td>
+			<input name="COL_Userright[]" type="checkbox" value="0" checked="checked" />任何人&nbsp;&nbsp;
+			[.section loop=$userleve name=op.]
+			<input name="COL_Userright[]" type="checkbox" value="[.$userleve[op].id.]" />[.$userleve[op].name.]&nbsp;&nbsp;
+			[./section.]
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">管理权限</div></td>
+			<td>
+			<input name="COL_Adminopen[]" type="checkbox" value="0" checked="checked" />全部&nbsp;&nbsp;
+			[.section loop=$adminleve name=op.]
+			<input name="COL_Adminopen[]" type="checkbox" value="[.$adminleve[op].id.]" />[.$adminleve[op].name.]&nbsp;&nbsp;
+			[./section.]
+			</td>
+		  </tr>
+		  <tr>
+		  	<td width="170"><div align="right">栏目权重</div></td>
+			<td>
+				<input name="COL_Weight" type="text" class="win2" value="0"  datatype="*" nullmsg="权重是必填项"/>数字
+			</td>
+		  </tr>
+		  
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+
+   [.elseif $smarty.get.emmm_cms == 'oedit'.]
+   
+		<form id="form1" name="form1" method="POST" action="?emmm_cms=edit&id=[.$smarty.get.id.]" class="registerform">
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+		  <tr>
+		  	<td width="170"><div align="right">语言分类</div></td>
+			<td>
+			
+			[.section loop=$langlist name=op.]
+			<input name="COL_Lang" type="radio" value="[.$langlist[op].lang.]" [.if $langlist[op].lang == $columnedit.COL_Lang.] checked="checked" [./if.] />[.$langlist[op].font.]&nbsp;&nbsp;
+			[./section.]
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td width="170"><div align="right">栏目归属</div></td>
+			<td>
+			<select name="COL_Uid" >
+			<option value="0" [.if  $columnedit.COL_Uid == 0.]selected="selected"[./if.] >一级栏目</option>
+			<optgroup label="----------------"></optgroup>
+			[.function name=menu level=0.]
+					[.foreach $data as $op.]
+						<option value="[.$op.id.]" [.if $columnedit.COL_Uid == 0.][.elseif $op.id == $columnedit.COL_Uid.]selected="selected"[./if.]>
+						{[.$op.lang.]}
+						[.if $op.model == 'weburl'.]-{外}[./if.]
+						[.if $op.model == 'about'.]-{单}[./if.]
+						
+						[.if $op.uid != 0.]
+							[.for $foo=1 to $level.]
+							&nbsp;&nbsp;
+							[./for.]
+							└
+						[./if.]
+						
+						[.$op.title.]
+						</option>
+						[.if isset($op.child).]
+							[.call name=menu data=$op.child level=$level+1.]
+						[./if.]	
+					[./foreach.]
+			[./function.]
+			[.call name=menu data=$arr.]
+			
+			</select>
+			
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">模型</div></td>
+			<td>
+			{[.if $columnedit.COL_Model == 'article'.]文章模型
+			[.elseif $columnedit.COL_Model == 'product'.]产品模型
+			[.elseif $columnedit.COL_Model == 'photo'.]图集模型
+			[.elseif $columnedit.COL_Model == 'video'.]视频模型
+			[.elseif $columnedit.COL_Model == 'about'.]单页面
+			[.elseif $columnedit.COL_Model == 'weburl'.]外部链接
+			[.elseif $columnedit.COL_Model == 'down'.]下载模型
+			[.elseif $columnedit.COL_Model == 'job'.]招聘模型[./if.]}
+			<input type="hidden" name="COL_Model" value="[.$columnedit.COL_Model.]" />
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">栏目标题</div></td>
+			<td><input name="COL_Columntitle" type="text" class="win" value="[.$columnedit.COL_Columntitle.]" [.$emmm_bgcolor.] datatype="*" nullmsg="标题是必填项!"/><font color=red> (*)</font></td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">栏目副标题</div></td>
+			<td><input name="COL_Columntitleto" type="text" class="win" value="[.$columnedit.COL_Columntitleto.]" [.$emmm_bgcolor.] /></td>
+		  </tr>
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" [.if $columnedit.COL_Model == 'about' || $columnedit.COL_Model == 'weburl'.]id="list" style="display:none;"[./if.]>
+		  <tr>
+		  	<td width="170"><div align="right">栏目列表模板</div></td>
+			<td><input name="COL_Templist" type="text" id="listtemp" class="win" value="[.$columnedit.COL_Templist.]"/>&nbsp;{L}&nbsp;语言标识符 <font color=red> (*)</font></td>
+		  </tr>
+		  </table>
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" [.if $columnedit.COL_Model == 'weburl'.]id="view" style="display:none;"[./if.]>
+		  <tr>
+		  	<td width="170"><div align="right">栏目内容模板</div></td>
+			<td><input name="COL_Tempview" type="text" id="viewtemp" class="win" value="[.$columnedit.COL_Tempview.]"/>&nbsp;{L}&nbsp;语言标识符 <font color=red> (*)</font></td>
+		  </tr>
+		  </table>
+		[.if $columnedit.COL_Model == 'product'.]
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center">
+		  <tr>
+		  	<td width="170"></td>
+			<td>
+			<select name="emmma" onchange="emmm_aaa(this.value)">
+			  <option value="product">普通产品模板</option>
+			  <option value="shop">商城模式模板</option>
+			</select>
+			</td>
+		  </tr>
+		  </table>
+		[./if.]
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" [.if $columnedit.COL_Model == 'about'.][.else.]id="about" style="display:none;"[./if.]>
+		  <tr>
+		  	<td valign="top" width="170"><div align="right">单页面内容</div></td>
+			<td height="200">
+			<p>用[.literal.][.$opcms.content.] 标签来调用这里面的内容[./literal.]</p>
+			<p>&nbsp;</p>
+			<textarea name="COL_About" id="container" style="width:900px; height:200px;">[.$columnedit.COL_About.]</textarea>
+			</td>
+		  </tr>
+		  </table>
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center" [.if $columnedit.COL_Model == 'weburl'.][.else.]id="weburl" style="display:none;"[./if.]>
+		  <tr>
+		  	<td width="170"><div align="right">外部链接地址</div></td>
+			<td><input name="COL_Url" type="text" id="yidacms_adpic1" class="win" value="[.$columnedit.COL_Url.]" /><font color=red> (*)</font> <a href="javascript:weburlts()">[Emmm常用外部链接]</a></td>
+		  </tr>
+		  </table>
+		  
+		  <table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" align="center">
+		  <tr>
+		  	<td width="170"><div align="right">状态</div></td>
+			<td>
+			<select name="COL_Hide">
+			  <option value="0" [.if $columnedit.COL_Hide == 0.]selected="selected"[./if.]>显示</option>
+			  <option value="1" [.if $columnedit.COL_Hide == 1.]selected="selected"[./if.]>隐藏</option>
+			</select>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td width="170"><div align="right">排序</div></td>
+			<td>
+				<input name="COL_Sorting" type="text" class="win2" value="[.$columnedit.COL_Sorting.]"  datatype="*" nullmsg="排序是必填项"/><font color=red> (*) 数字</font>
+			</td>
+		  </tr>
+		  
+		  <tr>
+		  	<td valign="top"><div align="right">栏目介绍</div></td>
+			<td><textarea name="COL_Briefing" class="wtextarea" style="width:80%; height:50px;" [.$emmm_bgcolor.]>[.$columnedit.COL_Briefing.]</textarea></td>
+		  </tr>
+		  
+		  <tr>
+		  	<td><div align="right">栏目图片</div></td>
+			<td><input name="COL_Img" type="text" class="win" value="[.$columnedit.COL_Img.]" [.$emmm_bgcolor.] id="upload"/>&nbsp;
+			<input type="button" id="image3" value="上传" style="width:100px; height:25px; line-height:25px; background:#0099CC; color:#FFFFFF; border:0px;" />
+			
+			[.include file="emmm_editor.html".]
+			<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#image3').click(function() {
+					editor.loadPlugin('image', function() {
+						editor.plugin.imageDialog({
+							showRemote : false,
+							imageUrl : K('#upload').val(),
+							clickFn : function(url, title, width, height, border, align) {
+								K('#upload').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+			</td>
+		  </tr>
+		  
+		  <tr>
+		  	<td><div align="right">访问权限</div></td>
+			<td>
+			[.html_checkboxes name="COL_Userright" options=$emmmh_qx selected=$selected separator="&nbsp;&nbsp;".]
+			</td>
+		  </tr>
+		  <tr>
+		  	<td><div align="right">管理权限</div></td>
+			<td>
+			
+			<input name="COL_Adminopen[]" type="checkbox" value="0" [.if strstr($columnedit.COL_Adminopen,"0").]checked="checked"[./if.] />全部&nbsp;&nbsp;
+			[.section loop=$adminleve name=op.]
+				<input name="COL_Adminopen[]" type="checkbox" value="[.$adminleve[op].id.]" [.if strstr($columnedit.COL_Adminopen,$adminleve[op].id).]checked="checked"[./if.] />[.$adminleve[op].name.]&nbsp;&nbsp;
+			[./section.]
+			</td>
+		  </tr>
+		  <tr>
+		  	<td width="170"><div align="right">栏目权重</div></td>
+			<td>
+				<input name="COL_Weight" type="text" class="win2" value="[.$columnedit.COL_Weight.]"  datatype="*" nullmsg="权重是必填项"/>数字
+			</td>
+		  </tr>
+		  
+		   <tr>
+		   	<td></td>
+			<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+		  </tr>
+		</table>
+		</form>
+
+
+
+   [./if.]
+	  </li>
+  </ul>
+ </div>
+</div>
+[.include file="emmm_foot.html".]
+</body>
+</html>

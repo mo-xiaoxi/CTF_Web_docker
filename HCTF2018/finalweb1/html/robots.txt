@@ -1,0 +1,7 @@
+﻿#
+# robots.txt for vidar.club
+#
+User-agent: * 
+Disallow: /config/
+Disallow: /skin/
+Disallow: /templates/

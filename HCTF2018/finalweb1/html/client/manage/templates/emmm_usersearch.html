@@ -1,0 +1,76 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script charset="utf-8" src="templates/images/emmm.js"></script>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<form id="form1" name="form1" method="POST" action="?emmm_cms=Batch" class="registerform">
+<!--第一种形式-->
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">热门搜索词</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block"><li>
+  
+    <table width="100%" border="0" cellpadding="10">
+      <tr>
+        <td colspan="5"><p style="font-size:16px;">在这里您可以看到用户在网站上都搜索了哪些关键词，可以得出用户的喜好和偏爱。根据这些关键词调整商品优化等。</p></td>
+        </tr>
+      <tr>
+	  	<td width="50" bgcolor="#C1E0E1"><div align="center">删?</div></td>
+        <td width="50" bgcolor="#C1E0E1"><div align="center">ID</div></td>
+        <td bgcolor="#C1E0E1"><div align="left">被搜索的关键词</div></td>
+        <td width="150" bgcolor="#C1E0E1"><div align="center">被搜索次数</div></td>
+        <td width="150" bgcolor="#C1E0E1"><div align="center">生产时间</div></td>
+        <td width="50" bgcolor="#C1E0E1"><div align="center">删除?</div></td>
+      </tr>
+	  [.foreach $search as $op.]
+      <tr bgcolor="[.cycle values="#ffffff,#f5f5f5".]">
+	  	<td><div align="center">
+	  	  <input type="checkbox" name="op_b[]" value="[.$op.id.]" />
+	  	</div></td>
+        <td><div align="center">[.$op.id.]</div></td>
+        <td>[.$op.title.]
+		[.if $op.click > 20.]
+		&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../skin/hot.gif" border="0" alt="热门词" title="热门词" />
+		[.elseif $op.time|date_format:'%Y-%m-%d' == $smarty.now|date_format:'%Y-%m-%d'.]
+		&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../skin/new.gif" border="0" alt="今天" title="今天" />
+		[./if.]
+		</td>
+        <td><div align="center">[.$op.click.]次</div></td>
+        <td><div align="center">[.$op.time.]</div></td>
+        <td><div align="center"><a href="?emmm_cms=del&id=[.$op.id.]">删除</a></div></td>
+      </tr>
+	  [.foreachelse.]
+	  <tr>
+        <td  colspan="5">无记录</td>
+      </tr>
+	  [./foreach.]
+	  <tr>
+		<td><div align="center"><input onclick="selectAll()" type="checkbox" name="controlAll" style="controlAll" id="controlAll"/></div></td>
+		<td colspan="4"></td>
+	  </tr>
+	  <tr>
+        <td  colspan="5"><input type="submit" name="Submit" value="批量删除" style="width:80px; height:25px; background: #0099FF; color:#FFFFFF; border:0px;" />&nbsp;&nbsp;</td>
+      </tr>
+	  <tr>
+        <td  colspan="5">[.$emmmpage.]</td>
+      </tr>
+    </table>
+  </li>
+  </ul>
+ </div>
+</div>
+</form>
+[.include file="emmm_foot.html".]
+</body>
+</html>

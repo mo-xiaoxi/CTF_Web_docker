@@ -1,0 +1,64 @@
+[.config_load file="../../config/emmm.conf".]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[.$emmm_adminfont.admintitle.]</title>
+<link href="templates/images/emmm_login.css" rel="stylesheet" type="text/css"> 
+[.#jq172#.]
+<script>
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+function setTab(m,n){
+ var tli=document.getElementById("menu"+m).getElementsByTagName("li");
+ var mli=document.getElementById("main"+m).getElementsByTagName("ul");
+ for(i=0;i<tli.length;i++){
+  tli[i].className=i==n?"hover":"";
+  mli[i].style.display=i==n?"block":"none";
+ }
+}
+//-->
+</script>
+
+</head>
+
+<body>
+<div style="height:50px;"></div>
+<div style="clear:both"></div>
+<form id="form1" name="form1" method="POST" action="?emmm_cms=edit" class="registerform">
+<!--第一种形式-->
+<div id="tabs0">
+ <ul class="menu0" id="menu0">
+  <li onclick="setTab(0,0)" class="hover">翻页按钮设置</li>
+ </ul>
+ <div class="main" id="main0" style="border-top:2px #488fcd solid; clear:both;">
+  <ul class="block"><li>
+		<table width="98%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center" class="emmm_newslist">
+		  <tr>
+		  	<td width="170"><div align="right">显示<br />(上一页下一页)</div></td>
+			<td><input name="COL_Pagestype" type="radio" value="0" [.if $emmm_web.COL_Pagestype == 0.]checked="checked"[./if.] />
+			  否&nbsp;&nbsp;
+		      <input type="radio" name="COL_Pagestype" value="1" [.if $emmm_web.COL_Pagestype == 1.]checked="checked"[./if.] />
+		      是</td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">翻页文字</div></td>
+			<td><input type="text" name="COL_Pagefont"[.$emmm_bgcolor.] class="win inputxt" value="[.$emmm_web.COL_Pagefont.]"></td>
+		  </tr>
+		  <tr>
+		  	<td valign="top"><div align="right">翻页按钮<br />CSS样式</div></td>
+			<td><textarea name="COL_Pages"[.$emmm_bgcolor.] style="width:70%; height:300px;">[.$emmm_web.COL_Pages.]</textarea></td>
+		  </tr>
+		</table>
+  </li></ul>
+ </div>
+</div>
+<table width="90%" border="0" cellpadding="5" cellspacing="0" bordercolor="#666666" style="border-collapse:collapse; margin-top:20px;" align="center">
+  <tr>
+	<td><input type="submit" name="submit" value="提 交" class="emmm-anniu"/></td>
+  </tr>
+</table>
+</form>
+[.include file="emmm_foot.html".]
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+<script src="../../function/plugs/layer/layer.min.js"></script>
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <div class="content" style="padding:0 0 160px 0; background:#FFF;">
+        
+            [.*积分领取开始*.]
+              <table class="table table-border table-bordered table-striped">
+                <tr>
+                  <td colspan="3">
+                  	信件列表
+                  </td>
+                </tr>
+                [.foreach $mail as $op.]
+                <tr>
+                	<td>
+                    	
+                    	<table class="table">
+                         <tbody>
+                            <tr>
+                              <th width="60"><div align="right">发送人：</div></th>
+                              <td>[.if $op.send == $user.email.]我[.else.][.$op.send.][./if.]</td>
+                            </tr>
+                            <tr>
+                              <th><div align="right">接收人：</div></th>
+                              <td>[.if $op.collect == $user.email.]我[.else.][.$op.collect.][./if.]</td>
+                            </tr>
+                            <tr>
+                              <th><div align="right">内容：</div></th>
+                              <td>[.$op.content.]</td>
+                            </tr>
+                         </tbody>
+                         </table>
+                         
+                	</td>
+                </tr>
+                [./foreach.]
+                <tr>
+                	<td>[.$emmmpage.]</td>
+                </tr>
+              </table>
+              [.*领取积分结束*.]
+              
+        </div>
+    </div>
+	[.include file="cn/cn_shopfoot.html".]
+</div>
+    
+<script type="text/javascript">
+function sms(){
+    $.layer({
+        type: 1,
+        title: '发送内部邮件',
+        shade: [0],
+		border: [5, 0.3, '#000'],
+        area: ['90%', '250px'],
+        page: {html: '<div id="YIQI-UI"><form id="form1" name="form1" method="post" action="[.$webpath.]client/user/emmm_play.class.php?emmm_cms=mail&type=wap"><table width="100%" border="0" class="table table-border table-hover"><tr><td width="80"><div align="right">收件账号：</div></td><td><input type="text" name="COL_Usercollect" class="userinput" datatype="*" /> <font color="#FF0000">*</font></td></tr><tr><td valign="top"><div align="right">信件内容：</div></td><td><textarea name="COL_Usercontent" class="textarea"  datatype="*" ></textarea> <font color="#FF0000">*</font></td></tr><tr><td><div align="right">验证码：</div><input type="hidden" name="lang" value="[.$ip.lang.]" /></td><td><input type="text" name="code" class="input3" datatype="*" onfocus="document.getElementById(\'checkcode\').src+=\'?\'" /> <font color="#FF0000">*</font>&nbsp;<img title="点击刷新" id="checkcode" src="[.$webpath.]function/emmm_code.php" align="absbottom" onclick="this.src=\'[.$webpath.]function/emmm_code.php?\'+Math.random();" width="80" height="25"></img></td></tr><tr><td></td><td><input type="submit" name="Submit" value="发送" class="btn btn-success radius-5 pt-5 pb-5 pl-20 pr-20" /></td></tr></table></form></div>'}
+    });
+};
+</script>
+</body>
+</html>

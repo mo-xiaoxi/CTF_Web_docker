@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="description" content="[.$emmm_web.webdescriptions.]"/>
+<meta name="keywords" content="[.$emmm_web.webkeywords.]"/>
+<meta name="author" content="vidar.club"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-title" content="[.$emmm_web.website.]">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<title>[.$emmm_web.website.]</title>
+[.include file="cn/cn_head.html".]
+</head>
+<body>
+<div id="YIQI-UI">
+	<div class="pages">
+		[.include file="cn/cn_shoptop.html".]
+        <div class="content" style="padding:0 0 160px 0; background:#FFF;">
+        
+            [.*购物车模板开始，如果更换模板请从这里复制*.]
+            <script> 
+            $(function(){ 
+                var _url = $('#siteurl').val();
+                $('.delete').click(function(){
+                  setTotal();
+                  t.hide();
+                });
+            
+                $(".add").click(function(){ 
+                    var t=$(this).parent('li').find('input[class*=text_box]'); 
+                    t.val(parseInt(t.val())+1); 
+                    setTotal(); 
+                }); 
+            
+                $(".min").click(function(){ 
+                    var t=$(this).parent('li').find('input[class*=text_box]'); 
+                    t.val(parseInt(t.val())-1) 
+                    if(parseInt(t.val())<1){ 
+                        t.val(1); 
+                    } 
+            
+                setTotal(); 
+              });
+            
+              $('.text_box').keyup(function(){
+                setTotal();
+              });
+              
+              function setTotal(){ 
+                var s=0; 
+                $("#tab dt").each(function(){ 
+                  var numbers = parseInt($(this).find('input[class*=text_box]').val());
+                  if($.isNumeric(numbers))
+                  {
+                        numbers = parseInt(numbers);
+                  }else
+                 {
+                    numbers = 0;
+                 }
+                  $(this).find('input[class*=text_box]').val(numbers);
+                  s += numbers*parseFloat($(this).find('span[class*=price]').text()); 
+            
+                    // bof 用ajax在_url中删除指定的购物车中$_SESSION相关信息
+                    var pid =$(this).find('input[class*=product_id]');
+                    $.ajax({
+                        url:_url,
+                        type: 'post',
+                        data:{proid : pid.val()},
+                        success: function(data){ 
+                            // 回应    
+                        }
+                    }); 
+                    // end
+                }); 
+                $("#total").html(s.toFixed(2)); 
+              } 
+             // setTotal(); 
+            
+            }); 
+            </script> 
+            <style type="text/css">
+                .min{ width:20px; height:30px; border:0px; float:left;}
+                .text_box { width:50px; height:28px; border:1px #CCCCCC solid; line-height:28px; float:left; text-align:center}
+                .add{ width:20px; height:30px; border:0px; float:left;}
+            </style>
+			[.if $ordersarray == 1.]
+                <form id="form1" name="form1" method="post" action="[.$webpath.]client/wap/?cn-shoppingorders.html-&emmm_cms=buy&type=wap" class="registerform">
+                [.foreach $shoppingcart as $op.]
+                  <table class="table table-border table-bg" id="tab">
+                  <thead>
+                    <tr>
+                      <th colspan="2">
+                      		<h3>[.$op.title|truncate:25:"...".]<small class="f-r">[<a href="[.$webpath.]function/emmm_play.class.php?emmm_shopping=[.$op.cartid.]&lang=cn&type=wap" onclick="javascript:return confirm('确认删除吗?')">删除</a>]</small></h3>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td width="70"><div align="right">网站价格</div></td>
+                      <td>
+                      
+                        <input type="hidden" name="emmm_opcms[]" value="[.$op.id.]" />
+                        <input type="hidden" name="emmm_opcms[]" value="[.$op.title.]" />
+                        <input type="hidden" name="emmm_opcms[]" value="[.$op.attribute.]" />
+                        <input type="hidden" name="emmm_opcms[]" value="[.$op.weight.]" />
+                        <input type="hidden" name="emmm_opcms[]" value="[.$op.freight.]" />
+                      	<del>[.$op.webmarket.] 元</del><input type="hidden" name="emmm_opcms[]" value="[.$op.webmarket.]" />&nbsp;<span class="f-12 f-999">&nbsp;[.$op.attribute.]</span>
+                      
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><div align="right"><p>您的价格</p></div></td>
+                      <td>
+                        <dt>
+                          <table>
+                            <tr>
+                              <td>
+                              	  <li class="f-l">
+                                    <span class="price" style="color:#cc0000">[.$op.usermarket.]</span> 元
+                                    <input type="hidden" name="emmm_opcms[]" value="[.$op.usermarket.]" />
+                                  </li>
+                                  <li class="f-l ml-10">
+                                      <input class="min" name="" type="button" value="-" /> 
+                                      <input class="text_box" name="emmm_opcms[]" type="text" value="[.$op.number.]" readonly /> 
+                                      <input class="add" name="" type="button" value="+" />
+                                  </li>
+                              </td>
+                            </tr>
+                          </table> 
+                        </dt>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                            <input type="text" name="emmm_opcms[]" class="b-r5 userinput"  placeholder="买家留言" />
+							<input type="hidden" name="emmm_opcms[]" value="[.$op.barcode.]" />
+                            [.*隐藏的表单元素，非常重要。更新模板时这里要保留不可以删除！ --开始*.]
+                            <input type="hidden" name="emmm_opcms[]" value="|" />
+                            [.*隐藏的表单元素，非常重要。更新模板时这里要保留不可以删除！ --结束*.]
+                      </td>
+                    </tr>
+                   </tbody>
+                </table>
+              [./foreach.]
+                <table width="100%">
+                    <tr>
+                      <td height="50" style="text-align:right">商品总价：<label id="total" style="font-size:16px; color:#CC0000; font-family: Verdana, Arial, Helvetica, sans-serif;">[.$op.total.]</label>元</td>
+                    </tr>
+                 </table>
+                <table width="100%">
+                      <tr>
+                        <td>
+                        <input type="submit" name="Submit" value="收银台结算" style="width:100%" class="btn btn-danger pt-10 pb-10 mt-50 radius-0"/>
+                        </td>
+                      </tr>
+                </table>
+                </form>
+			[.else.]
+			<table width="100%" border="0" align="center" cellpadding="10">
+				<tr>
+				  <td>
+					<div align="center">
+					<img src="[.$webpath.]skin/ordersno.jpg" style="margin-top:50px;" class="maximg">
+					</div>
+				  </td>
+				</tr>
+			</table>
+			[./if.]
+            [.*购物车模板结束*.]
+        </div>
+    </div>
+	[.include file="cn/cn_shopfoot.html".]
+</div>
+</body>
+</html>
