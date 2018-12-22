@@ -1,0 +1,5 @@
+<?php
+header("Content-Type:application/json;charset=utf-8");
+header("X-XSS-Protection: 0");
+echo '{"errno":0,"error":"","data":{"user":{"id":"2","user_name":"\u4e13\u4e1a\u6295\u8d44\u4ebafh","email":"","mobile":"139****0002","intro":"'.$_GET["value"].'","address":null,"photo":"\/avatar\/000\/00\/00\/02virtual_avatar_big.jpg","user_uuid":"779ab6bd7e2df90c37f1e892","header_url":"\/avatar\/000\/00\/00\/02virtual_avatar_big.jpg","user_id":"2","is_real_name":0,"is_real_name_string":"\u672a\u5b9e\u540d\u8ba4\u8bc1","real_name":"\u5c24\u6654","is_investor":0,"is_leader_investor":1,"cetificate_id":"511********4273","focus_area":["\u91d1\u878d:\u91c7\u8d2d\u7269\u6d41:\u80fd\u6e90\u73af\u4fdd:\u6cd5\u5f8b\u6559\u80b2:"],"third_party":[{"openid":"1212","type":1,"is_band":1},{"openid":"2oiVL4wNxso9ttarGMIoVa1q-w8kU","type":1,"is_band":1}]}}}'
+?>

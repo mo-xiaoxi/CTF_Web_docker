@@ -1,0 +1,9 @@
+version: '2'
+services:
+ timehackers:
+   build: .
+   volumes:
+    - ./web:/var/www/html
+   ports:
+    - "8080:8080"
+    - "80:80"

@@ -1,0 +1,27 @@
+[Tue Dec 11 14:56:27.845320 2018] [mpm_prefork:notice] [pid 30] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
+[Tue Dec 11 14:56:27.846477 2018] [core:notice] [pid 30] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Dec 11 14:58:18.028787 2018] [mpm_prefork:notice] [pid 29] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
+[Tue Dec 11 14:58:18.029239 2018] [core:notice] [pid 29] AH00094: Command line: '/usr/sbin/apache2'
+[Tue Dec 11 14:58:38.897373 2018] [:error] [pid 33] [client 172.24.0.1:38074] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 4, referer: http://localhost:8037/
+[Tue Dec 11 14:58:38.900163 2018] [:error] [pid 33] [client 172.24.0.1:38074] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 24, referer: http://localhost:8037/
+[Tue Dec 11 14:58:43.944352 2018] [:error] [pid 34] [client 172.24.0.1:38080] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 4, referer: http://localhost:8037/
+[Tue Dec 11 14:58:43.945446 2018] [:error] [pid 34] [client 172.24.0.1:38080] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 24, referer: http://localhost:8037/
+[Tue Dec 11 15:00:35.628731 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined variable: _FILE in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:35.629185 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Warning:  show_source(): Filename cannot be empty in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:35.629463 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Warning:  show_source(): Failed opening '' for highlighting in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:35.629730 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 5, referer: http://localhost:8037/
+[Tue Dec 11 15:00:35.630233 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 25, referer: http://localhost:8037/
+[Tue Dec 11 15:00:36.861108 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined variable: _FILE in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:36.861463 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Warning:  show_source(): Filename cannot be empty in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:36.861828 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Warning:  show_source(): Failed opening '' for highlighting in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:36.862179 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 5, referer: http://localhost:8037/
+[Tue Dec 11 15:00:36.862766 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 25, referer: http://localhost:8037/
+[Tue Dec 11 15:00:39.758048 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined variable: _FILE in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:39.758394 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Warning:  show_source(): Filename cannot be empty in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:39.758675 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Warning:  show_source(): Failed opening '' for highlighting in /var/www/html/xss1_uploadfiles/index.php on line 2, referer: http://localhost:8037/
+[Tue Dec 11 15:00:39.759010 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 5, referer: http://localhost:8037/
+[Tue Dec 11 15:00:39.759598 2018] [:error] [pid 36] [client 172.24.0.1:38084] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 25, referer: http://localhost:8037/
+[Tue Dec 11 15:01:07.767732 2018] [:error] [pid 45] [client 172.24.0.1:38088] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 4, referer: http://localhost:8037/
+[Tue Dec 11 15:01:07.768460 2018] [:error] [pid 45] [client 172.24.0.1:38088] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 24, referer: http://localhost:8037/
+[Tue Dec 11 15:01:08.612665 2018] [:error] [pid 45] [client 172.24.0.1:38088] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 4, referer: http://localhost:8037/
+[Tue Dec 11 15:01:08.613556 2018] [:error] [pid 45] [client 172.24.0.1:38088] PHP Notice:  Undefined index: fileToUpload in /var/www/html/xss1_uploadfiles/index.php on line 24, referer: http://localhost:8037/
