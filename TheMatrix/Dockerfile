@@ -30,7 +30,7 @@ COPY docker_files/apache2.conf /etc/apache2/apache2.conf
 COPY docker_files/status.conf /etc/apache2/mods-available/status.conf
 COPY docker_files/db_init.sh /root/db_init.sh
 RUN chmod 700 /root/db_init.sh && \
-    ./root/db_init.sh
+    /root/db_init.sh
 COPY web /var/www/html
 RUN rm /var/www/html/index.html
 VOLUME /var/lib/mysql
