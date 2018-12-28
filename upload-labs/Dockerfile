@@ -1,13 +1,6 @@
-# Origin image
-FROM tommylau/php-5.2
-
-# Meta Information
-MAINTAINER moxiaxoi  "momomomoxiaoxi@gmail.com"
-
-
-# add new user if it is needed
-# RUN useradd -d /home/ctf/ -m -p ctf -s /bin/bash ctf
-# RUN echo "ctf:ctf" | chpasswd
-
-# Entry point
-ENTRYPOINT /bin/bash
+FROM nickistre/ubuntu-lamp
+MAINTAINER moxiaoxi  "momomomoxiaoxi@gmail.com"
+RUN apt-get update && apt-get dist-upgrade -y
+ADD ./html/ /var/www/html/
+RUN chown www-data:www-data /var/www/html/* -R
+EXPOSE 80
