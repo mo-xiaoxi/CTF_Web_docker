@@ -1,0 +1,79 @@
+.col-md-6:first-child{
+    border-right: rgba(255, 127, 80, 0.52) 1px double;
+}
+button{
+  margin: 0 10px;
+}
+.sidebar{
+    padding: 0;
+}
+.info{
+    padding: 10px;
+}
+.info-body:nth-child(2){
+    border-right: red solid 1px;
+}
+#headPic{
+    margin: auto;
+    width: 200px;
+    height: 250px;
+}
+.pic-main{
+  overflow: hidden;
+    background: #00d2ff;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+#infoHead{
+    text-align: center;
+    font-size: 3rem;
+    color: inherit;
+    font-weight: bold;
+}
+.pic-btn{
+  display: flex;
+  justify-content: space-around;
+    padding: 16px 55px;
+}
+.field{
+    transition: all 0.1s;
+    margin: 5px 0;
+    width: auto;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+}
+.field:hover{
+    box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+    border-left: solid 5px coral;
+}
+.key-field{
+    position: relative;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.8rem;
+    height: auto;
+    width: 60px;
+}
+.key-field::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 10px;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.2s ease-out;
+}
+.key-field:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.value-field{
+    padding: 15px 0;
+    text-align: center;
+    width: 80px;
+}

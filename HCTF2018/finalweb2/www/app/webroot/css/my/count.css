@@ -1,0 +1,76 @@
+.counter{
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+}
+.counter .counter-content{
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 15px 0;
+  margin: 0 auto 15px;
+  z-index: 1;
+  position: relative;
+  transition: all 0.3s ease 0s;
+}
+.counter .counter-content:before{
+  content: "";
+  width: 105%;
+  height: 105%;
+  border-radius: 50%;
+  border: 10px solid #f19f48;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.counter .counter-content:after{
+  content: "";
+  border-top: 10px solid #f19f48;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.counter .counter-icon{
+  display: block;
+  font-size: 30px;
+  color: #f19f48;
+  line-height: 30px;
+}
+.counter .counter-value{
+  font-size: 30px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.7);
+  line-height: 30px;
+}
+.counter .title{
+  display: inline-block;
+  padding: 5px 25px;
+  background: #f19f48;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.counter.blue .counter-content:before{
+  border-color: #4d9fcf;
+  border-bottom-color: transparent;
+}
+.counter.blue .counter-content:after{ border-top-color: #4d9fcf; }
+.counter.blue .counter-icon{ color: #4d9fcf; }
+.counter.blue .title{ background: #4d9fcf; }
+.counter.purple .counter-content:before{
+  border-color: #a98ceb;
+  border-bottom-color: transparent;
+}
+.counter.purple .counter-content:after{ border-top-color: #a98ceb; }
+.counter.purple .counter-icon{ color: #a98ceb; }
+.counter.purple .title{ background: #a98ceb; }
