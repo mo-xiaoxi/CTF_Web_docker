@@ -1,0 +1,10 @@
+version: '2'
+services:
+ apache:
+   build: .
+   volumes:
+    - ./source:/var/www/html
+    - /var/lib/mysql
+   ports:
+    - "8042:80"
+   command: bash -c "service mysql start && mysql -e \"source /var/www/html/web2_cann0tguess.sql;\" && supervisord -n"
