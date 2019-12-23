@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  nginx:
+    build: nginx
+    ports:
+      - 127.0.0.1:12345:80
+    volumes:
+      - ./src:/var/www/html:ro
+      - ../service_file/waf.php:/var/www/waf.php:ro
+      - ../service_file/flag:/var/www/flag:ro
+
+      - ./volumes/db.sqlite:/var/www/db.sqlite:rw
+      - ./volumes/data/:/var/www/html/data/:rw
+  php:
+    build: php
+    volumes:
+      - ./src:/var/www/html:ro
+      - ../service_file/waf.php:/var/www/waf.php:ro
+      - ../service_file/flag:/var/www/flag:ro
+      - ./php/cash_out:/cash_out:ro
+
+      - ./volumes/db.sqlite:/var/www/db.sqlite:rw
+      - ./volumes/data/:/var/www/html/data/:rw

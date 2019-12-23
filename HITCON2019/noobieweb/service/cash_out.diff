@@ -1,0 +1,10 @@
+--- ./service/php/cash_out.bak	2019-12-15 14:20:05.000000000 +0800
++++ ./service/php/cash_out	2019-12-15 14:20:09.000000000 +0800
+@@ -1,7 +1,6 @@
+ #!/bin/bash
+ 
+ dir=/var/www/html/data/cash_out
+-dir=./out
+ 
+ mkdir -p $dir
+ 

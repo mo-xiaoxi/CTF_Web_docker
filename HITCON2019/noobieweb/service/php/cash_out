@@ -1,0 +1,18 @@
+#!/bin/bash
+
+dir=/var/www/html/data/cash_out
+
+mkdir -p $dir
+
+p=$dir/$1
+
+res=`find $dir -iname $1`
+if [ -z $res ]; then
+    echo $2 > $p
+else
+    val=`cat $p`
+    val=$(echo $val + $2 | bc)
+    echo $val > $p
+fi
+
+echo $p

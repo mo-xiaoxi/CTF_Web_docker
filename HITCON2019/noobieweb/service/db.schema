@@ -1,0 +1,41 @@
+DROP TABLE IF EXISTS user;
+CREATE TABLE user (
+    id integer primary key autoincrement,
+    username text not null UNIQUE,
+    nonce text not null,
+    password text not null,
+    hash_algo text not null,
+    perm integer not null DEFAULT 1,
+    cash REAL not null DEFAULT 0.0,
+    info text default "",
+    avatar text
+);
+
+DROP TABLE IF EXISTS transation;
+CREATE TABLE transation (
+    id integer primary key autoincrement,
+    sender text not null,
+    receiver text not null,
+    reason text not null default "",
+    amount integer
+);
+
+DROP TABLE IF EXISTS items;
+CREATE TABLE items (
+    id integer primary key autoincrement,
+    name text,
+    info text,
+    price REAL
+);
+
+INSERT INTO user (username, nonce, password, hash_algo, perm, cash, info) VALUES
+("testadmin", "1998125169", "faabcc7b58c790f04323da7eeafda2fe", "md5", 0,
+9999999999, "TODO(noobie): This account should be deleted before project launch");
+
+INSERT INTO items (name, info, price) VALUES ("MSFT", "Mxxxxsxft", 154.53);
+INSERT INTO items (name, info, price) VALUES ("AAPL", "Apple and Banana Inc.", 275.15);
+INSERT INTO items (name, info, price) VALUES ("AMZN", "Amxzxn.tw Inc.", 1760.94);
+INSERT INTO items (name, info, price) VALUES ("FB", "faceb00f Inc.", 194.11);
+INSERT INTO items (name, info, price) VALUES ("BRK.B", "Bxrkshxxe Hxxhxxxy Inc", 225.37);
+INSERT INTO items (name, info, price) VALUES ("JPM", "JPMorgan Chase & Co", 136.81);
+INSERT INTO items (name, info, price) VALUES ("GOOG", "Be evil Inc.", 1347.83);
