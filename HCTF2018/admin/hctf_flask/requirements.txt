@@ -1,7 +1,7 @@
 Flask==0.10.1
 Werkzeug==0.10.4
 Flask_Login==0.4.1
-Twisted==10.2.0
+Twisted==22.2.0
 Flask_SQLAlchemy==2.0
 WTForms==2.2.1
 Flask_Migrate==2.2.1
